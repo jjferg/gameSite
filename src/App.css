@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
+/* body {
+  height: 400vh;
+} */
+
+.nav {
+  display: block;
+ 
 }
 
-.App-logo {
-  height: 40vmin;
+.sideNav {
+  width: 25%;
+  padding: 10px;
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.navParent {
+  perspective: 12em;
+  width: 13em;
+}
+
+.links {
+  visibility: hidden;
+  margin: 2px;
+  color: #39ff14 !important;
+  font-size: 3em;
+  transform: rotateY(45deg);
+}
+
+.links:hover {
+  color: purple !important;
+}
+
+.containers {
+  margin-top: 12%;
+  width: 100%;
   pointer-events: none;
+  position: relative;
+  height: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.logo {
+  object-fit: cover;
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  /* margin-right: 10%; */
+}
+
+.appLogo {
+  height: 10%;
+}
+
+.com {
+  display: inline-block;
+  visibility: hidden;
+  vertical-align: bottom;
+  width: 50%;
+  font-size: 650%;
+  margin-bottom: -0.5em;
+}
+.section1 {
+  display: block;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  margin-top: 45%;
+}
+
+.xboxController {
+  visibility: hidden;
+  position: absolute;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 100%;
+}
+.ps5Controller {
+  visibility: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 50%;
+  right: 100px;
+  z-index: -1;
+}
+
+.starVid {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 600px) {
+  html body {
+    width: auto;
+    height: auto;
   }
-  to {
-    transform: rotate(360deg);
+  .containers {
+    padding-top: 70%;
   }
+  .navParent {
+    width: 10%;
+  }
+
+  .links {
+    font-size: 1.5em;
+  }
+  .com {
+    font-size: 225%;
+  }
+
 }
