@@ -2,30 +2,30 @@
   height: 400vh;
 } */
 
-.nav {
+/* .nav {
   display: block;
  
-}
+} */
 
-.sideNav {
+/* .sideNav {
   width: 25%;
   padding: 10px;
   content: "";
   clear: both;
   display: table;
-}
+} */
 
-.navParent {
+/* .navParent {
   perspective: 12em;
   width: 13em;
-}
+} */
 
 .links {
-  visibility: hidden;
-  margin: 2px;
+  /* visibility: hidden; */
+  /* margin: 2px; */
   color: #39ff14 !important;
-  font-size: 3em;
-  transform: rotateY(45deg);
+  /* font-size: 3em; */
+  /* transform: rotateY(45deg); */
 }
 
 .links:hover {
