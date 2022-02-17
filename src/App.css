@@ -2,23 +2,21 @@
   height: 400vh;
 } */
 
-/* .nav {
+.nav {
   display: block;
- 
-} */
-
-/* .sideNav {
+}
+*/ .sideNav {
   width: 25%;
   padding: 10px;
   content: "";
   clear: both;
   display: table;
-} */
+}
 
-/* .navParent {
+.navParent {
   perspective: 12em;
   width: 13em;
-} */
+}
 
 .links {
   /* visibility: hidden; */
@@ -33,11 +31,11 @@
 }
 
 .containers {
+  height: 100vh;
   margin-top: 12%;
   width: 100%;
   pointer-events: none;
   position: relative;
-  height: auto;
 }
 
 .logo {
@@ -45,7 +43,7 @@
   display: inline-block;
   width: 50%;
   position: relative;
-  /* margin-right: 10%; */
+ 
 }
 
 .appLogo {
@@ -85,10 +83,10 @@
 }
 
 .starVid {
-    height: 100vh;
-    width: 100vw;
-    object-fit: cover;
-  }
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+}
 
 @media only screen and (max-width: 600px) {
   html body {
@@ -108,5 +106,4 @@
   .com {
     font-size: 225%;
   }
-
 }

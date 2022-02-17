@@ -63,7 +63,7 @@ const Home = () => {
     <>
       <NavigationBar />
       { <div className="container backGround">
-        <Logo
+        {/* <Logo
           ref={appLogoRef}
           style={{
             height: "5rem",
@@ -71,7 +71,7 @@ const Home = () => {
             right: "15px",
             top: "15px",
           }}
-        />
+        /> */}
       </div> }
       <div className="section1" ref={section1Ref}>
         {/* <img
@@ -90,7 +90,7 @@ const Home = () => {
         className="starVid"
         ref={startElementRef}
      
-        webkit-playsInline="true"
+       
         preload="auto"
       >
        

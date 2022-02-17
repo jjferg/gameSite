@@ -13,9 +13,9 @@ const IntroPage = () => {
   const introPage = () => {
       navigate("/home");
   };
-
+  const tl = gsap.timeline();
+  
   useEffect(() => {
-    const tl = gsap.timeline();
     if (window.screen.width > 400) {
       tl.fromTo(
         logo.current,
@@ -82,7 +82,7 @@ const IntroPage = () => {
           onComplete: introPage,
         });;
     }
-  }, []);
+  });
 
   return (
     <div className="containers">
