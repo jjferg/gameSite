@@ -1,6 +1,7 @@
-/* body {
+body {
   height: 400vh;
-} */
+  padding: 0;
+}
 
 .nav {
   display: block;
@@ -58,12 +59,18 @@
   font-size: 650%;
   margin-bottom: -0.5em;
 }
+
+.mainDiv {
+  height: auto;
+}
+
 .section1 {
-  display: block;
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  margin-top: 45%;
+  border: 1px solid black;
+  width: 25%;
+
+}
+.section2 {
+  border: 1px solid black;
 }
 
 .xboxController {
@@ -80,12 +87,6 @@
   width: 50%;
   right: 100px;
   z-index: -1;
-}
-
-.starVid {
-  height: 100vh;
-  width: 100vw;
-  object-fit: cover;
 }
 
 @media only screen and (max-width: 600px) {
