@@ -1,13 +1,10 @@
-body {
-  height: 400vh;
-  padding: 0;
-}
+html, body {overflow-x: hidden !important;width: 100vw !important;}
 
 .nav {
   display: block;
 }
-*/ .sideNav {
-  width: 25%;
+
+.sideNav {
   padding: 10px;
   content: "";
   clear: both;
@@ -34,7 +31,7 @@ body {
 .containers {
   height: 100vh;
   margin-top: 12%;
-  width: 100%;
+  width: auto;
   pointer-events: none;
   position: relative;
 }
@@ -44,7 +41,6 @@ body {
   display: inline-block;
   width: 50%;
   position: relative;
- 
 }
 
 .appLogo {
@@ -67,10 +63,7 @@ body {
 .section1 {
   border: 1px solid black;
   width: 25%;
-
-}
-.section2 {
-  border: 1px solid black;
+  height: 20vh;
 }
 
 .xboxController {
@@ -90,19 +83,9 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-  html body {
-    width: auto;
-    height: auto;
-  }
+  
   .containers {
     padding-top: 70%;
-  }
-  .navParent {
-    width: 10%;
-  }
-
-  .links {
-    font-size: 1.5em;
   }
   .com {
     font-size: 225%;
