@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import NavigationBar from "../components/NavigationBar";
 import gsap from "gsap";
@@ -20,6 +20,8 @@ const Home = () => {
   const startElementRef = useRef(null);
 
   const tl = gsap.timeline();
+
+  const [twitchStats, setTwitchStats] = useState(null)
 
   // animate spinning Logo
   // useEffect(() => {
@@ -44,13 +46,15 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await api.get(
-        "https://api.twitch.tv/helix/users?login=hullagahn/", {mode: 'cors'}
-      );
-      console.log(data);
-    };
-    getData();
+    fetch("https://api.twitch.tv/kraken/streams/44322889", {
+      headers: {
+        Accept: "application/vnd.twitchtv.v5+json",
+        Authorization: "Bearer mkld15wi1ydjugfh9aais2uu20cpnv",
+        "Client-Id": "7s8focd6za4eodq2al6ugvgrrqhjur",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }, []);
 
   return (
