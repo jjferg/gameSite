@@ -46,7 +46,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    fetch("https://api.twitch.tv/kraken/streams/44322889", {
+    fetch("https://api.twitch.tv/helix/users", {
       headers: {
         Accept: "application/vnd.twitchtv.v5+json",
         Authorization: "Bearer mkld15wi1ydjugfh9aais2uu20cpnv",
