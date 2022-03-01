@@ -1,0 +1,30 @@
+{
+  "name": "hullaghan.com",
+  "version": "1.0.0",
+  "description": "gameSite",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon backend/server.js",
+    "devstart": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjferg/gameSite.git"
+  },
+  "keywords": [
+    "games"
+  ],
+  "author": "Jamaal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjferg/gameSite/issues"
+  },
+  "homepage": "https://github.com/jjferg/gameSite#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.0",
+    "nodemon": "^2.0.15"
+  }
+}
