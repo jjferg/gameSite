@@ -38,23 +38,11 @@ const Home = () => {
 
   const id = "7s8focd6za4eodq2al6ugvgrrqhjur";
   const auth = 'mkld15wi1ydjugfh9aais2uu20cpnv'
-  const api = axios.create({
-    headers: {
-      Authorization: auth,
-      Client_Id: id,
-    },
-  });
+  
 
   useEffect(() => {
-    fetch("https://api.twitch.tv/helix/users", {
-      headers: {
-        Accept: "application/vnd.twitchtv.v5+json",
-        Authorization: "Bearer mkld15wi1ydjugfh9aais2uu20cpnv",
-        "Client-Id": "7s8focd6za4eodq2al6ugvgrrqhjur",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+ axios.get('/hey').then(function (response) {console.log(response)})
+ 
   }, []);
 
   return (
