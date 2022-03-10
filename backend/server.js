@@ -14,19 +14,19 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json());
 
-app.get("/hey", (req, res) => {
-  res.send("Hello World");
+app.get("/hey/:twitchName", (req, res) => {
+  const { twitchName } = req.params;
+  console.log(req.params)
+  fetch(`https://api.twitch.tv/helix/streams?user_login=${twitchName}`, {
+    headers: {
+      Accept: "application/vnd.twitchtv.v5+json",
+      Authorization: process.env.AUTHORIZATION_TWITCH_API_BEARER_TOKEN,
+      "Client-Id": process.env.CLIENT_ID_TWITCH_API,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => res.send(data));
 });
-
-fetch("https://api.twitch.tv/helix/users?login=hullagahn", {
-  headers: {
-    Accept: "application/vnd.twitchtv.v5+json",
-    Authorization: "Bearer mkld15wi1ydjugfh9aais2uu20cpnv",
-    "Client-Id": "7s8focd6za4eodq2al6ugvgrrqhjur",
-  },
-})
-  .then((response) => response.json())
-  .then((data) => console.log(data));
 
 const PORT = process.env.PORT || 5000;
 

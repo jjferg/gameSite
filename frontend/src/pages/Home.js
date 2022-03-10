@@ -21,7 +21,8 @@ const Home = () => {
 
   const tl = gsap.timeline();
 
-  const [twitchStats, setTwitchStats] = useState(null)
+  const [twitchStats, setTwitchStats] = useState("");
+  const [twitchNameToSearch, setTwitchNameToSearch] = useState("");
 
   // animate spinning Logo
   // useEffect(() => {
@@ -33,17 +34,22 @@ const Home = () => {
   //     rotationY: "360deg",
   //   });
   // }, []);
-
- 
-
-  const id = "7s8focd6za4eodq2al6ugvgrrqhjur";
-  const auth = 'mkld15wi1ydjugfh9aais2uu20cpnv'
   
-
   useEffect(() => {
- axios.get('/hey').then(function (response) {console.log(response)})
- 
-  }, []);
+    if (twitchNameToSearch) {
+      const twitchData = async () => {
+        const res = await axios.get(`/hey/${twitchNameToSearch}`);
+        console.log(res.data);
+      };
+      twitchData();
+    }
+  }, [twitchNameToSearch]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(twitchNameToSearch);
+    setTwitchNameToSearch("");
+  };
 
   return (
     <>
@@ -51,7 +57,19 @@ const Home = () => {
       <div className="mainDiv">
         <Row>
           <Col sm={12} className="section1">
-            Yooo
+            {console.log(twitchStats)}
+          </Col>
+          <Col>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter twitch name"
+                value={twitchNameToSearch || ""}
+                onChange={(e) => setTwitchNameToSearch(e.target.value)}
+              />
+              <button type="submit">ENTER</button>
+            </form>
           </Col>
         </Row>
       </div>
