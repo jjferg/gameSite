@@ -22,7 +22,8 @@ const Home = () => {
   const tl = gsap.timeline();
 
   const [twitchStats, setTwitchStats] = useState("");
-  const [twitchNameToSearch, setTwitchNameToSearch] = useState("");
+  const [twitchNameToSearch, setTwitchNameToSearch] = useState(" ");
+  const [submitName, setSubmitName] = useState(false);
 
   // animate spinning Logo
   // useEffect(() => {
@@ -34,22 +35,32 @@ const Home = () => {
   //     rotationY: "360deg",
   //   });
   // }, []);
-  
-  useEffect(() => {
-    if (twitchNameToSearch) {
-      const twitchData = async () => {
-        const res = await axios.get(`/hey/${twitchNameToSearch}`);
-        console.log(res.data);
-      };
-      twitchData();
-    }
-  }, [twitchNameToSearch]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(twitchNameToSearch);
-    setTwitchNameToSearch("");
+    // setTwitchNameToSearch(twitchNameToSearch);
+    // if (twitchStats.data.length === 0) {
+    //   console.log("currently offline or no user found");
+    // } else {
+    //   console.log(twitchStats);
+    // }
   };
+
+  const twitchData = async (e) => {
+    e.preventDefault();
+    console.log(section1Ref.current.value);
+    if (section1Ref.current.value.length < 1)  {
+      console.log("already submitted");
+    }
+    if (section1Ref.current.value.length > 0) {
+      const res = await axios.get(`/hey/${section1Ref.current.value}`);
+      setTwitchStats(res.data);
+      section1Ref.current.value = "";
+    }
+  };
+
+  function handleClick() {
+    setTwitchNameToSearch("...Search Twitch User");
+  }
 
   return (
     <>
@@ -57,7 +68,7 @@ const Home = () => {
       <div className="mainDiv">
         <Row>
           <Col sm={12} className="section1">
-            {console.log(twitchStats)}
+            {}
           </Col>
           <Col>
             <form onSubmit={handleSubmit}>
@@ -65,10 +76,14 @@ const Home = () => {
                 type="text"
                 name="name"
                 placeholder="Enter twitch name"
-                value={twitchNameToSearch || ""}
-                onChange={(e) => setTwitchNameToSearch(e.target.value)}
+                ref={section1Ref}
+                // onChange={(e) => {
+                //   setTwitchNameToSearch(e.target.value);
+                // }}
               />
-              <button type="submit">ENTER</button>
+              <button onClick={twitchData} type="submit">
+                ENTER
+              </button>
             </form>
           </Col>
         </Row>
