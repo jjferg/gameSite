@@ -36,31 +36,20 @@ const Home = () => {
   //   });
   // }, []);
 
-  const handleSubmit = (e) => {
-    // setTwitchNameToSearch(twitchNameToSearch);
-    // if (twitchStats.data.length === 0) {
-    //   console.log("currently offline or no user found");
-    // } else {
-    //   console.log(twitchStats);
-    // }
-  };
-
   const twitchData = async (e) => {
     e.preventDefault();
+    setTwitchStats("");
     console.log(section1Ref.current.value);
-    if (section1Ref.current.value.length < 1)  {
-      console.log("already submitted");
+    if (section1Ref.current.value.length < 1) {
+      console.log("please enter a name");
     }
     if (section1Ref.current.value.length > 0) {
       const res = await axios.get(`/hey/${section1Ref.current.value}`);
       setTwitchStats(res.data);
       section1Ref.current.value = "";
     }
+    console.log(twitchStats);
   };
-
-  function handleClick() {
-    setTwitchNameToSearch("...Search Twitch User");
-  }
 
   return (
     <>
@@ -68,18 +57,19 @@ const Home = () => {
       <div className="mainDiv">
         <Row>
           <Col sm={12} className="section1">
-            {}
+            {twitchStats
+              ? twitchStats.data.length < 1
+                ? " user not online/user not found"
+                : twitchStats.data[0].id
+              : null}
           </Col>
           <Col>
-            <form onSubmit={handleSubmit}>
+            <form>
               <input
                 type="text"
                 name="name"
                 placeholder="Enter twitch name"
                 ref={section1Ref}
-                // onChange={(e) => {
-                //   setTwitchNameToSearch(e.target.value);
-                // }}
               />
               <button onClick={twitchData} type="submit">
                 ENTER
