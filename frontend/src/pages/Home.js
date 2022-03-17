@@ -17,13 +17,14 @@ const Home = () => {
   const xboxControlRef = useRef(null);
   const psControlRef = useRef(null);
   const section1Ref = useRef(null);
+  const section2Ref = useRef(null);
   const startElementRef = useRef(null);
 
   const tl = gsap.timeline();
 
   const [twitchStats, setTwitchStats] = useState("");
   const [twitchNameToSearch, setTwitchNameToSearch] = useState(" ");
-  const [submitName, setSubmitName] = useState(false);
+  const [errMessage, setErrMessage] = useState(" ");
 
   // animate spinning Logo
   // useEffect(() => {
@@ -38,10 +39,11 @@ const Home = () => {
 
   const twitchData = async (e) => {
     e.preventDefault();
-    setTwitchStats("");
+    setTwitchStats(" ");
+    setErrMessage(" ")
     console.log(section1Ref.current.value);
     if (section1Ref.current.value.length < 1) {
-      console.log("please enter a name");
+      return setErrMessage ("please enter name...");
     }
     if (section1Ref.current.value.length > 0) {
       const res = await axios.get(`/hey/${section1Ref.current.value}`);
@@ -51,17 +53,45 @@ const Home = () => {
     console.log(twitchStats);
   };
 
+  const messageDisplay = !twitchStats.data ? (
+    " "
+  ) : (
+    <span style={{ color: "red" }}>
+      {"USER DOESN'T EXIST"}
+    </span>
+  );
+
   return (
     <>
       {/* <NavigationBar /> */}
       <div className="mainDiv">
         <Row>
-          <Col sm={12} className="section1">
-            {twitchStats
-              ? twitchStats.data.length < 1
-                ? " user not online/user not found"
-                : twitchStats.data[0].id
-              : null}
+          <Col
+            sm={12}
+            className="section1"
+            style={{
+              overflowY: "hidden",
+              width: "fitContent",
+            }}
+          >
+            {twitchStats.data && twitchStats.data.length > 0
+              ? twitchStats.data.map((stat, i) => (
+                  <div key={stat.id} style={{ overflow: "hidden", objectFit: "contain" }}>
+                    <h4 >{stat.display_name}</h4>
+                    <img
+                      src={stat.profile_image_url}
+                      alt="thumbnail"
+                      style={{
+                        height: "50%",
+                        width: "50%",
+                        display: "block",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                      }}
+                    />
+                  </div>
+                ))
+              : messageDisplay}
           </Col>
           <Col>
             <form>
@@ -74,6 +104,7 @@ const Home = () => {
               <button onClick={twitchData} type="submit">
                 ENTER
               </button>
+              <p ref={section2Ref} style={{display: "block", color: "red"}}>{errMessage}</p>
             </form>
           </Col>
         </Row>

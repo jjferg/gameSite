@@ -17,7 +17,7 @@ app.use(express.json());
 app.get("/hey/:twitchName", (req, res) => {
   const { twitchName } = req.params;
   console.log(req.params)
-  fetch(`https://api.twitch.tv/helix/streams?user_login=${twitchName}`, {
+  fetch(`https://api.twitch.tv/helix/users?login=${twitchName}`, {
     headers: {
       Accept: "application/vnd.twitchtv.v5+json",
       Authorization: process.env.AUTHORIZATION_TWITCH_API_BEARER_TOKEN,
