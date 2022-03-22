@@ -7,6 +7,9 @@ import { CSSPlugin } from "gsap/CSSPlugin";
 import axios from "axios";
 import xboxController from "../components/images/xboxcontrol.png";
 import ps5Controller from "../components/images/ps5controller.png";
+import curtainLeft from "../components/images/curtatins-Left.png";
+import curtainRight from "../components/images/curtatins-Right.png";
+import { useLayoutEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSPlugin);
@@ -18,6 +21,8 @@ const Home = () => {
   const psControlRef = useRef(null);
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
+  const leftCurtain = useRef(null)
+  const rightCurtain = useRef(null)
   const startElementRef = useRef(null);
 
   const tl = gsap.timeline();
@@ -37,13 +42,38 @@ const Home = () => {
   //   });
   // }, []);
 
+  useLayoutEffect(() =>{
+    gsap.to(rightCurtain.current, {
+      scrollTrigger: {
+        trigger: rightCurtain.current,
+        start: "top top",
+        end: "=+2000",
+        scrub: 1.5,
+       
+      },
+      x: 3000,
+      ease: "none"
+    })
+    gsap.to(leftCurtain.current, {
+      scrollTrigger: {
+        trigger: rightCurtain.current,
+        start: "top top",
+        end: "=+2000",
+        scrub: 1.5,
+    
+      },
+      x: -3000,
+      ease: "none",
+    });
+  })
+
   const twitchData = async (e) => {
     e.preventDefault();
     setTwitchStats(" ");
-    setErrMessage(" ")
+    setErrMessage(" ");
     console.log(section1Ref.current.value);
     if (section1Ref.current.value.length < 1) {
-      return setErrMessage ("please enter name...");
+      return setErrMessage("please enter name...");
     }
     if (section1Ref.current.value.length > 0) {
       const res = await axios.get(`/hey/${section1Ref.current.value}`);
@@ -56,16 +86,48 @@ const Home = () => {
   const messageDisplay = !twitchStats.data ? (
     " "
   ) : (
-    <span style={{ color: "red" }}>
-      {"USER DOESN'T EXIST"}
-    </span>
+    <span style={{ color: "red" }}>{"USER DOESN'T EXIST"}</span>
   );
 
   return (
     <>
       {/* <NavigationBar /> */}
-      <div className="mainDiv">
-        <Row>
+      <div style={{ height: "2000px"}}>
+        <div
+          style={{
+            padding: "0",
+            margin: "0",
+            overflow: "hidden",
+            height: "1000px",
+            position: "fixed",
+          }}
+          className="mainDiv"
+        >
+          <img
+            ref={leftCurtain}
+            style={{
+              height: "100vh",
+              width: "50%",
+              padding: "0",
+              margin: "0",
+            }}
+            src={curtainLeft}
+            alt="left half curtain"
+          />
+
+          <img
+            ref={rightCurtain}
+            style={{
+              height: "100vh",
+              width: "50%",
+              padding: "0",
+              margin: "0",
+            }}
+            src={curtainRight}
+            alt="right half curtain"
+          />
+
+          {/* <Row>
           <Col
             sm={12}
             className="section1"
@@ -76,8 +138,11 @@ const Home = () => {
           >
             {twitchStats.data && twitchStats.data.length > 0
               ? twitchStats.data.map((stat, i) => (
-                  <div key={stat.id} style={{ overflow: "hidden", objectFit: "contain" }}>
-                    <h4 >{stat.display_name}</h4>
+                  <div
+                    key={stat.id}
+                    style={{ overflow: "hidden", objectFit: "contain" }}
+                  >
+                    <h4>{stat.display_name}</h4>
                     <img
                       src={stat.profile_image_url}
                       alt="thumbnail"
@@ -98,16 +163,19 @@ const Home = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Enter twitch name"
+                placeholder="Enter twitch name..."
                 ref={section1Ref}
               />
               <button onClick={twitchData} type="submit">
                 ENTER
               </button>
-              <p ref={section2Ref} style={{display: "block", color: "red"}}>{errMessage}</p>
+              <p ref={section2Ref} style={{ display: "block", color: "red" }}>
+                {errMessage}
+              </p>
             </form>
           </Col>
-        </Row>
+        </Row> */}
+        </div>
       </div>
     </>
   );

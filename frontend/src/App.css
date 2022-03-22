@@ -1,4 +1,4 @@
-html, body {overflow-x: hidden !important;width: 100vw !important;}
+
 
 .nav {
   display: block;
@@ -56,9 +56,6 @@ html, body {overflow-x: hidden !important;width: 100vw !important;}
   margin-bottom: -0.5em;
 }
 
-.mainDiv {
-  height: auto;
-}
 
 .section1 {
   border: 1px solid black;
