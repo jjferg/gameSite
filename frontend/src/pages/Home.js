@@ -9,6 +9,7 @@ import xboxController from "../components/images/xboxcontrol.png";
 import ps5Controller from "../components/images/ps5controller.png";
 import curtainLeft from "../components/images/curtatins-Left.png";
 import curtainRight from "../components/images/curtatins-Right.png";
+import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,9 +21,9 @@ const Home = () => {
   const xboxControlRef = useRef(null);
   const psControlRef = useRef(null);
   const section1Ref = useRef(null);
-  const section2Ref = useRef(null);
-  const leftCurtain = useRef(null)
-  const rightCurtain = useRef(null)
+  const logoRef = useRef(null);
+  const leftCurtain = useRef(null);
+  const rightCurtain = useRef(null);
   const startElementRef = useRef(null);
 
   const tl = gsap.timeline();
@@ -42,30 +43,38 @@ const Home = () => {
   //   });
   // }, []);
 
-  useLayoutEffect(() =>{
+  useLayoutEffect(() => {
     gsap.to(rightCurtain.current, {
       scrollTrigger: {
         trigger: rightCurtain.current,
         start: "top top",
         end: "=+2000",
         scrub: 1.5,
-       
       },
       x: 3000,
-      ease: "none"
-    })
+      ease: "none",
+    });
     gsap.to(leftCurtain.current, {
       scrollTrigger: {
         trigger: rightCurtain.current,
         start: "top top",
         end: "=+2000",
         scrub: 1.5,
-    
       },
       x: -3000,
       ease: "none",
     });
-  })
+    gsap.to(logoRef.current, {
+      scrollTrigger: {
+        trigger: logoRef.current,
+        start: 'top top',
+        scrub: 1.5,
+        markers: true,
+        pin: true
+      },
+      scale: 4,
+    });
+  });
 
   const twitchData = async (e) => {
     e.preventDefault();
@@ -92,13 +101,14 @@ const Home = () => {
   return (
     <>
       {/* <NavigationBar /> */}
-      <div style={{ height: "2000px"}}>
+      <div style={{ height: "2000px", position: "relative" }}>
         <div
           style={{
             padding: "0",
             margin: "0",
             overflow: "hidden",
             height: "1000px",
+            width: "100%",
             position: "fixed",
           }}
           className="mainDiv"
@@ -125,6 +135,18 @@ const Home = () => {
             }}
             src={curtainRight}
             alt="right half curtain"
+          />
+          <img
+            ref={logoRef}
+            style={{
+              height: "20%",
+              top: "10%",
+              left: "50%",
+              zIndex: "-1",
+              position: "absolute",
+            }}
+            src={hullaLogoControl}
+            alt="logo holding controller"
           />
 
           {/* <Row>

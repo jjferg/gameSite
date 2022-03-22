@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "../Hullagahn_logo5.svg";
 
-import "../App.css";
+
 
 const IntroPage = () => {
   const navigate = useNavigate();
