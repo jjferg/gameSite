@@ -44,36 +44,43 @@ const Home = () => {
   // }, []);
 
   useLayoutEffect(() => {
-    gsap.to(rightCurtain.current, {
+    tl.to(rightCurtain.current, {
       scrollTrigger: {
         trigger: rightCurtain.current,
         start: "top top",
-        end: "=+2000",
+        end: "=+4000",
+        pin: startElementRef.current,
         scrub: 1.5,
+        markers: true,
+        id: 'right',
       },
       x: 3000,
       ease: "none",
-    });
-    gsap.to(leftCurtain.current, {
-      scrollTrigger: {
-        trigger: rightCurtain.current,
-        start: "top top",
-        end: "=+2000",
-        scrub: 1.5,
-      },
-      x: -3000,
-      ease: "none",
-    });
-    gsap.to(logoRef.current, {
-      scrollTrigger: {
-        trigger: logoRef.current,
-        start: 'top top',
-        scrub: 1.5,
-        markers: true,
-        pin: true
-      },
-      scale: 4,
-    });
+    })
+      .to(leftCurtain.current, {
+        scrollTrigger: {
+          trigger: rightCurtain.current,
+          start: "top top",
+          end: "=+4000",
+          scrub: 1.5,
+          markers: true,
+          id: 'left'
+        },
+        x: -3000,
+        ease: "none",
+      })
+      .to(logoRef.current, {
+        scrollTrigger: {
+          trigger: startElementRef.current,
+          start: "top top",
+          end: "4000",
+          scrub: 1.5,
+          markers: true,
+          pin: true,
+          id: "logo",
+        },
+        scale: 50,
+      });
   });
 
   const twitchData = async (e) => {
@@ -102,14 +109,14 @@ const Home = () => {
     <>
       {/* <NavigationBar /> */}
       <div style={{ height: "2000px", position: "relative" }}>
-        <div
+        <div ref={startElementRef}
           style={{
             padding: "0",
             margin: "0",
             overflow: "hidden",
             height: "1000px",
             width: "100%",
-            position: "fixed",
+            
           }}
           className="mainDiv"
         >
@@ -140,10 +147,11 @@ const Home = () => {
             ref={logoRef}
             style={{
               height: "20%",
-              top: "10%",
-              left: "50%",
               zIndex: "-1",
-              position: "absolute",
+              position: 'absolute',
+              top: '40%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)'
             }}
             src={hullaLogoControl}
             alt="logo holding controller"
