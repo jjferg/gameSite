@@ -12,12 +12,14 @@ import curtainRight from "../components/images/curtatins-Right.png";
 import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
 
+//Registered for use in application
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSPlugin);
 
-// reference to elements to use for animation
+//reference to elements to use for animation
 const Home = () => {
   const appLogoRef = useRef(null);
+  const mainDivRef = useRef(null);
   const xboxControlRef = useRef(null);
   const psControlRef = useRef(null);
   const section1Ref = useRef(null);
@@ -26,7 +28,9 @@ const Home = () => {
   const rightCurtain = useRef(null);
   const startElementRef = useRef(null);
 
+  //Initiate the gsap timeline to execute animations uniformly
   const tl = gsap.timeline();
+
 
   const [twitchStats, setTwitchStats] = useState("");
   const [twitchNameToSearch, setTwitchNameToSearch] = useState(" ");
@@ -48,23 +52,26 @@ const Home = () => {
       scrollTrigger: {
         trigger: rightCurtain.current,
         start: "top top",
-        end: "=+4000",
+        end: "+=100%",
         pin: startElementRef.current,
+        pinSpacing: false,
         scrub: 1.5,
-        markers: true,
-        id: 'right',
+        markers: false,
+        id: "right",
       },
       x: 3000,
       ease: "none",
     })
       .to(leftCurtain.current, {
         scrollTrigger: {
-          trigger: rightCurtain.current,
+          trigger: leftCurtain.current,
           start: "top top",
-          end: "=+4000",
+          end: "+=100%",
+          pin: startElementRef.current,
+          pinSpacing: false,
           scrub: 1.5,
-          markers: true,
-          id: 'left'
+          markers: false,
+          id: "left",
         },
         x: -3000,
         ease: "none",
@@ -73,13 +80,15 @@ const Home = () => {
         scrollTrigger: {
           trigger: startElementRef.current,
           start: "top top",
-          end: "4000",
+          end: "1500",
           scrub: 1.5,
           markers: true,
           pin: true,
+          pinSpacing: false,
           id: "logo",
+          onLeave: () => console.log('left')
         },
-        scale: 50,
+        scale: 60,
       });
   });
 
@@ -108,21 +117,23 @@ const Home = () => {
   return (
     <>
       {/* <NavigationBar /> */}
-      <div style={{ height: "2000px", position: "relative" }}>
-        <div ref={startElementRef}
+      <div ref={mainDivRef} style={{ height: "5000px", }}>
+        <div
+          ref={startElementRef}
           style={{
+             position: "relative",
             padding: "0",
             margin: "0",
-            overflow: "hidden",
-            height: "1000px",
+            overflow: "hidden", 
+          
             width: "100%",
-            
           }}
           className="mainDiv"
         >
           <img
             ref={leftCurtain}
             style={{
+             
               height: "100vh",
               width: "50%",
               padding: "0",
@@ -135,6 +146,7 @@ const Home = () => {
           <img
             ref={rightCurtain}
             style={{
+            
               height: "100vh",
               width: "50%",
               padding: "0",
@@ -148,10 +160,10 @@ const Home = () => {
             style={{
               height: "20%",
               zIndex: "-1",
-              position: 'absolute',
-              top: '40%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)'
+              position: "absolute",
+              top: "40%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
             }}
             src={hullaLogoControl}
             alt="logo holding controller"
