@@ -52,11 +52,11 @@ const Home = () => {
       scrollTrigger: {
         trigger: rightCurtain.current,
         start: "top top",
-        end: "+=100%",
+        end: "+=190%",
         pin: startElementRef.current,
         pinSpacing: false,
-        scrub: 1.5,
-        markers: false,
+        scrub: 1,
+        markers: true,
         id: "right",
       },
       x: 3000,
@@ -66,11 +66,11 @@ const Home = () => {
         scrollTrigger: {
           trigger: leftCurtain.current,
           start: "top top",
-          end: "+=100%",
+          end: "+=190%",
           pin: startElementRef.current,
           pinSpacing: false,
-          scrub: 1.5,
-          markers: false,
+          scrub: 1,
+          markers: true,
           id: "left",
         },
         x: -3000,
@@ -80,15 +80,22 @@ const Home = () => {
         scrollTrigger: {
           trigger: startElementRef.current,
           start: "top top",
-          end: "1500",
-          scrub: 1.5,
+          end: "190%",
+          scrub: 1,
           markers: true,
-          pin: true,
+          pin: startElementRef.current,
           pinSpacing: false,
           id: "logo",
-          onLeave: () => console.log('left')
+          onLeave: () =>
+            gsap.to(logoRef.current, {
+              opacity: 0,
+            }),
+          onEnterBack: () =>
+            gsap.to(logoRef.current, {
+              opacity: 1,
+            }),
         },
-        scale: 60,
+        scale: 45,
       });
   });
 
@@ -117,7 +124,7 @@ const Home = () => {
   return (
     <>
       {/* <NavigationBar /> */}
-      <div ref={mainDivRef} style={{ height: "5000px", }}>
+      <div ref={mainDivRef} style={{ height: "5000vh", }}>
         <div
           ref={startElementRef}
           style={{
@@ -158,7 +165,7 @@ const Home = () => {
           <img
             ref={logoRef}
             style={{
-              height: "20%",
+              height: "10%",
               zIndex: "-1",
               position: "absolute",
               top: "40%",
