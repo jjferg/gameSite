@@ -9,14 +9,16 @@ import xboxController from "../components/images/xboxcontrol.png";
 import ps5Controller from "../components/images/ps5controller.png";
 import curtainLeft from "../components/images/curtatins-Left.png";
 import curtainRight from "../components/images/curtatins-Right.png";
+import tvScreen from "../components/images/tv.jpeg";
 import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
+import "../App.css";
 
 //Registered for use in application
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSPlugin);
 
-//reference to elements to use for animation
+//elements reference used for animation
 const Home = () => {
   const appLogoRef = useRef(null);
   const mainDivRef = useRef(null);
@@ -27,10 +29,11 @@ const Home = () => {
   const leftCurtain = useRef(null);
   const rightCurtain = useRef(null);
   const startElementRef = useRef(null);
+  const tvDiv = useRef(null);
+  const tvRef = useRef(null);
 
   //Initiate the gsap timeline to execute animations uniformly
   const tl = gsap.timeline();
-
 
   const [twitchStats, setTwitchStats] = useState("");
   const [twitchNameToSearch, setTwitchNameToSearch] = useState(" ");
@@ -52,7 +55,7 @@ const Home = () => {
       scrollTrigger: {
         trigger: rightCurtain.current,
         start: "top top",
-        end: "+=190%",
+        end: "225%",
         pin: startElementRef.current,
         pinSpacing: false,
         scrub: 1,
@@ -66,26 +69,12 @@ const Home = () => {
         scrollTrigger: {
           trigger: leftCurtain.current,
           start: "top top",
-          end: "+=190%",
+          end: "225%",
           pin: startElementRef.current,
           pinSpacing: false,
           scrub: 1,
           markers: true,
           id: "left",
-        },
-        x: -3000,
-        ease: "none",
-      })
-      .to(logoRef.current, {
-        scrollTrigger: {
-          trigger: startElementRef.current,
-          start: "top top",
-          end: "190%",
-          scrub: 1,
-          markers: true,
-          pin: startElementRef.current,
-          pinSpacing: false,
-          id: "logo",
           onLeave: () =>
             gsap.to(logoRef.current, {
               opacity: 0,
@@ -95,10 +84,33 @@ const Home = () => {
               opacity: 1,
             }),
         },
+        x: -3000,
+        ease: "none",
+      })
+      .to(logoRef.current, {
+        scrollTrigger: {
+          start: "top top",
+          end: "50%",
+          scrub: 1,
+          markers: true,
+          id: "logo",
+        },
         scale: 45,
+      })
+      .to(tvDiv.current, {
+        scrollTrigger: {
+          trigger: tvDiv.current,
+          start: "top top",
+          end: "+=10000",
+          pin: true,
+          pinSpacing: false,
+          markers: true,
+          id: "tvDiv",
+        },
       });
   });
 
+  // GET request for backend twtich api call
   const twitchData = async (e) => {
     e.preventDefault();
     setTwitchStats(" ");
@@ -114,7 +126,7 @@ const Home = () => {
     }
     console.log(twitchStats);
   };
-
+  // message not entered warning
   const messageDisplay = !twitchStats.data ? (
     " "
   ) : (
@@ -124,15 +136,14 @@ const Home = () => {
   return (
     <>
       {/* <NavigationBar /> */}
-      <div ref={mainDivRef} style={{ height: "5000vh", }}>
+      <div ref={mainDivRef} style={{ height: "600vh" }} className="extends">
         <div
           ref={startElementRef}
           style={{
-             position: "relative",
+            position: "relative",
             padding: "0",
             margin: "0",
-            overflow: "hidden", 
-          
+            overflow: "hidden",
             width: "100%",
           }}
           className="mainDiv"
@@ -140,7 +151,6 @@ const Home = () => {
           <img
             ref={leftCurtain}
             style={{
-             
               height: "100vh",
               width: "50%",
               padding: "0",
@@ -153,7 +163,6 @@ const Home = () => {
           <img
             ref={rightCurtain}
             style={{
-            
               height: "100vh",
               width: "50%",
               padding: "0",
@@ -168,7 +177,7 @@ const Home = () => {
               height: "10%",
               zIndex: "-1",
               position: "absolute",
-              top: "40%",
+              top: "20%",
               left: "50%",
               transform: "translate(-50%, -50%)",
             }}
@@ -225,6 +234,14 @@ const Home = () => {
           </Col>
         </Row> */}
         </div>
+      </div>
+      <div ref={tvDiv} className="tvDiv">
+        <img
+          ref={tvRef}
+          style={{ height: "100vh", width: "100vh" }}
+          src={tvScreen}
+          alt="tv frame"
+        />
       </div>
     </>
   );
