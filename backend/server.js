@@ -13,6 +13,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json());
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 app.get("/hey/:twitchName", (req, res) => {
   const { twitchName } = req.params;
