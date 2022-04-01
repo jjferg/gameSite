@@ -4,6 +4,8 @@ import morgan from "morgan";
 import colors from "colors";
 import axios from "axios";
 import fetch from "node-fetch";
+import path from "path";
+const __dirname = path.resolve();
 
 dotenv.config();
 const app = express();
@@ -14,7 +16,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json());
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../frontend/public/index.html"));
 });
 
 app.get("/hey/:twitchName", (req, res) => {
