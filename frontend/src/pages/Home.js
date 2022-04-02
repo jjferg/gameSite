@@ -61,7 +61,6 @@ const Home = () => {
         pin: startElementRef.current,
         pinSpacing: false,
         scrub: 1,
-        markers: true,
         id: "right",
       },
       x: 3000,
@@ -75,7 +74,6 @@ const Home = () => {
           pin: startElementRef.current,
           pinSpacing: false,
           scrub: 1,
-          markers: true,
           id: "left",
           onLeave: () =>
             gsap.to(logoRef.current, {
@@ -96,7 +94,6 @@ const Home = () => {
           end: "225%",
           pin: logoRef.current,
           scrub: 1,
-          markers: true,
           id: "logo",
         },
         scale: 70,
@@ -109,9 +106,8 @@ const Home = () => {
           start: "top top",
           end: "+=5000",
           scrub: 1,
-          pin: false,
+          pin: tvDiv.current,
           pinSpacing: false,
-          markers: true,
           id: "tvDiv",
           onLeave: () => {
             console.log("left");
@@ -122,8 +118,7 @@ const Home = () => {
                 end: "+=50000",
                 scrub: 1,
                 pin: true,
-                pinSpacing: false,
-                markers: false,
+                pinSpacing: true,
                 id: "tvDiv1",
               },
             });
@@ -138,8 +133,7 @@ const Home = () => {
         end: "+=50000",
         scrub: 1,
         pin: true,
-        pinSpacing: false,
-        markers: false,
+        pinSpacing: true,
         id: "tvDiv1",
    
       },
@@ -271,10 +265,10 @@ const Home = () => {
         </Row> */}
         </div>
       </div>
-      <div ref={tvDiv} className="tvDiv">
+      <div ref={tvDiv} style={{height: '100vh'}} className="tvDiv">
         <img
           ref={tvRef}
-          style={{ height: "100vh", width: "100%" }}
+          style={{ height: '100vh',  width: "100%" }}
           src={tvScreen}
           alt="tv frame"
         />
