@@ -57,11 +57,11 @@ const Home = () => {
       scrollTrigger: {
         trigger: rightCurtain.current,
         start: "top top",
-        end: "125%",
+        end: "225%",
         pin: startElementRef.current,
         pinSpacing: false,
         scrub: 1,
-        markers: false,
+        markers: true,
         id: "right",
       },
       x: 3000,
@@ -71,11 +71,11 @@ const Home = () => {
         scrollTrigger: {
           trigger: leftCurtain.current,
           start: "top top",
-          end: "125%",
+          end: "225%",
           pin: startElementRef.current,
           pinSpacing: false,
           scrub: 1,
-          markers: false,
+          markers: true,
           id: "left",
           onLeave: () =>
             gsap.to(logoRef.current, {
@@ -91,15 +91,16 @@ const Home = () => {
       })
       .to(logoRef.current, {
         scrollTrigger: {
+          trigger: leftCurtain.current,
           start: "top top",
-          end: "50%",
+          end: "225%",
+          pin: logoRef.current,
           scrub: 1,
-          markers: false,
+          markers: true,
           id: "logo",
         },
-        backgroundColor: 'white',
-       
-        ease: "expoScale(0.2, 50, slow)",
+        scale: 70,
+        ease: "expoScale(1, 70, )",
       })
       .to(tvDiv.current, {
         scale: 0.8,
@@ -108,7 +109,7 @@ const Home = () => {
           start: "top top",
           end: "+=5000",
           scrub: 1,
-          pin: true,
+          pin: false,
           pinSpacing: false,
           markers: true,
           id: "tvDiv",
@@ -122,7 +123,7 @@ const Home = () => {
                 scrub: 1,
                 pin: true,
                 pinSpacing: false,
-                markers: true,
+                markers: false,
                 id: "tvDiv1",
               },
             });
@@ -138,7 +139,7 @@ const Home = () => {
         scrub: 1,
         pin: true,
         pinSpacing: false,
-        markers: true,
+        markers: false,
         id: "tvDiv1",
    
       },
@@ -209,10 +210,10 @@ const Home = () => {
           <img
             ref={logoRef}
             style={{
-              height: "60%",
+              height: "10%",
               zIndex: "-1",
               position: "absolute",
-              top: "20%",
+              top: "40%",
               left: "50%",
              
             }}

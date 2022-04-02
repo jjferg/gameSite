@@ -7,7 +7,7 @@ import Example  from "./pages/Example"
 const App = () => {
   return (
     <Routes>  
-      <Route path="/" element={<IntroPage />} />  
+      <Route path="/" element={<Home />} />  
       <Route path="/home" element={<Home />} />
       <Route path="/example" element={<Example />} />
     </Routes>
