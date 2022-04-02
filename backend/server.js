@@ -5,19 +5,23 @@ import colors from "colors";
 import axios from "axios";
 import fetch from "node-fetch";
 import path from "path";
-const __dirname = path.resolve();
 
-dotenv.config();
+const __dirname = path.resolve();
 const app = express();
 
+dotenv.config();
+app.use(express.json());
+
+if(process.env.NODE_ENV === "production") {
+  app.use(express.static(__dirname,'/frontend/build/'))
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  });
+}
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use(express.json());
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/public/index.html"));
-});
 
 app.get("/hey/:twitchName", (req, res) => {
   const { twitchName } = req.params;
@@ -32,7 +36,7 @@ app.get("/hey/:twitchName", (req, res) => {
     .then((response) => response.json())
     .then((data) => res.send(data));
 });
-
+console.log(process.env.NODE_ENV)
 const PORT = process.env.PORT || 5000;
 
 app.listen(
