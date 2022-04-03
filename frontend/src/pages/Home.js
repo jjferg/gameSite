@@ -53,6 +53,9 @@ const Home = () => {
   // }, []);
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(CSSPlugin);
+    gsap.registerPlugin(ExpoScaleEase);
     tl.to(rightCurtain.current, {
       scrollTrigger: {
         trigger: rightCurtain.current,
@@ -138,7 +141,10 @@ const Home = () => {
    
       },
     });
-  });
+    return () => {
+    tl.scrollTrigger.kill()
+    }
+  },[]);
 
   // GET request for backend twtich api call
   const twitchData = async (e) => {
