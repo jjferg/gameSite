@@ -13,7 +13,7 @@ import curtainRight from "../components/images/curtatins-Right.png";
 import tvScreen from "../components/images/TV_Frame.svg";
 import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
-import "../App.css";
+import "../App.css"; 
 
 //Registered for use in application
 gsap.registerPlugin(ScrollTrigger);
