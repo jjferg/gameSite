@@ -13,7 +13,7 @@ import curtainRight from "../components/images/curtatins-Right.png";
 import tvScreen from "../components/images/TV_Frame.svg";
 import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
-import "../App.css"; 
+import "../App.css";
 
 //Registered for use in application
 gsap.registerPlugin(ScrollTrigger);
@@ -56,7 +56,7 @@ const Home = () => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(CSSPlugin);
     gsap.registerPlugin(ExpoScaleEase);
-    tl.to(rightCurtain.current, {
+    gsap.timeline({
       scrollTrigger: {
         trigger: rightCurtain.current,
         start: "top top",
@@ -66,85 +66,28 @@ const Home = () => {
         scrub: 1,
         id: "right",
       },
-      x: 3000,
-      ease: "none",
-    })
-      .to(leftCurtain.current, {
-        scrollTrigger: {
-          trigger: leftCurtain.current,
-          start: "top top",
-          end: "225%",
-          pin: startElementRef.current,
-          pinSpacing: false,
-          scrub: 1,
-          id: "left",
-          onLeave: () =>
-            gsap.to(logoRef.current, {
-              opacity: 0,
-            }),
-          onEnterBack: () =>
-            gsap.to(logoRef.current, {
-              opacity: 1,
-            }),
-        },
-        x: -3000,
-        ease: "none",
-      })
+    }).to(rightCurtain.current,{ x: 3000 })
+      .to(leftCurtain.current,{  x: -3000 },"<")
       .to(logoRef.current, {
-        scrollTrigger: {
-          trigger: leftCurtain.current,
-          start: "top top",
-          end: "225%",
-          pin: logoRef.current,
-          scrub: 1,
-          id: "logo",
-        },
         scale: 70,
         ease: "expoScale(1, 70, )",
+      },"<")
+      .to(logoRef.current, {
+       opacity: 0 
       })
-      .to(tvDiv.current, {
-        scale: 0.8,
-        scrollTrigger: {
-          trigger: tvDiv.current,
-          start: "top top",
-          end: "+=5000",
-          scrub: 1,
-          pin: tvDiv.current,
-          pinSpacing: false,
-          id: "tvDiv",
-          onLeave: () => {
-            console.log("left");
-            gsap.to(tvDiv.current, {
-              scrollTrigger: {
-                trigger: tvDiv.current,
-                start: "top top",
-                end: "+=50000",
-                scrub: 1,
-                pin: true,
-                pinSpacing: true,
-                id: "tvDiv1",
-              },
-            });
-          },
-        },
-      });
-    gsap.to(tvDiv.current, {
-      rotationY: "360deg",
+     gsap.timeline({
       scrollTrigger: {
-        trigger: tvDiv.current,
-        start: "top top",
-        end: "+=50000",
+        trigger: tvRef.current,
+        start: "center center",
+        end: "+=1000",
         scrub: 1,
-        pin: true,
-        pinSpacing: true,
-        id: "tvDiv1",
-   
+        pin: tvDiv.current,
+        id: "tvDiv",
       },
-    });
-    return () => {
-    tl.scrollTrigger.kill()
-    }
-  },[]);
+    })
+    .to(tvRef.current,{scale: .8})
+    .to(tvRef.current,{scale: .1})
+  }, []);
 
   // GET request for backend twtich api call
   const twitchData = async (e) => {
@@ -172,7 +115,11 @@ const Home = () => {
   return (
     <>
       {/* <NavigationBar /> */}
-      <div ref={mainDivRef} style={{ backgroundColor:'black', height: "250vh" }} className="extends">
+      <div
+        ref={mainDivRef}
+        style={{ backgroundColor: "black", height: "250vh" }}
+        className="extends"
+      >
         <div
           ref={startElementRef}
           style={{
@@ -215,7 +162,6 @@ const Home = () => {
               position: "absolute",
               top: "40%",
               left: "50%",
-             
             }}
             src={hullaLogoControl}
             alt="logo holding controller"
@@ -271,10 +217,14 @@ const Home = () => {
         </Row> */}
         </div>
       </div>
-      <div ref={tvDiv} style={{height: '100vh'}} className="tvDiv">
+      <div
+        ref={tvDiv}
+        style={{ height: "1000vh", position: "relative", overflow: "hidden" }}
+        className="tvDiv"
+      >
         <img
           ref={tvRef}
-          style={{ height: '100vh',  width: "100%" }}
+          style={{ height: "100vh", width: "100%", position: "absolute" }}
           src={tvScreen}
           alt="tv frame"
         />
