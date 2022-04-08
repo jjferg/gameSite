@@ -82,7 +82,7 @@ const Home = () => {
         .to(logoRef.current, {
           opacity: 0,
         })
-        .fromTo(tvRef.current,{scale: 2}, { scale: 0.8 }, ">")
+        .fromTo(tvRef.current,{scale: 2}, { scale: 0.8, opacity: 1 }, ">")
         .to(gamePics.current, {scale: .8},">")
   }, []);
 
@@ -155,6 +155,7 @@ const Home = () => {
               position: "absolute",
               top: "10%",
               left: "40%",
+              visibility: "hidden"
             }}
             src={hullaLogoControl}
             alt="logo holding controller"
