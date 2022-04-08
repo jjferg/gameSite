@@ -1,24 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import NavigationBar from "../components/NavigationBar";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CSSPlugin } from "gsap/CSSPlugin";
 import { ExpoScaleEase } from "gsap/EasePack";
+import { Flip } from "gsap/Flip";
 import axios from "axios";
-import xboxController from "../components/images/xboxcontrol.png";
-import ps5Controller from "../components/images/ps5controller.png";
 import curtainLeft from "../components/images/curtatins-Left.png";
 import curtainRight from "../components/images/curtatins-Right.png";
 import tvScreen from "../components/images/TV_Frame.svg";
+import gamePic from "../components/images/elden_ring_test1.png"
 import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
-import "../App.css";
 
-//Registered for use in application
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(CSSPlugin);
-gsap.registerPlugin(ExpoScaleEase);
+import "../App.css";
 
 //elements reference used for animation
 const Home = () => {
@@ -33,6 +27,7 @@ const Home = () => {
   const startElementRef = useRef(null);
   const tvDiv = useRef(null);
   const tvRef = useRef(null);
+  const gamePics = useRef(null);
 
   //Initiate the gsap timeline to execute animations uniformly
   const tl = gsap.timeline();
@@ -52,41 +47,43 @@ const Home = () => {
   //   });
   // }, []);
 
+  
   useLayoutEffect(() => {
+    //Registered for use in application
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(CSSPlugin);
     gsap.registerPlugin(ExpoScaleEase);
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: rightCurtain.current,
-        start: "top top",
-        end: "225%",
-        pin: startElementRef.current,
-        pinSpacing: false,
-        scrub: 1,
-        id: "right",
-      },
-    }).to(rightCurtain.current,{ x: 3000 })
-      .to(leftCurtain.current,{  x: -3000 },"<")
-      .to(logoRef.current, {
-        scale: 70,
-        ease: "expoScale(1, 70, )",
-      },"<")
-      .to(logoRef.current, {
-       opacity: 0 
-      })
-     gsap.timeline({
-      scrollTrigger: {
-        trigger: tvRef.current,
-        start: "center center",
-        end: "+=1000",
-        scrub: 1,
-        pin: tvDiv.current,
-        id: "tvDiv",
-      },
-    })
-    .to(tvRef.current,{scale: .8})
-    .to(tvRef.current,{scale: .1})
+    gsap.registerPlugin(Flip);
+
+    const state = Flip.getState(gamePics.current)
+    
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: rightCurtain.current,
+            start: "top top",
+            end: "+=225%",
+            pin: startElementRef.current,
+            pinSpacing: false,
+            scrub: 1,
+            id: "right",
+          },
+        })
+        .to(rightCurtain.current, { x: 3000 })
+        .to(leftCurtain.current, { x: -3000 }, "<")
+        .to(
+          logoRef.current,
+          {
+            scale: 70,
+            ease: "expoScale(1, 70, )",
+          },
+          "<"
+        )
+        .to(logoRef.current, {
+          opacity: 0,
+        })
+        .fromTo(tvRef.current,{scale: 2}, { scale: 0.8 }, ">")
+        .to(gamePics.current, {scale: .8},">")
   }, []);
 
   // GET request for backend twtich api call
@@ -115,11 +112,7 @@ const Home = () => {
   return (
     <>
       {/* <NavigationBar /> */}
-      <div
-        ref={mainDivRef}
-        style={{ backgroundColor: "black", height: "250vh" }}
-        className="extends"
-      >
+      <div ref={mainDivRef} style={{ height: "250vh" }} className="extends">
         <div
           ref={startElementRef}
           style={{
@@ -160,8 +153,8 @@ const Home = () => {
               height: "10%",
               zIndex: "-1",
               position: "absolute",
-              top: "40%",
-              left: "50%",
+              top: "10%",
+              left: "40%",
             }}
             src={hullaLogoControl}
             alt="logo holding controller"
@@ -215,19 +208,29 @@ const Home = () => {
             </form>
           </Col>
         </Row> */}
+
+          <img
+            ref={tvRef}
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+              zIndex: -1,
+              objectFit: "contain",
+            }}
+            src={tvScreen}
+            alt="tv frame"
+          />
+
+          <img
+            src={gamePic}
+            ref={gamePics}
+            style={{ zIndex: -1 }}
+            alt="elden ring screen shot"
+          />
         </div>
-      </div>
-      <div
-        ref={tvDiv}
-        style={{ height: "1000vh", position: "relative", overflow: "hidden" }}
-        className="tvDiv"
-      >
-        <img
-          ref={tvRef}
-          style={{ height: "100vh", width: "100%", position: "absolute" }}
-          src={tvScreen}
-          alt="tv frame"
-        />
       </div>
     </>
   );
