@@ -82,8 +82,8 @@ const Home = () => {
         .to(logoRef.current, {
           opacity: 0,
         })
-        .fromTo(tvRef.current,{scale: 2}, { scale: 0.8, opacity: 1 }, ">")
-        .to(gamePics.current, {scale: .8},">")
+        .fromTo(tvRef.current,{scale: 2}, { scale: 0.8, autoAlpha: 1 }, ">")
+        .to(gamePics.current, {OnEnter: () => console.log("hello")}, ">");
   }, []);
 
   // GET request for backend twtich api call
@@ -219,7 +219,7 @@ const Home = () => {
               left: "0%",
               zIndex: -1,
               objectFit: "contain",
-              visibility: "hidden",
+              visibility: 'hidden'
             }}
             src={tvScreen}
             alt="tv frame"
