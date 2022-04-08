@@ -155,7 +155,6 @@ const Home = () => {
               position: "absolute",
               top: "10%",
               left: "40%",
-              visibility: "hidden"
             }}
             src={hullaLogoControl}
             alt="logo holding controller"
@@ -220,6 +219,7 @@ const Home = () => {
               left: "0%",
               zIndex: -1,
               objectFit: "contain",
+              visibility: "hidden",
             }}
             src={tvScreen}
             alt="tv frame"
