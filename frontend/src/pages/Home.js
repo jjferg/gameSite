@@ -8,7 +8,7 @@ import axios from "axios";
 import curtainLeft from "../components/images/curtatins-Left.png";
 import curtainRight from "../components/images/curtatins-Right.png";
 import tvScreen from "../components/images/TV_Frame.svg";
-import gamePic from "../components/images/elden_ring_test1.png"
+import gamePic from "../components/images/elden_ring_test1.png";
 import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
 
@@ -28,6 +28,7 @@ const Home = () => {
   const tvDiv = useRef(null);
   const tvRef = useRef(null);
   const gamePics = useRef(null);
+  const gamePics1 = useRef(null);
 
   //Initiate the gsap timeline to execute animations uniformly
   const tl = gsap.timeline();
@@ -47,7 +48,6 @@ const Home = () => {
   //   });
   // }, []);
 
-  
   useLayoutEffect(() => {
     //Registered for use in application
     gsap.registerPlugin(ScrollTrigger);
@@ -55,36 +55,40 @@ const Home = () => {
     gsap.registerPlugin(ExpoScaleEase);
     gsap.registerPlugin(Flip);
 
-    const state = Flip.getState(gamePics.current)
-    
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: rightCurtain.current,
-            start: "top top",
-            end: "+=225%",
-            pin: startElementRef.current,
-            pinSpacing: false,
-            scrub: 1,
-            id: "right",
-          },
-        })
-        .to(rightCurtain.current, { x: 3000 })
-        .to(leftCurtain.current, { x: -3000 }, "<")
-        .to(
-          logoRef.current,
-          {
-            scale: 70,
-            ease: "expoScale(1, 70, )",
-          },
-          "<"
-        )
-        .to(logoRef.current, {
-          opacity: 0,
-        })
-        .fromTo(tvRef.current,{scale: 2}, { scale: 0.8, autoAlpha: 1 }, ">")
-        .to(gamePics.current, {OnEnter: () => console.log("hello")}, ">");
-  }, []);
+    const state = Flip.getState(gamePics.current);
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: rightCurtain.current,
+          start: "top top",
+          end: "+=425%",
+          pin: startElementRef.current,
+          pinSpacing: false,
+          scrub: 1,
+          id: "right",
+          markers: true,
+        },
+      })
+      .to(rightCurtain.current, { x: 3000 })
+      .to(leftCurtain.current, { x: -3000 }, "<")
+      .to(
+        logoRef.current,
+        {
+          scale: 70,
+          ease: "expoScale(1, 70, )",
+        },
+        "<"
+      )
+      .to(logoRef.current, {
+        opacity: 0,
+      })
+      .to(tvRef.current, { scale: .8, autoAlpha: 1, zIndex: 1 }, ">")
+      .to(gamePics.current, { scale: .8, autoAlpha: 1, zIndex: -1 }, "<")
+      .to(gamePics.current, { x: -300, scale: 0.2 })
+      .to(gamePics1.current, { scale: .8, autoAlpha: 1 }, ">")
+      .to(gamePics1.current, { x: -300, y: 180, scale: 0.2 });
+    }, []);
 
   // GET request for backend twtich api call
   const twitchData = async (e) => {
@@ -112,7 +116,7 @@ const Home = () => {
   return (
     <>
       {/* <NavigationBar /> */}
-      <div ref={mainDivRef} style={{ height: "250vh" }} className="extends">
+      <div ref={mainDivRef} style={{ height: "750vh" }} className="extends">
         <div
           ref={startElementRef}
           style={{
@@ -217,9 +221,9 @@ const Home = () => {
               position: "absolute",
               top: "0%",
               left: "0%",
-              zIndex: -1,
-              objectFit: "contain",
-              visibility: 'hidden'
+              zIndex: 1,
+           
+              visibility: "hidden",
             }}
             src={tvScreen}
             alt="tv frame"
@@ -228,8 +232,34 @@ const Home = () => {
           <img
             src={gamePic}
             ref={gamePics}
-            style={{ zIndex: -1 }}
             alt="elden ring screen shot"
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+              zIndex: -1,
+            
+              visibility: "hidden",
+           
+            }}
+          />
+          <img
+            src={gamePic}
+            ref={gamePics1}
+            alt="elden ring screen shot"
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+              zIndex: -1,
+          
+              visibility: "hidden",
+    
+            }}
           />
         </div>
       </div>
