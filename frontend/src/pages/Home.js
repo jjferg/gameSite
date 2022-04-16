@@ -236,10 +236,10 @@ const Home = () => {
             playsInline
             play="true"
             src={gamePic}
-            ref={gamePics}
+            ref={gamePics1}
             alt="elden ring screen shot"
             style={{
-              maxHeight: "100%",
+              maxHeight: "97%",
               maxWidth: "100%",
               position: "absolute",
               top: "0%",
@@ -259,7 +259,7 @@ const Home = () => {
             ref={gamePics1}
             alt="elden ring screen shot"
             style={{
-              maxHeight: "100%",
+              maxHeight: "97%",
               maxWidth: "100%",
               position: "absolute",
               top: "0%",
