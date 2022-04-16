@@ -8,7 +8,7 @@ import axios from "axios";
 import curtainLeft from "../components/images/curtatins-Left.png";
 import curtainRight from "../components/images/curtatins-Right.png";
 import tvScreen from "../components/images/TV_Frame.svg";
-import gamePic from "../components/images/elden_ring_test1.png";
+import gamePic from "../components/images/eldenRingVideo.mp4";
 import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
 
@@ -222,30 +222,18 @@ const Home = () => {
               top: "0%",
               left: "0%",
               zIndex: 1,
-           
+
               visibility: "hidden",
             }}
             src={tvScreen}
             alt="tv frame"
           />
 
-          <img
-            src={gamePic}
-            ref={gamePics}
-            alt="elden ring screen shot"
-            style={{
-              maxHeight: "100%",
-              maxWidth: "100%",
-              position: "absolute",
-              top: "0%",
-              left: "0%",
-              zIndex: -1,
-            
-              visibility: "hidden",
-           
-            }}
-          />
-          <img
+          <video
+            loop
+            autoPlay
+            muted
+            play="true"
             src={gamePic}
             ref={gamePics1}
             alt="elden ring screen shot"
@@ -256,9 +244,27 @@ const Home = () => {
               top: "0%",
               left: "0%",
               zIndex: -1,
-          
+
               visibility: "hidden",
-    
+            }}
+          />
+          <video
+            loop
+            autoPlay
+            muted
+            play="true"
+            src={gamePic}
+            ref={gamePics1}
+            alt="elden ring screen shot"
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+              zIndex: -1,
+
+              visibility: "hidden",
             }}
           />
         </div>
