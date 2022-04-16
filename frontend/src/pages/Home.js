@@ -236,7 +236,7 @@ const Home = () => {
             playsInline
             play="true"
             src={gamePic}
-            ref={gamePics1}
+            ref={gamePics}
             alt="elden ring screen shot"
             style={{
               maxHeight: "100%",
