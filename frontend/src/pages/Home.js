@@ -233,6 +233,7 @@ const Home = () => {
             loop
             autoPlay
             muted
+            playsInline
             play="true"
             src={gamePic}
             ref={gamePics}
@@ -252,6 +253,7 @@ const Home = () => {
             loop
             autoPlay
             muted
+            playsInline
             play="true"
             src={gamePic}
             ref={gamePics1}
