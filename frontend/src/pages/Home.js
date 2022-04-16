@@ -87,7 +87,7 @@ const Home = () => {
       .to(gamePics.current, { scale: 0.8, autoAlpha: 1, zIndex: -1 }, "<")
       .to(gamePics.current, { x: "-27%", scale: 0.2 })
       .to(gamePics1.current, { scale: 0.8, autoAlpha: 1 }, ">")
-      .to(gamePics1.current, { x: "-27%", y: 180, scale: 0.2 });
+      .to(gamePics1.current, { x: "-27%", y: "22%", scale: 0.2 });
     }, []);
 
   // GET request for backend twtich api call
