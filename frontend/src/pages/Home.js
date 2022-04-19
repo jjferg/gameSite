@@ -54,6 +54,8 @@ const Home = () => {
     gsap.registerPlugin(CSSPlugin);
     gsap.registerPlugin(ExpoScaleEase);
     gsap.registerPlugin(Flip);
+    gamePics.current.play()
+    gamePics1.current.play()
 
     const state = Flip.getState(gamePics.current);
 
@@ -245,13 +247,13 @@ const Home = () => {
               top: "0%",
               left: "0%",
               zIndex: -1,
-
               visibility: "hidden",
             }}
+            type="video/mp4"
           />
           <video
             loop
-            autoPlay
+            autoPlay={"autoplay"}
             muted
             playsInline
             play="true"
@@ -265,9 +267,9 @@ const Home = () => {
               top: "0%",
               left: "0%",
               zIndex: -1,
-
               visibility: "hidden",
             }}
+            type="video/mp4"
           />
         </div>
       </div>
