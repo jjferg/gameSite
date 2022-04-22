@@ -8,7 +8,8 @@ import axios from "axios";
 import curtainLeft from "../components/images/curtatins-Left.png";
 import curtainRight from "../components/images/curtatins-Right.png";
 import tvScreen from "../components/images/TV_Frame.svg";
-import gamePic from "../components/images/eldenRingVideo.mp4";
+import gamePic from "../components/images/elden_ring_test1.png";
+import gameVid from "../components/images/eldenRingVideo.mp4";
 import hullaLogoControl from "../components/images/controller_2021.svg";
 import { useLayoutEffect } from "react";
 
@@ -54,8 +55,6 @@ const Home = () => {
     gsap.registerPlugin(CSSPlugin);
     gsap.registerPlugin(ExpoScaleEase);
     gsap.registerPlugin(Flip);
-    gamePics.current.play()
-    gamePics1.current.play()
 
     const state = Flip.getState(gamePics.current);
 
@@ -77,8 +76,7 @@ const Home = () => {
       .to(
         logoRef.current,
         {
-          scale: 70,
-          ease: "expoScale(1, 70, )",
+          autoAlpha: 1,
         },
         "<"
       )
@@ -156,11 +154,13 @@ const Home = () => {
           <img
             ref={logoRef}
             style={{
-              height: "10%",
+              visibility: "hidden",
+              height: "80%",
+              width: "50%",
               zIndex: "-1",
               position: "absolute",
               top: "10%",
-              left: "40%",
+              left: "25%",
             }}
             src={hullaLogoControl}
             alt="logo holding controller"
@@ -231,12 +231,22 @@ const Home = () => {
             alt="tv frame"
           />
 
-          <video
-            loop
-            autoPlay
-            muted
-            playsInline
-            play="true"
+          <img
+            src={gamePic}
+            ref={gamePics}
+            alt="elden ring screen shot"
+            style={{
+              maxHeight: "97%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+              zIndex: -1,
+              visibility: "hidden",
+            }}
+            type="video/mp4"
+          />
+          <img
             src={gamePic}
             ref={gamePics}
             alt="elden ring screen shot"
@@ -257,7 +267,7 @@ const Home = () => {
             muted
             playsInline
             play="true"
-            src={gamePic}
+            src={gameVid}
             ref={gamePics1}
             alt="elden ring screen shot"
             style={{
