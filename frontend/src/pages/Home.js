@@ -229,13 +229,12 @@ const Home = () => {
           <img
             ref={tvRef}
             style={{
-              height: "100%",
-              width: "100%",
+              maxHeight: "100%",
+              maxWidth: "100%",
               position: "absolute",
-             
-              zIndex: 1,
               top: "0%",
               left: "0%",
+              zIndex: 1,
 
               visibility: "hidden",
             }}
@@ -253,7 +252,7 @@ const Home = () => {
               position: "absolute",
               top: "0%",
               left: "0%",
-             
+
               visibility: "hidden",
             }}
             type="video/mp4"
@@ -268,7 +267,7 @@ const Home = () => {
               position: "absolute",
               top: "0%",
               left: "0%",
-             
+
               visibility: "hidden",
             }}
             type="video/mp4"
@@ -283,7 +282,7 @@ const Home = () => {
               position: "absolute",
               top: "0%",
               left: "0%",
-           
+
               visibility: "hidden",
             }}
             type="video/mp4"
@@ -298,7 +297,7 @@ const Home = () => {
               position: "absolute",
               top: "0%",
               left: "0%",
-            
+
               visibility: "hidden",
             }}
             type="video/mp4"
@@ -313,7 +312,7 @@ const Home = () => {
               position: "absolute",
               top: "0%",
               left: "0%",
-            
+
               visibility: "hidden",
             }}
             type="video/mp4"
@@ -328,7 +327,7 @@ const Home = () => {
               position: "absolute",
               top: "0%",
               left: "0%",
-            
+
               visibility: "hidden",
             }}
             type="video/mp4"
