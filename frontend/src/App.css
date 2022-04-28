@@ -1,8 +1,9 @@
 body {
-   height:4000%
+   height:4000%;
+   background-color: lightgray;
 }
 
 .extends.active {
-  background-color: white;
+  
 }
 

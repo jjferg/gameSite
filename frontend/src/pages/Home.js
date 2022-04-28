@@ -30,6 +30,10 @@ const Home = () => {
   const tvRef = useRef(null);
   const gamePics = useRef(null);
   const gamePics1 = useRef(null);
+  const gamePics2 = useRef(null);
+  const gamePics3 = useRef(null);
+  const gamePics4 = useRef(null);
+  const gamePics5 = useRef(null);
 
   //Initiate the gsap timeline to execute animations uniformly
   const tl = gsap.timeline();
@@ -68,7 +72,6 @@ const Home = () => {
           pinSpacing: false,
           scrub: 1,
           id: "right",
-          markers: true,
         },
       })
       .to(rightCurtain.current, { x: 3000 })
@@ -86,8 +89,16 @@ const Home = () => {
       .to(tvRef.current, { scale: 0.8, autoAlpha: 1, zIndex: 1 }, ">")
       .to(gamePics.current, { scale: 0.8, autoAlpha: 1, zIndex: -1 }, "<")
       .to(gamePics.current, { x: "-27%", scale: 0.2 })
+      .to(gamePics2.current, { scale: 0.8, autoAlpha: 1 }, ">")
+      .to(gamePics2.current, { x: "-27%", y: "-22%", scale: 0.2 })
+      .to(gamePics3.current, { scale: 0.8, autoAlpha: 1 }, ">")
+      .to(gamePics3.current, { x: "30%", scale: 0.2 })
+      .to(gamePics4.current, { scale: 0.8, autoAlpha: 1 }, ">")
+      .to(gamePics4.current, { x: "30%", y: "22%", scale: 0.2 })
+      .to(gamePics5.current, { scale: 0.8, autoAlpha: 1 }, ">")
+      .to(gamePics5.current, { x: "30%", y: "-22%", scale: 0.2 })
       .to(gamePics1.current, { scale: 0.8, autoAlpha: 1 }, ">")
-      .to(gamePics1.current, { x: "-27%", y: "22%", scale: 0.2 });
+      .to(gamePics1.current, { x: "-27%", y: "22%", scale: 0.2 })
     }, []);
 
   // GET request for backend twtich api call
@@ -218,12 +229,13 @@ const Home = () => {
           <img
             ref={tvRef}
             style={{
-              maxHeight: "100%",
-              maxWidth: "100%",
+              height: "100%",
+              width: "100%",
               position: "absolute",
+             
+              zIndex: 1,
               top: "0%",
               left: "0%",
-              zIndex: 1,
 
               visibility: "hidden",
             }}
@@ -236,12 +248,72 @@ const Home = () => {
             ref={gamePics}
             alt="elden ring screen shot"
             style={{
-              maxHeight: "97%",
+              maxHeight: "100%",
               maxWidth: "100%",
               position: "absolute",
               top: "0%",
               left: "0%",
-              zIndex: -1,
+             
+              visibility: "hidden",
+            }}
+            type="video/mp4"
+          />
+          <img
+            src={gamePic}
+            ref={gamePics2}
+            alt="elden ring screen shot"
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+             
+              visibility: "hidden",
+            }}
+            type="video/mp4"
+          />
+          <img
+            src={gamePic}
+            ref={gamePics3}
+            alt="elden ring screen shot"
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+           
+              visibility: "hidden",
+            }}
+            type="video/mp4"
+          />
+          <img
+            src={gamePic}
+            ref={gamePics4}
+            alt="elden ring screen shot"
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+            
+              visibility: "hidden",
+            }}
+            type="video/mp4"
+          />
+          <img
+            src={gamePic}
+            ref={gamePics5}
+            alt="elden ring screen shot"
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+            
               visibility: "hidden",
             }}
             type="video/mp4"
@@ -251,12 +323,12 @@ const Home = () => {
             ref={gamePics}
             alt="elden ring screen shot"
             style={{
-              maxHeight: "97%",
+              maxHeight: "100%",
               maxWidth: "100%",
               position: "absolute",
               top: "0%",
               left: "0%",
-              zIndex: -1,
+            
               visibility: "hidden",
             }}
             type="video/mp4"
@@ -271,12 +343,11 @@ const Home = () => {
             ref={gamePics1}
             alt="elden ring screen shot"
             style={{
-              maxHeight: "97%",
+              maxHeight: "100%",
               maxWidth: "100%",
               position: "absolute",
               top: "0%",
               left: "0%",
-              zIndex: -1,
               visibility: "hidden",
             }}
             type="video/mp4"
