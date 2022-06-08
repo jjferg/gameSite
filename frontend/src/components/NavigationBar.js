@@ -7,18 +7,17 @@ import "../App.css";
 const tl = gsap.timeline();
 
 const NavigationBar = () => {
-  const appLogoRef = useRef();
 
-   useEffect(() => {
-     gsap.to(appLogoRef.current, {
-       ease: "none",
-       yoyo: true,
-       duration: 5,
-       repeat: -1,
-       rotationY: "360deg",
-     });
-   }, []);
- 
+  const appLogoRef = useRef();
+  useEffect(() => {
+    gsap.to(appLogoRef.current, {
+      ease: "none",
+      yoyo: true,
+      duration: 5,
+      repeat: -1,
+      rotationY: "360deg",
+    });
+  }, []);
 
   return (
     <Navbar
@@ -27,60 +26,51 @@ const NavigationBar = () => {
       expand="lg"
       bg="dark"
       variant="dark"
+      style={{ color: "rgb(88, 198, 1)" }}
     >
       <Container>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
-      
+          style={{ color: "rgb(88, 198, 1)" }}
         />
 
-       
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          style={{ color: "rgb(88, 198, 1)" }}
+        >
+          <Nav className="me-auto" style={{ color: "rgb(88, 198, 1)" }}>
+            <Nav.Link href="#features" style={{ color: "rgb(88, 198, 1)" }}>
+              Gaming
+            </Nav.Link>
+            <Nav.Link href="#pricing" style={{ color: "rgb(88, 198, 1)" }}>
+              Sports
+            </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+            <Nav.Link href="#deets" style={{ color: "rgb(88, 198, 1)" }}>
+              In Game Clips
+            </Nav.Link>
+            <Nav.Link
+              eventKey={2}
+              href="#memes"
+              style={{ color: "rgb(88, 198, 1)" }}
+            >
+              Mostly Podcast
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
-        <Logo ref={appLogoRef} style={{ height: "30px", display: "inline", position: "absolute" }} />
+      <Logo
+        ref={appLogoRef}
+        style={{
+          height: "30px",
+          top: "20%",
+          display: "inline",
+          position: "absolute",
+        }}
+      />
     </Navbar>
   );
 };
 
-//  <Nav
-//    collapseOnSelect
-//    expand="lg"
-//    className="navParent"
-//    defaultActiveKey="/home"
-//  >
-//    <Nav.Link className={window.innerWidth > 600 ? "links" : ""} href="/home" ref={link1}>
-//      Active
-//    </Nav.Link>
-//    <Nav.Link className={window.innerWidth > 600 ? "links" : ""} eventKey="link-1" ref={link2}>
-//      Link
-//    </Nav.Link>
-//    <Nav.Link className={window.innerWidth > 600 ? "links" : ""} eventKey="link-2" ref={link3}>
-//      Link
-//    </Nav.Link>
-//    <Nav.Link className={window.innerWidth > 600 ? "links" : ""} eventKey="disabled" disabled ref={link4}>
-//      Disabled
-//    </Nav.Link>
-//  </Nav>;
 export default NavigationBar;

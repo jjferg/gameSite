@@ -2,94 +2,60 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "../Hullagahn_logo5.svg";
-
-
+import leftHulla from "../components/images/PNG/leftHulla.png";
+import rightHulla from "../components/images/PNG/rightHulla.png";
 
 const IntroPage = () => {
   const navigate = useNavigate();
-  const logo = useRef();
-  const com = useRef();
+  const leftH = useRef();
+  const rightH = useRef();
 
   const introPage = () => {
-      navigate("/home");
+    navigate("/home");
   };
+
   const tl = gsap.timeline();
-  
+
   useEffect(() => {
-    if (window.screen.width > 400) {
-      tl.fromTo(
-        logo.current,
-        {
-          //from position
-          y: -300,
-          x: -300,
-          scale: 0.05,
-        },
-        {
-          // to position
-          y: 0,
-          x: 200,
-          scale: 1,
-          ease: "none",
-          duration: 1,
-          rotateY: 1080,
-        }
-      )
-        .to(logo.current, {
-          x: 100,
-          duration: 1,
-          delay: 2,
-        })
-        .to(com.current, {
-          x: 60,
-          y: -40,
-          autoAlpha: 1,
-          duration: 2,
-        })
-        .to(logo.current, {
-          y: "-72%",
-          x: "140%",
-          scale: 0.18,
-          delay: 3,
-        })
-        .to(com.current, { autoAlpha: 0, duration: 1 })
-        .to(logo.current, {
-          onComplete: introPage,
-        });
-    } else {
-      tl.fromTo(
-        logo.current,
-        {
-          x: 1000,
-        },
-        { x: 100, duration: 2, rotateZ: 360 }
-      )
-        .to(logo.current, { x: 50, duration: 1, delay: 2 })
-        .to(com.current, {
-          x: 40,
-          y: -20,
-          autoAlpha: 1,
-          duration: 2,
-        })
-        .to(logo.current, {
-          y: "-242%",
-          x: "140%",
-          scale: 0.18,
-          delay: 3,
-        })
-        .to(com.current, { autoAlpha: 1, duration: 1 })
-        .to(logo.current, {
-          onComplete: introPage,
-        });;
-    }
+    const tl = gsap.timeline();
+    tl.fromTo(leftH.current, { y: "-100%" }, { y: 0, duration: 2 })
+      .fromTo(rightH.current, { y: "-100%" }, { y: 0, duration: 2 }, "<")
+      .to(leftH.current, { x: "-100%", duration: 2, delay: 2 })
+      .to(
+        rightH.current,
+        { x: "100%", duration: 2, onComplete: introPage },
+        "<"
+      );
   });
 
   return (
     <div className="containers">
-      <Logo className="logo" ref={logo} />
-      <div className="com" ref={com}>
-        .COM
-      </div>
+      <img
+        ref={leftH}
+        src={leftHulla}
+        alt="left side logo"
+        style={{
+          position: "absolute",
+          zIndex: 2,
+          width: "50%",
+          height: "100vh",
+          backgroundColor: "white",
+        }}
+      />
+
+      <img
+        ref={rightH}
+        src={rightHulla}
+        alt="right side logo"
+        style={{
+          position: "absolute",
+          right: "0",
+          zIndex: 2,
+          width: "50%",
+          height: "100vh",
+          backgroundColor: "white",
+        }}
+      />
     </div>
   );
 };

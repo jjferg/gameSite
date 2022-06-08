@@ -6,7 +6,7 @@ import axios from "axios";
 import fetch from "node-fetch";
 import path from "path";
 
-const __dirname = path.resolve();
+
 const app = express();
 
 dotenv.config();
