@@ -47,6 +47,7 @@ const Home = () => {
             type="video/mp4"
             autoPlay='autoplay'
             muted
+            playsInline
             loop
             style={{
               position: "absolute",
