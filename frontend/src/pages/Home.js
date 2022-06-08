@@ -52,7 +52,7 @@ const Home = () => {
               opacity: 0.5,
             }}
             autoPlay
-            muted={true}
+            muted
             loop
             src={gameVid}
             type="video/mp4"
