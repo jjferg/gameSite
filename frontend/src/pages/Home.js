@@ -42,7 +42,12 @@ const Home = () => {
           }}
         >
           <video
+            src={gameVid}
             ref={gameVidEl}
+            type="video/mp4"
+            muted
+            autoPlay=""
+            loop
             style={{
               position: "absolute",
               width: "100%",
@@ -51,12 +56,7 @@ const Home = () => {
               objectFit: "cover",
               opacity: 0.5,
             }}
-            autoPlay
-            muted
-            loop
-            src={gameVid}
-            type="video/mp4"
-          />
+            />
           <h1
             ref={welcomeTextEl}
             style={{
