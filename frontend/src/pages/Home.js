@@ -45,8 +45,8 @@ const Home = () => {
             src={gameVid}
             ref={gameVidEl}
             type="video/mp4"
-            muted
             autoPlay=""
+            muted
             loop
             style={{
               position: "absolute",
