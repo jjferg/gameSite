@@ -42,13 +42,14 @@ const Home = () => {
           }}
         >
           <video
-          playsInline
-          type="video/mp4"
-          autoPlay
-          muted
-          loop
-          ref={gameVidEl}
-          src={gameVid}
+            autoPlay={true}
+            loop={true}
+            controls={false}
+            playsInline
+            muted
+            ref={gameVidEl}
+            src={gameVid}
+            type="video/mp4"
             style={{
               position: "absolute",
               width: "100%",
@@ -57,7 +58,7 @@ const Home = () => {
               objectFit: "cover",
               opacity: 0.5,
             }}
-            />
+          />
           <h1
             ref={welcomeTextEl}
             style={{
