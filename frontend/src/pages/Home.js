@@ -42,13 +42,13 @@ const Home = () => {
           }}
         >
           <video
-            src={gameVid}
-            ref={gameVidEl}
-            type="video/mp4"
-            autoPlay='autoplay'
-            muted
-            playsInline
-            loop
+          playsInline
+          type="video/mp4"
+          autoPlay
+          muted
+          loop
+          ref={gameVidEl}
+          src={gameVid}
             style={{
               position: "absolute",
               width: "100%",
