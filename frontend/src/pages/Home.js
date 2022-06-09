@@ -9,23 +9,62 @@ import gamePic from "../components/images/PNG/elden_ring_test1.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
 import { useLayoutEffect } from "react";
 import "../App.css";
+gsap.registerPlugin(ScrollTrigger)
 
 //elements reference used for animation
 const Home = () => {
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
+  const card1El = useRef();
 
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.from(gameVidEl.current, { autoAlpha: 0, duration: 1, delay: 0.8 }).from(
-      welcomeTextEl.current,
-      { autoAlpha: 0, duration: 1.5, delay: 2 }
-    );
+    tl.from(gameVidEl.current, {
+      autoAlpha: 0,
+      duration: 1,
+      delay: 0.8,
+    }).from(welcomeTextEl.current, {
+      autoAlpha: 0,
+      duration: 1.5,
+      delay: 2,
+    });
+    gsap.from(card1El.current, {
+      autoAlpha: 0,
+      duration: 1.5,
+      y: "10%",
+      scrollTrigger: {
+        trigger: card1El.current,
+        start: "top center"
+      },
+    });
   });
 
   return (
     <>
+      <div
+        style={{
+          position: "absolute",
+          height: "1000%",
+          width: "10%",
+          right: "0%",
+          top: "0%",
+          zIndex: "-3",
+          backgroundColor: "rgba(88, 198, 1, 0.3)",
+        }}
+      ></div>
       <Container style={{ height: "200vh" }}>
+        <div
+          style={{
+            zIndex: -1,
+            position: "absolute",
+            height: "10%",
+            width: "100%",
+            right: "0%",
+            top: "1%",
+            backgroundColor: "rgb(94, 87, 154)",
+          }}
+        ></div>
+
         <div
           ref={gameVidEl}
           className="mt-4   bg-dark text-white rounded"
@@ -38,7 +77,7 @@ const Home = () => {
             width: "100%",
             position: "relative",
             overflow: "hidden",
-            boxShadow: " 0px 5px 10px 0px rgba(88, 198, 1, 0.7)",
+            boxShadow: " 0px 5px 10px 0px rgba( 0,255,255, 0.7 )",
           }}
         >
           <video
@@ -70,7 +109,11 @@ const Home = () => {
             A HULLAGHAN'S WELCOME!
           </h1>
         </div>
-        <Card className="mt-4" style={{ width: "18rem" }}>
+        <Card
+          ref={card1El}
+          className="mt-4"
+          style={{ width: "18rem", visibility: "hidden" }}
+        >
           <Card.Img variant="top" src={gamePic} />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
