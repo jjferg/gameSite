@@ -1,23 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CSSPlugin } from "gsap/CSSPlugin";
-import { ExpoScaleEase } from "gsap/EasePack";
-import { Card, Button, Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import gamePic from "../components/images/PNG/elden_ring_test1.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
 import { useLayoutEffect } from "react";
 import "../App.css";
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
-//elements reference used for animation
 const Home = () => {
+  //elements reference used for animation
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
   const card1El = useRef();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    //gsap animations 
     const tl = gsap.timeline();
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
@@ -34,53 +33,28 @@ const Home = () => {
       y: "10%",
       scrollTrigger: {
         trigger: card1El.current,
-        start: "top center"
+        start: "top 80%",
       },
     });
   });
 
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          height: "1000%",
-          width: "10%",
-          right: "0%",
-          top: "0%",
-          zIndex: "-3",
-          backgroundColor: "rgba(88, 198, 1, 0.3)",
-        }}
+      <div className="nav-crossbar"
+
       ></div>
-      <Container style={{ height: "200vh" }}>
+      <Container className="container1" >
         <div
-          style={{
-            zIndex: -1,
-            position: "absolute",
-            height: "10%",
-            width: "100%",
-            right: "0%",
-            top: "1%",
-            backgroundColor: "rgb(94, 87, 154)",
-          }}
+        className="vertical-bar"
         ></div>
 
         <div
           ref={gameVidEl}
-          className="mt-4   bg-dark text-white rounded"
-          style={{
-            visibility: "hidden",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "70vh",
-            width: "100%",
-            position: "relative",
-            overflow: "hidden",
-            boxShadow: " 0px 5px 10px 0px rgba( 0,255,255, 0.7 )",
-          }}
+          className="mt-4 video-el   bg-dark text-white rounded"
+
         >
           <video
+          className="video1"
             autoPlay={true}
             loop={true}
             controls={false}
@@ -89,22 +63,11 @@ const Home = () => {
             ref={gameVidEl}
             src={gameVid}
             type="video/mp4"
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
-              zIndex: 1,
-              objectFit: "cover",
-              opacity: 0.5,
-            }}
+            
           />
           <h1
+            className="welcome-text"
             ref={welcomeTextEl}
-            style={{
-              zIndex: 1,
-              position: "relative",
-              textAlign: "center",
-            }}
           >
             A HULLAGHAN'S WELCOME!
           </h1>
@@ -121,12 +84,6 @@ const Home = () => {
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
-            <Button
-              style={{ zIndex: 2, position: "relative" }}
-              variant="primary"
-            >
-              Go somewhere
-            </Button>
           </Card.Body>
         </Card>
         <div>Hulla Verse</div>
