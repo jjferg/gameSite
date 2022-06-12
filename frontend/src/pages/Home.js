@@ -100,7 +100,7 @@ const Home = () => {
             </Card>
           </Col>
           <Col>
-            <div ref={circle} className="circle m-4.5 ">
+            <div ref={circle} className="circle ">
               <div ref={weGame} className="we-game ">
                 We gaming over Here Son
               </div>
