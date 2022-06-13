@@ -35,7 +35,7 @@
   visibility: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
+ 
   height: 70vh;
   width: 100%;
   position: relative;
@@ -54,8 +54,7 @@
 
 .welcome-text {
   z-index: 1;
-  position: relative;
-  text-align: center;
+ font-size:3em;
 }
 
 .container2 {
@@ -67,13 +66,13 @@
 
 .card {
   width: 18rem;
-  margin-left: 10.5%
+  margin-left: 10.5%;
 }
 
 .circle {
   margin: 12%;
-  height: 280px;
-  width: 280px;
+  height: 380px;
+  width: 380px;
   justify-content: center;
   text-align: center;
   border: 20px solid;
@@ -85,13 +84,17 @@
 .we-game {
   color: black;
   letter-spacing: 2px;
-  margin-top: -6%;
+  margin-top: 18%;
   font-size: 2.3em;
-  
 }
 
 @media only screen and (min-width: 768px) {
-
+  .card {
+  }
+  .we-game {
+    margin-top: -16%;
+    color: black;
+    letter-spacing: 2px;
+    font-size: 4em;
+  }
 }
-
-

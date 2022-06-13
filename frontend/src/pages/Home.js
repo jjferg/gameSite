@@ -15,6 +15,7 @@ const Home = () => {
   const card1El = useRef();
   const weGame = useRef();
   const circle = useRef();
+  const pinnedRow = useRef();
 
   useEffect(() => {
     //gsap animations
@@ -59,8 +60,7 @@ const Home = () => {
   return (
     <>
       <div className="nav-crossbar"></div>
-      <div className="vertical-bar"></div>
-      <div className="vertical-bar1"></div>
+   
       <Container className="container1">
         <Row>
           <div
@@ -83,7 +83,7 @@ const Home = () => {
             </h1>
           </div>
         </Row>
-        <Row className="align-items-center">
+        <Row ref={pinnedRow} className="align-items-center">
           <Col>
             <Card
               ref={card1El}
