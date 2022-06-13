@@ -54,7 +54,6 @@
 
 .welcome-text {
   z-index: 1;
- font-size:3em;
 }
 
 .container2 {
@@ -71,8 +70,8 @@
 
 .circle {
   margin: 12%;
-  height: 380px;
-  width: 380px;
+  height: 280px;
+  width: 280px;
   justify-content: center;
   text-align: center;
   border: 20px solid;
@@ -91,6 +90,16 @@
 @media only screen and (min-width: 768px) {
   .card {
   }
+
+  .circle {
+  height: 280px;
+  width: 280px;
+  }
+
+  .welcome-text {
+     font-size:3em;
+  }
+  
   .we-game {
     margin-top: -16%;
     color: black;
