@@ -87,7 +87,7 @@ const Home = () => {
           <Col>
             <Card
               ref={card1El}
-              className="mt-4"
+              className="mt-4 card1"
               style={{ width: "18rem", visibility: "hidden" }}
             >
               <Card.Img variant="top" src={gamePic} />
