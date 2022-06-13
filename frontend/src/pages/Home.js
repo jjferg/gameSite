@@ -60,7 +60,7 @@ const Home = () => {
     <>
       <div className="nav-crossbar"></div>
       <div className="vertical-bar"></div>
-      <Container className="container1">
+      <Container className="container1 container">
         <Row>
           <div
             ref={gameVidEl}
