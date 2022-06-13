@@ -67,10 +67,11 @@
 
 .card1 {
   width: 18rem;
+  margin-left: 10.5%
 }
 
 .circle {
-  margin: 5%;
+  margin: 12%;
   height: 280px;
   width: 280px;
   justify-content: center;
@@ -89,6 +90,8 @@
   
 }
 
+@media only screen and (min-width: 768px) {
 
+}
 
 
