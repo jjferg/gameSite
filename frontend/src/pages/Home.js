@@ -60,6 +60,7 @@ const Home = () => {
     <>
       <div className="nav-crossbar"></div>
       <div className="vertical-bar"></div>
+      <div className="vertical-bar1"></div>
       <Container className="container1 container">
         <Row>
           <div
