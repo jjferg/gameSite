@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,50 +17,45 @@ const Home = () => {
   const circle = useRef();
   const pinnedRow = useRef();
 
-  useEffect(() => {
+  const weGameSelector = gsap.utils.selector(circle);
+
+  useLayoutEffect(() => {
     //gsap animations
     const tl = gsap.timeline();
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
       duration: 1,
       delay: 0.8,
-    })
-      .from(welcomeTextEl.current, {
+    }).from(welcomeTextEl.current, {
+      autoAlpha: 0,
+      duration: 1.5,
+      delay: 0.5,
+    });
+    gsap.from(card1El.current, {
+      autoAlpha: 0,
+      duration: 1.5,
+      y: "15%",
+      scrollTrigger: {
+        trigger: card1El.current,
+        start: "center 80%",
+      },
+    });
+      gsap.from(weGameSelector(".we-game"), {
         autoAlpha: 0,
         duration: 1.5,
-        delay: .5,
-      })
-      gsap.from(card1El.current, {
-        autoAlpha: 0,
-        duration: 1.5,
-        y: "15%",
-        scrollTrigger: {
-          trigger: card1El.current,
-          start: "center 80%",
-        },
-      })
-      gsap.from(circle.current, {
-        autoAlpha: 0,
-        duration: 2.5,
-        x: "40%",
+        stagger: .5,
+        y: "30%",
         scrollTrigger: {
           trigger: circle.current,
           start: "center 80%",
         },
-      })
-      gsap.from(weGame.current, { 
-        autoAlpha: 0, duration: 1.5, x: "-40%", scrollTrigger: {
-          trigger: circle.current,
-          start: "center 80%",
-        }
-      })
-      
-  });
+      },'>');
+    });
 
   return (
     <>
       <div className="nav-crossbar"></div>
-   
+
       <Container className="container1">
         <Row>
           <div
@@ -102,9 +97,10 @@ const Home = () => {
           </Col>
           <Col>
             <div ref={circle} className="circle ">
-              <div ref={weGame} className="we-game ">
-                We gaming over Here Son
-              </div>
+              <span className="we-game we-game-text">We </span>
+              <span className="we-game we-game-text">gaming </span>
+              <span className="we-game we-game-text">over </span>
+              <span className="we-game we-game-text">here </span>
             </div>
           </Col>
         </Row>
