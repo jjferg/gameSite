@@ -19,7 +19,7 @@ const Home = () => {
 
   const weGameSelector = gsap.utils.selector(circle);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     //gsap animations
     const tl = gsap.timeline();
     tl.from(gameVidEl.current, {
@@ -40,24 +40,29 @@ const Home = () => {
         start: "center 80%",
       },
     });
-      gsap.from(weGameSelector(".we-game"), {
+    gsap.from(
+      weGameSelector(".we-game"),
+      {
         autoAlpha: 0,
-        duration: 1.5,
-        stagger: .5,
+        stagger: 0.3,
         y: "30%",
         scrollTrigger: {
-          trigger: circle.current,
-          start: "center 80%",
+          trigger: weGame.current,
+          start: "top bottom",
+          scrub: true,
+          markers: true,
         },
-      },'>');
-    });
+      },
+      ">"
+    );
+  });
 
   return (
     <>
       <div className="nav-crossbar"></div>
 
       <Container className="container1">
-        <Row>
+        <Row className="align-items-center">
           <div
             ref={gameVidEl}
             className="mt-4 video-el bg-dark text-white rounded"
@@ -97,10 +102,18 @@ const Home = () => {
           </Col>
           <Col>
             <div ref={circle} className="circle ">
-              <span className="we-game we-game-text">We </span>
-              <span className="we-game we-game-text">gaming </span>
-              <span className="we-game we-game-text">over </span>
-              <span className="we-game we-game-text">here </span>
+              <span ref={weGame} className="we-game we-game-text">
+                We{" "}
+              </span>
+              <span ref={weGame} className="we-game we-game-text">
+                gaming{" "}
+              </span>
+              <span ref={weGame} className="we-game we-game-text">
+                over{" "}
+              </span>
+              <span ref={weGame} className="we-game we-game-text">
+                here{" "}
+              </span>
             </div>
           </Col>
         </Row>

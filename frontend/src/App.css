@@ -8,27 +8,9 @@
   background-color: rgb(94, 87, 154);
 }
 
-.vertical-bar {
-  position: absolute;
-  height: 100%;
-  width: 10%;
-  right: 0%;
-  top: 0%;
-  z-index: -3;
-  background-color: rgba(88, 198, 1, 0.3);
-}
-.vertical-bar1 {
-  position: absolute;
-  height: 100%;
-  width: 10%;
-  left: 0%;
-  top: 0%;
-  z-index: -3;
-  background-color: rgba(88, 198, 1, 0.3);
-}
-
 .container1 {
-  height: 200vh;
+  height: 400vh;
+
 }
 
 .video-el {
@@ -53,6 +35,7 @@
 
 .welcome-text {
   z-index: 1;
+  text-align: center;
 }
 
 .container2 {
@@ -71,13 +54,11 @@
   margin: 0;
   justify-content: center;
   text-align: center;
-  display: inline-block;
 }
 
 .we-game {
   color: black;
-  margin-top: 18%;
-  font-size: 2.3em;
+  font-size: 2.7em;
 }
 
 .we-game-text {
@@ -86,10 +67,10 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .card {
+  .circle {
+    display: inline-block
   }
 
- 
   .welcome-text {
      font-size:3em;
   }
