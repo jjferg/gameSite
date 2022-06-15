@@ -82,7 +82,7 @@ const Home = () => {
           </div>
         </Row>
         <Row ref={pinnedRow} className="section-two align-items-center">
-          <Col>
+          <Col sm={12}>
           <div ref={card1El}>
             <Carousel>
               <Carousel.Item>
@@ -123,7 +123,7 @@ const Home = () => {
             </Carousel>
           </div>
           </Col>
-          <Col>
+          <Col sm={12}>
             <div ref={circle} className="circle ">
               <span ref={weGame} className="we-game we-game-text">
                 GAME
