@@ -1,3 +1,6 @@
+body, html{
+  background-color: black;
+}
 .nav-crossbar {
   z-index: -1;
   position: absolute;
@@ -36,6 +39,7 @@
 .welcome-text {
   z-index: 1;
   text-align: center;
+  
 }
 
 .container2 {
@@ -45,9 +49,15 @@
   margin: 0%;
 }
 
-.card {
-  width: 18rem;
-  margin-left: 10.5%;
+.section-two {
+  
+}
+
+.carousel img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .circle {
@@ -68,7 +78,7 @@
 
 @media only screen and (min-width: 768px) {
   .circle {
-    display: inline-block
+    
   }
 
   .welcome-text {
@@ -76,10 +86,7 @@
   }
   
   .we-game {
-    
-    margin-top: -16%;
     color: black;
-    letter-spacing: 2px;
-    font-size: 4em;
+    font-size: 5em;
   }
 }

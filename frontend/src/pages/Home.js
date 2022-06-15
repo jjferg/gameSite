@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Card, Container, Row, Col, Carousel, } from "react-bootstrap";
 import gamePic from "../components/images/PNG/elden_ring_test1.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
 import "../App.css";
@@ -37,7 +37,7 @@ const Home = () => {
       y: "15%",
       scrollTrigger: {
         trigger: card1El.current,
-        start: "center 80%",
+        start: "top 80%",
       },
     });
     gsap.from(
@@ -48,9 +48,7 @@ const Home = () => {
         y: "30%",
         scrollTrigger: {
           trigger: weGame.current,
-          start: "top bottom",
-          scrub: true,
-          markers: true,
+          start: "top 800px",
         },
       },
       ">"
@@ -83,36 +81,58 @@ const Home = () => {
             </h1>
           </div>
         </Row>
-        <Row ref={pinnedRow} className="align-items-center">
+        <Row ref={pinnedRow} className="section-two align-items-center">
           <Col>
-            <Card
-              ref={card1El}
-              className="mt-4 card1"
-              style={{ width: "18rem", visibility: "hidden" }}
-            >
-              <Card.Img variant="top" src={gamePic} />
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-              </Card.Body>
-            </Card>
+          <div ref={card1El}>
+            <Carousel>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={gamePic}
+                  alt="First slide"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={gamePic}
+                  alt="Second slide"
+                />
+
+                <Carousel.Caption>
+                  <h3>Second slide label</h3>
+                  <p>
+                    
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  className="d-block w-100"
+                  src={gamePic}
+                  alt="Third slide"
+                />
+
+                <Carousel.Caption>
+                  <h3>Third slide label</h3>
+                  <p>
+                   
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
+          </div>
           </Col>
           <Col>
             <div ref={circle} className="circle ">
               <span ref={weGame} className="we-game we-game-text">
-                We{" "}
+                GAME
               </span>
               <span ref={weGame} className="we-game we-game-text">
-                gaming{" "}
+                OR
               </span>
               <span ref={weGame} className="we-game we-game-text">
-                over{" "}
-              </span>
-              <span ref={weGame} className="we-game we-game-text">
-                here{" "}
+                DIE
               </span>
             </div>
           </Col>
