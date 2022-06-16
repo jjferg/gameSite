@@ -48,7 +48,7 @@ const Home = () => {
         y: "30%",
         scrollTrigger: {
           trigger: weGame.current,
-          start: "top 800px",
+          start: "top 1000px",
         },
       },
       ">"
