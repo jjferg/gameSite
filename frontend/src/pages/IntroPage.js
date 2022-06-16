@@ -14,8 +14,6 @@ const IntroPage = () => {
     navigate("/home");
   };
 
-  const tl = gsap.timeline();
-
   useEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(leftH.current, { y: "-100%" }, { y: 0, duration: 2 })
@@ -39,7 +37,7 @@ const IntroPage = () => {
           zIndex: 2,
           width: "50%",
           height: "100vh",
-          backgroundColor: "white",
+          backgroundColor: "black",
         }}
       />
 
@@ -53,7 +51,7 @@ const IntroPage = () => {
           zIndex: 2,
           width: "50%",
           height: "100vh",
-          backgroundColor: "white",
+          backgroundColor: "black",
         }}
       />
     </div>

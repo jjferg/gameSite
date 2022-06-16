@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Card, Container, Row, Col, Carousel, } from "react-bootstrap";
+import { Container, Row, Col, Carousel, } from "react-bootstrap";
 import gamePic from "../components/images/PNG/elden_ring_test1.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
-import "../App.css";
+import "./home.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -34,7 +34,7 @@ const Home = () => {
     gsap.from(card1El.current, {
       autoAlpha: 0,
       duration: 1.5,
-      y: "15%",
+      y: "5%",
       scrollTrigger: {
         trigger: card1El.current,
         start: "top 80%",
@@ -57,9 +57,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="nav-crossbar"></div>
-
-      <Container className="container1">
+      <Container style={{ color: "green" }} className="container1">
         <Row className="align-items-center">
           <div
             ref={gameVidEl}
@@ -83,47 +81,6 @@ const Home = () => {
         </Row>
         <Row ref={pinnedRow} className="section-two align-items-center">
           <Col sm={12}>
-          <div ref={card1El}>
-            <Carousel>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={gamePic}
-                  alt="First slide"
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={gamePic}
-                  alt="Second slide"
-                />
-
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>
-                    
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={gamePic}
-                  alt="Third slide"
-                />
-
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>
-                   
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
-          </div>
-          </Col>
-          <Col sm={12}>
             <div ref={circle} className="circle ">
               <span ref={weGame} className="we-game we-game-text">
                 GAME
@@ -134,6 +91,43 @@ const Home = () => {
               <span ref={weGame} className="we-game we-game-text">
                 DIE
               </span>
+            </div>
+          </Col>
+          <Col sm={12}>
+            <div ref={card1El}>
+              <Carousel>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={gamePic}
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={gamePic}
+                    alt="Second slide"
+                  />
+
+                  <Carousel.Caption>
+                    <h3>Second slide label</h3>
+                    <p></p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={gamePic}
+                    alt="Third slide"
+                  />
+
+                  <Carousel.Caption>
+                    <h3>Third slide label</h3>
+                    <p></p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              </Carousel>
             </div>
           </Col>
         </Row>
