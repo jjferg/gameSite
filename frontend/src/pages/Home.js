@@ -48,7 +48,7 @@ const Home = () => {
         y: "30%",
         scrollTrigger: {
           trigger: weGame.current,
-          start: "top center",
+          start: "top center+=200",
         },
       },
       ">"
@@ -75,7 +75,7 @@ const Home = () => {
               type="video/mp4"
             />
             <h1 className="welcome-text" ref={welcomeTextEl}>
-              A HULLAGHAN'S WELCOME!
+              <div className="welcome">A HULLAGHAN'S WELCOME!</div>
             </h1>
           </div>
         </Row>
