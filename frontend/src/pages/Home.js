@@ -94,7 +94,7 @@ const Home = () => {
             </div>
           </Col>
           <Col sm={12}>
-            <div ref={card1El}>
+            <div className="carousel1" ref={card1El}>
               <Carousel>
                 <Carousel.Item>
                   <img
@@ -131,12 +131,13 @@ const Home = () => {
             </div>
           </Col>
         </Row>
-        <div>Hulla Verse</div>
-        <div>Hulla Verse</div>
-        <div>Hulla Verse</div>
-        <div>Hulla Verse</div>
-        <div>Hulla Verse</div>
-        <div>Hulla Verse</div>
+        <section>
+          <Row>
+            <div className="section3">
+              <Col>hey</Col>
+            </div>
+          </Row>
+        </section>
       </Container>
     </>
   );
