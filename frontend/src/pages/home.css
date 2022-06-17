@@ -85,7 +85,7 @@ div.welcome {
   text-align: center;
   color: white;
   font-weight: bold;
-  font-size: 5em;
+  font-size: 4em;
 }
 
 @media only screen and (min-width: 768px) {
