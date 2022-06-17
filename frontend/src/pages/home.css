@@ -79,13 +79,14 @@ div.welcome {
   height: 80vh;
   width: 100%;
   box-shadow: 0px 5px 10px 0px rgb(89, 198, 0);
+  margin-top: 5%;
 }
 
 .why-game {
   text-align: center;
   color: white;
   font-weight: bold;
-  font-size: 4em;
+  font-size: 3.3em;
 }
 
 @media only screen and (min-width: 768px) {
