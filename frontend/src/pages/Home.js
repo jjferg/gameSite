@@ -134,7 +134,7 @@ const Home = () => {
         <section>
           <Row>
             <div className="section3">
-              <Col>hey</Col>
+              <Col><p className="why-game">WHY GAME <span style={{color: "red"}}>?</span></p></Col>
             </div>
           </Row>
         </section>
