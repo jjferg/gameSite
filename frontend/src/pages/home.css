@@ -44,7 +44,6 @@ div.welcome {
   align-items: center;
   padding: 0%;
   margin: 0%;
-  
 }
 
 .carousel1 {
@@ -75,21 +74,51 @@ div.welcome {
   color: red;
   display: block;
   visibility: hidden;
+  z-index: -2;
 }
 
 .section3 {
+    overflow: visible;
+  position: relative;
   background-color: rgb(33, 37, 41);
   height: 80vh;
-  width: 100%;
+  width: 90%;
   box-shadow: 0px 5px 10px 0px rgb(89, 198, 0);
   margin-top: 5%;
+  z-index: 2;
+  object-fit: cover;
+}
+
+.section33 {
+  justify-content: center;
+  height: 105%;
+  width: 102%;
+  object-fit: cover;
+  background-color: black;
+  position: absolute;
+  top: -3%;
+  left: -1%;
+  z-index: 0;
+}
+
+.xbox-controller {
+    height: 50%;
+    width: 50%;
+  position: absolute;
+  position: absolute;
+    top: -18%;
+    left: -26%;
+
+  z-index: 1; 
 }
 
 .why-game {
+  position: relative;
   text-align: center;
   color: white;
   font-weight: bold;
   font-size: 3.3em;
+  z-index: -1;
 }
 
 @media only screen and (min-width: 768px) {

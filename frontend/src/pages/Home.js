@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Container, Row, Col, Carousel, } from "react-bootstrap";
+import { Container, Row, Col, Carousel } from "react-bootstrap";
 import gamePic from "../components/images/PNG/elden_ring_test1.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
+import xbControl from "../components/images/xboxcontrol.png"
 import "./home.css";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ const Home = () => {
   const weGame = useRef();
   const circle = useRef();
   const pinnedRow = useRef();
+  const cover33 = useRef();
 
   const weGameSelector = gsap.utils.selector(circle);
 
@@ -133,9 +135,19 @@ const Home = () => {
         </Row>
         <section>
           <Row>
-            <div className="section3">
-              <Col><p className="why-game">WHY GAME <span style={{color: "red"}}>?</span></p></Col>
-            </div>
+            <Col>
+              <div className="section3">
+                <img
+                  className="xbox-controller"
+                  src={xbControl}
+                  alt="xbox controller"
+                />
+                <p className="why-game">
+                  WHY GAME <span style={{ color: "red" }}>?</span>
+                </p>
+                <div ref={cover33} className="section33"></div>
+              </div>
+            </Col>
           </Row>
         </section>
       </Container>
