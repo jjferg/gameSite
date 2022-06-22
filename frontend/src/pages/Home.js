@@ -5,19 +5,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
 import gamePic from "../components/images/PNG/elden_ring_test1.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
-import xbControl from "../components/images/xboxcontrol.png"
+import xbControl from "../components/images/xboxcontrol.png";
 import "./home.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  //elements reference used for animation
+  //elements ref for animation
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
   const card1El = useRef();
   const weGame = useRef();
   const circle = useRef();
   const pinnedRow = useRef();
-  const cover33 = useRef();
+  const cover33El = useRef();
+  const xbControlEl = useRef();
 
   const weGameSelector = gsap.utils.selector(circle);
 
@@ -36,7 +37,7 @@ const Home = () => {
     gsap.from(card1El.current, {
       autoAlpha: 0,
       duration: 1.5,
-      y: "5%",
+      yPercent: "5",
       scrollTrigger: {
         trigger: card1El.current,
         start: "top 80%",
@@ -47,7 +48,7 @@ const Home = () => {
       {
         autoAlpha: 0,
         stagger: 0.3,
-        y: "30%",
+        yPercent: "30",
         scrollTrigger: {
           trigger: weGame.current,
           start: "top center+=200",
@@ -55,7 +56,17 @@ const Home = () => {
       },
       ">"
     );
+    gsap.to(xbControlEl.current, {
+      xPercent: "300",
+      duration: 5,
+      scrollTrigger: {
+        trigger: xbControlEl.current,
+        start: "top center",
+      },
+    });
+     
   });
+
 
   return (
     <>
@@ -138,6 +149,7 @@ const Home = () => {
             <Col>
               <div className="section3">
                 <img
+                  ref={xbControlEl}
                   className="xbox-controller"
                   src={xbControl}
                   alt="xbox controller"
@@ -145,7 +157,7 @@ const Home = () => {
                 <p className="why-game">
                   WHY GAME <span style={{ color: "red" }}>?</span>
                 </p>
-                <div ref={cover33} className="section33"></div>
+                <div ref={cover33El} className="section33"></div>
               </div>
             </Col>
           </Row>
