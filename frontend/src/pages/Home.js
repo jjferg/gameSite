@@ -59,7 +59,7 @@ const Home = () => {
 
   return (
     <>
-      <Container style={{ color: "green" }} className="container1 px-4">
+      <Container style={{ color: "green" }} className="container1">
         <Row className="align-items-center">
           <div
             ref={gameVidEl}
