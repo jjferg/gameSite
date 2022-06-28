@@ -53,7 +53,7 @@ const Home = () => {
         yPercent: "30",
         scrollTrigger: {
           trigger: weGame.current,
-          start: "top center+=200",
+          start: "top center+=300",
         },
       },
       ">"
@@ -69,8 +69,9 @@ const Home = () => {
         scrollTrigger: {
           trigger: section.current,
           start: "top top",
-          scrub: true,
+          scrub: 2,
           pin: true,
+          pinSpacing: false,
         },
       })
       .to(cover33El.current, {
@@ -79,8 +80,9 @@ const Home = () => {
         scrollTrigger: {
           trigger: section.current,
           start: "top top",
-          scrub: true,
+          scrub: 2,
           pin: true,
+          pinSpacing: false,
         },
       });
   });
