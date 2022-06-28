@@ -18,6 +18,7 @@ const Home = () => {
   const circle = useRef();
   const pinnedRow = useRef();
   const cover33El = useRef();
+  const section = useRef();
   const xbControlEl = useRef();
 
   const weGameSelector = gsap.utils.selector(circle);
@@ -25,6 +26,7 @@ const Home = () => {
   useEffect(() => {
     //gsap animations
     const tl = gsap.timeline();
+    const tl2 = gsap.timeline();
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
       duration: 1,
@@ -56,17 +58,32 @@ const Home = () => {
       },
       ">"
     );
-    gsap.to(xbControlEl.current, {
-      xPercent: "300",
-      duration: 5,
-      scrollTrigger: {
-        trigger: xbControlEl.current,
-        start: "top center",
-      },
-    });
-     
   });
 
+  useLayoutEffect(() => {
+    const tl2 = gsap.timeline();
+    tl2
+      .to(xbControlEl.current, {
+        xPercent: "600",
+        duration: 10,
+        scrollTrigger: {
+          trigger: section.current,
+          start: "top top",
+          scrub: true,
+          pin: true,
+        },
+      })
+      .to(cover33El.current, {
+        xPercent: "300",
+        duration: 10,
+        scrollTrigger: {
+          trigger: section.current,
+          start: "top top",
+          scrub: true,
+          pin: true,
+        },
+      });
+  });
 
   return (
     <>
@@ -144,7 +161,7 @@ const Home = () => {
             </div>
           </Col>
         </Row>
-        <section>
+        <div ref={section}>
           <Row>
             <Col>
               <div className="section3">
@@ -161,7 +178,7 @@ const Home = () => {
               </div>
             </Col>
           </Row>
-        </section>
+        </div>
       </Container>
     </>
   );
