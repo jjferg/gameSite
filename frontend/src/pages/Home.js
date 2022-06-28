@@ -60,7 +60,7 @@ const Home = () => {
     );
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const tl2 = gsap.timeline();
     tl2
       .to(xbControlEl.current, {
