@@ -31,11 +31,16 @@ const Home = () => {
       autoAlpha: 0,
       duration: 1,
       delay: 0.8,
-    }).from(welcomeTextEl.current, {
-      autoAlpha: 0,
-      duration: 1.5,
-      delay: 0.5,
-    });
+    })
+      .from(gameVid.current, {
+        autoAlpha: 0,
+        duration: 1.5,
+      })
+      .from(welcomeTextEl.current, {
+        autoAlpha: 0,
+        duration: 1.5,
+        delay: 0.5,
+      },"<");
     gsap.from(card1El.current, {
       autoAlpha: 0,
       duration: 1.5,
@@ -58,10 +63,6 @@ const Home = () => {
       },
       ">"
     );
-  });
-
-  useEffect(() => {
-    const tl2 = gsap.timeline();
     tl2
       .to(xbControlEl.current, {
         xPercent: "600",
@@ -85,7 +86,7 @@ const Home = () => {
           pinSpacing: false,
         },
       });
-  });
+  },[]);
 
   return (
     <>
