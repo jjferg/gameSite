@@ -13,6 +13,7 @@ const Home = () => {
   //elements ref for animation
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
+  const gameVideo = useRef();
   const card1El = useRef();
   const weGame = useRef();
   const circle = useRef();
@@ -32,15 +33,19 @@ const Home = () => {
       duration: 1,
       delay: 0.8,
     })
-      .from(gameVid.current, {
+      .from(gameVideo.current, {
         autoAlpha: 0,
         duration: 1.5,
       })
-      .from(welcomeTextEl.current, {
-        autoAlpha: 0,
-        duration: 1.5,
-        delay: 0.5,
-      },"<");
+      .from(
+        welcomeTextEl.current,
+        {
+          autoAlpha: 0,
+          duration: 1.5,
+          delay: 0.5,
+        },
+        "<"
+      );
     gsap.from(card1El.current, {
       autoAlpha: 0,
       duration: 1.5,
@@ -50,31 +55,40 @@ const Home = () => {
         start: "top 80%",
       },
     });
-    gsap.from(
-      weGameSelector(".we-game"),
-      {
-        autoAlpha: 0,
-        stagger: 0.3,
-        yPercent: "30",
-        scrollTrigger: {
-          trigger: weGame.current,
-          start: "top center+=300",
-        },
+    gsap.from(weGameSelector(".we-game"), {
+      autoAlpha: 0,
+      stagger: 0.3,
+      yPercent: "30",
+      scrollTrigger: {
+        trigger: weGame.current,
+        start: "top center+=300",
       },
-      ">"
-    );
+    });
+  
     tl2
-      .to(xbControlEl.current, {
-        xPercent: "600",
-        duration: 10,
+      .from(xbControlEl.current, {
+        autoAlpha: 0,
         scrollTrigger: {
-          trigger: section.current,
-          start: "top top",
-          scrub: 2,
-          pin: true,
-          pinSpacing: false,
-        },
+          trigger: xbControlEl.current,
+          start: "top center",
+          scrub: true
+        }
       })
+      .to(
+        xbControlEl.current,
+        {
+          xPercent: "600",
+          duration: 10,
+          scrollTrigger: {
+            trigger: section.current,
+            start: "top top",
+            scrub: 2,
+            pin: true,
+            pinSpacing: false,
+          },
+        },
+        ">"
+      )
       .to(cover33El.current, {
         xPercent: "300",
         duration: 10,
@@ -86,7 +100,7 @@ const Home = () => {
           pinSpacing: false,
         },
       });
-  },[]);
+  }, []);
 
   return (
     <>
@@ -103,7 +117,7 @@ const Home = () => {
               controls={false}
               playsInline
               muted
-              ref={gameVidEl}
+              ref={gameVideo}
               src={gameVid}
               type="video/mp4"
             />

@@ -108,7 +108,7 @@ div.welcome {
   top: -15%;
   left: -26%;
   z-index: 1;
-  
+  visibility: hidden;
 }
 
 .why-game {
