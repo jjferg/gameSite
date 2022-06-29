@@ -106,7 +106,7 @@ div.welcome {
   width: 50%;
   position: absolute;
   top: -15%;
-  left: -26%;
+  left: -30%;
   z-index: 1;
   visibility: hidden;
 }
@@ -136,5 +136,8 @@ div.welcome {
 
   .why-game {
     font-size: 9em;
+  }
+  .section3 {
+    margin-top: 10%;
   }
 }
