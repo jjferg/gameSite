@@ -77,10 +77,10 @@ div.welcome {
   z-index: 0;
 }
 .xbox-controller {
-  height: 7%;
-  width: 50%;
+  height: 4%;
+  width: 54%;
   position: absolute;
-  top: -2%;
+  top: -1%;
   left: -30%;
   z-index: 1;
   visibility: hidden;
@@ -149,6 +149,12 @@ div.welcome {
   .why-game {
     font-size: 9em;
   }
+
+  .xbox-controller {
+  height: 7%;
+  width: 50%;
+  top: -2%;
+}
   .section3 {
     margin-top: 10%;
   }
