@@ -19,6 +19,7 @@ const Home = () => {
   const circle = useRef();
   const pinnedRow = useRef();
   const cover33El = useRef();
+  const cover34El = useRef();
   const section = useRef();
   const xbControlEl = useRef();
 
@@ -64,42 +65,38 @@ const Home = () => {
         start: "top center+=300",
       },
     });
-  
+
+    gsap.from(xbControlEl.current, {
+      autoAlpha: 0,
+      scrollTrigger: {
+        trigger: xbControlEl.current,
+        start: "top center",
+        scrub: true,
+      },
+    });
     tl2
-      .from(xbControlEl.current, {
-        autoAlpha: 0,
-        scrollTrigger: {
-          trigger: xbControlEl.current,
-          start: "top center",
-          scrub: true
-        }
-      })
-      .to(
-        xbControlEl.current,
-        {
-          xPercent: "600",
-          duration: 10,
-          scrollTrigger: {
-            trigger: section.current,
-            start: "top top",
-            scrub: 2,
-            pin: true,
-            pinSpacing: false,
-          },
-        },
-        ">"
-      )
+      .to(xbControlEl.current, {
+        xPercent: "600",
+        duration: 10,
+      },">")
       .to(cover33El.current, {
         xPercent: "300",
         duration: 10,
-        scrollTrigger: {
-          trigger: section.current,
-          start: "top top",
-          scrub: 2,
-          pin: true,
-          pinSpacing: false,
-        },
+      },"<")
+      .from(cover34El.current, {
+        xPercent: "-300",
+        duration: 10,
       });
+
+    ScrollTrigger.create({
+      animation: tl2,
+      trigger: section.current,
+      start: "top top",
+      end: "+=2000",
+      scrub: 1,
+      pin: true,
+      pinSpacing: false,
+    });
   }, []);
 
   return (
@@ -178,20 +175,22 @@ const Home = () => {
             </div>
           </Col>
         </Row>
-        <div ref={section}>
+        <div ref={section} className="section">
           <Row>
             <Col>
-              <div className="section3">
+              <div ref={cover33El} className="section33"></div>
                 <img
                   ref={xbControlEl}
                   className="xbox-controller"
                   src={xbControl}
                   alt="xbox controller"
                 />
+              <div className="section3">
                 <p className="why-game">
                   WHY GAME <span style={{ color: "red" }}>?</span>
                 </p>
-                <div ref={cover33El} className="section33"></div>
+
+                <div ref={cover34El} className="section34 why-game">SOMETHING ELSE BEING SAID</div>
               </div>
             </Col>
           </Row>
