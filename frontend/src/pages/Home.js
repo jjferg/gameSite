@@ -25,7 +25,7 @@ const Home = () => {
 
   const weGameSelector = gsap.utils.selector(circle);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     //gsap animations
     const tl = gsap.timeline();
     const tl2 = gsap.timeline();
@@ -70,8 +70,9 @@ const Home = () => {
       autoAlpha: 0,
       scrollTrigger: {
         trigger: xbControlEl.current,
-        start: "top center",
+        start: "top top",
         scrub: true,
+        markers: true,
       },
     });
     tl2
