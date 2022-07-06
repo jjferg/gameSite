@@ -26,9 +26,9 @@ const Home = () => {
   const weGameSelector = gsap.utils.selector(circle);
 
   useEffect(() => {
+    const load = false
     //gsap animations
     const tl = gsap.timeline();
-    const tl2 = gsap.timeline();
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
       duration: 1,
@@ -77,20 +77,10 @@ const Home = () => {
         scrub: true,
       },
     });
-    tl2
-      .to(xbControlEl.current, {
-        xPercent: "600",
-        duration: 10,
-      },">")
-      .to(cover33El.current, {
-        xPercent: "300",
-        duration: 10,
-      },"<")
-      .from(cover34El.current, {
-        xPercent: "-300",
-        duration: 10,
-      });
+  }, [ weGameSelector]);
 
+  useLayoutEffect(() => {
+    const tl2 = gsap.timeline();
     ScrollTrigger.create({
       animation: tl2,
       trigger: section.current,
@@ -98,9 +88,31 @@ const Home = () => {
       end: "+=2000",
       scrub: 1,
       pin: true,
-     
     });
-  }, []);
+    tl2
+      .to(
+        xbControlEl.current,
+        {
+          xPercent: "600",
+          duration: 10,
+        },
+        ">"
+      )
+      .to(
+        cover33El.current,
+        {
+          xPercent: "300",
+          duration: 10,
+        },
+        "<"
+      )
+      .from(cover34El.current, {
+        xPercent: "-300",
+        duration: 10,
+      });
+
+    
+  });
 
   return (
     <>
@@ -140,62 +152,29 @@ const Home = () => {
               </span>
             </div>
           </Col>
-          <Col sm={12}>
-            <div className="carousel1" ref={card1El}>
-              <Carousel>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src={gamePic}
-                    alt="First slide"
-                  />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src={gamePic}
-                    alt="Second slide"
-                  />
 
-                  <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p></p>
-                  </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                  <img
-                    className="d-block w-100"
-                    src={gamePic}
-                    alt="Third slide"
-                  />
-
-                  <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p></p>
-                  </Carousel.Caption>
-                </Carousel.Item>
-              </Carousel>
-            </div>
-          </Col>
         </Row>
         <div ref={section} className="section">
           <Row>
             <Col>
               <div ref={cover33El} className="section33"></div>
-                <img
-                  ref={xbControlEl}
-                  className="xbox-controller"
-                  src={xbControl}
-                  alt="xbox controller"
-                />
+              <img
+                ref={xbControlEl}
+                className="xbox-controller"
+                src={xbControl}
+                alt="xbox controller"
+              />
               <div className="section3">
                 <p className="why-game">
                   WHY GAME <span style={{ color: "red" }}>?</span>
                 </p>
 
-                <div ref={cover34El} className="section34 why-game">SOMETHING ELSE BEING SAID</div>
+                <div ref={cover34El} className="section34 why-game">
+                  SOMETHING ELSE BEING SAID
+                </div>
               </div>
             </Col>
+            
           </Row>
         </div>
       </Container>

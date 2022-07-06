@@ -52,7 +52,6 @@ div.welcome {
 }
 
 .carousel img {
-  margin-top: 5%;
   width: 100%;
   object-fit: cover;
   object-position: center;
