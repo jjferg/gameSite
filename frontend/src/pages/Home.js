@@ -54,7 +54,7 @@ const Home = () => {
       scrollTrigger: {
         trigger: card1El.current,
         start: "top 80%",
-        fastScrollEnd: true,
+        fastScrollEnd: true
       },
     });
     gsap.from(weGameSelector(".we-game"), {
@@ -66,16 +66,6 @@ const Home = () => {
         start: "top center+=300",
       },
     });
-
-     ScrollTrigger.create({
-       animation: tl2,
-       trigger: section.current,
-       start: "top top",
-       end: "+=2000",
-       scrub: 1,
-       pin: true,
-       pinSpacing: false,
-     });
 
     gsap.from(xbControlEl.current, {
       autoAlpha: 0,
@@ -98,6 +88,16 @@ const Home = () => {
         xPercent: "-300",
         duration: 10,
       });
+
+    ScrollTrigger.create({
+      animation: tl2,
+      trigger: section.current,
+      start: "top top",
+      end: "+=2000",
+      scrub: 1,
+      pin: true,
+     
+    });
   }, []);
 
   return (

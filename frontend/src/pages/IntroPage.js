@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "../Hullagahn_logo5.svg";
@@ -14,7 +14,7 @@ const IntroPage = () => {
     navigate("/home");
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(leftH.current, { y: "-100%" }, { y: 0, duration: 2 })
       .fromTo(rightH.current, { y: "-100%" }, { y: 0, duration: 2 }, "<")
