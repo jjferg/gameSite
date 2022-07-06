@@ -70,9 +70,8 @@ const Home = () => {
       autoAlpha: 0,
       scrollTrigger: {
         trigger: xbControlEl.current,
-        start: "top top",
+        start: "center center",
         scrub: true,
-        markers: true,
       },
     });
     tl2
