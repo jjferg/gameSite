@@ -25,7 +25,7 @@ const Home = () => {
 
   const weGameSelector = gsap.utils.selector(circle);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     //gsap animations
     const tl = gsap.timeline();
     const tl2 = gsap.timeline();
