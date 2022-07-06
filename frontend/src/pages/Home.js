@@ -54,7 +54,8 @@ const Home = () => {
       scrollTrigger: {
         trigger: card1El.current,
         start: "top 80%",
-        fastScrollEnd: true
+        fastScrollEnd: true,
+        preventOverlaps: true,
       },
     });
     gsap.from(weGameSelector(".we-game"), {
@@ -64,6 +65,7 @@ const Home = () => {
       scrollTrigger: {
         trigger: weGame.current,
         start: "top center+=300",
+        preventOverlaps: true,
       },
     });
 

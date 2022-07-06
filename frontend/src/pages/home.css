@@ -91,7 +91,7 @@ div.welcome {
 }
 
 .section3 {
-  overflow: visible;
+  overflow: hidden;
   position: relative;
   background-color: rgb(33, 37, 41);
   height: 80vh;
