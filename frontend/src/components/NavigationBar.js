@@ -25,7 +25,9 @@ const NavigationBar = () => {
     });
   }, []);
 
+  const navPath = window.location.pathname === "/"
   useEffect(()=>{
+    if(navPath !== "/") {
     const showAnim = gsap
       .from(naviBar.current, {
         yPercent: -100,
@@ -40,9 +42,13 @@ const NavigationBar = () => {
       onUpdate: (self) => {
         self.direction === -1 ? showAnim.play() : showAnim.reverse();
       },
-    });
+    })
+  }
 
-  },[])
+  },[navPath])
+
+  const navPosition = navPath ? "static" : "sticky"
+  const navIndex = navPath ?  0 : 5
 
   return (
     <>
@@ -53,7 +59,7 @@ const NavigationBar = () => {
         expand="lg"
         bg="dark"
         variant="dark"
-        style={{ color: "rgb(88, 198, 1)", position: "sticky", top: 0, zIndex: 5 }}
+        style={{ color: "rgb(88, 198, 1)", position: navPosition, top: 0, zIndex: navIndex }}
       >
         <Container>
           <Navbar.Toggle

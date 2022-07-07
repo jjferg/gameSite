@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import React, { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Container, Row, Col, Carousel } from "react-bootstrap";
+import { Container, Row, Col,} from "react-bootstrap";
 import dame2kdunk from "../components/images/2kDameDunk.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
 import xbControl from "../components/images/xboxcontrol.png";
@@ -14,7 +14,6 @@ const Home = () => {
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
   const gameVideo = useRef();
-  const card1El = useRef();
   const weGame = useRef();
   const circle = useRef();
   const pinnedRow = useRef();
@@ -26,6 +25,7 @@ const Home = () => {
   const weGameSelector = gsap.utils.selector(circle);
 
   useEffect(() => {
+    console.log(window.location)
     const load = false
     //gsap animations
     const tl = gsap.timeline();
@@ -98,7 +98,7 @@ const Home = () => {
         trigger: section.current,
         start: "top top",
         end: "+=2000",
-        scrub: 1,
+        scrub: .3,
         pin: true,
       });
   });
