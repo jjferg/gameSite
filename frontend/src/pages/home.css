@@ -124,12 +124,13 @@ div.welcome {
   height: 105%;
   width: 107%;
   object-fit: cover;
-  background-color: purple;
+ 
   position: absolute;
   top: -1%;
   left: -3%;
   z-index: 0;
 }
+
 
 @media only screen and (min-width: 768px) {
   .circle {

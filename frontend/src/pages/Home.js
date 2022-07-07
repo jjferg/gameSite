@@ -3,7 +3,7 @@ import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container, Row, Col, Carousel } from "react-bootstrap";
-import gamePic from "../components/images/PNG/elden_ring_test1.png";
+import dame2kdunk from "../components/images/2kDameDunk.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
 import xbControl from "../components/images/xboxcontrol.png";
 import "./home.css";
@@ -47,17 +47,6 @@ const Home = () => {
         },
         "<"
       );
-    gsap.from(card1El.current, {
-      autoAlpha: 0,
-      duration: 1.5,
-      yPercent: "5",
-      scrollTrigger: {
-        trigger: card1El.current,
-        start: "top 80%",
-        fastScrollEnd: true,
-        preventOverlaps: true,
-      },
-    });
     gsap.from(weGameSelector(".we-game"), {
       autoAlpha: 0,
       stagger: 0.3,
@@ -152,7 +141,6 @@ const Home = () => {
               </span>
             </div>
           </Col>
-
         </Row>
         <div ref={section} className="section">
           <Row>
@@ -169,12 +157,16 @@ const Home = () => {
                   WHY GAME <span style={{ color: "red" }}>?</span>
                 </p>
 
-                <div ref={cover34El} className="section34 why-game">
-                  SOMETHING ELSE BEING SAID
-                </div>
+               
+                  <img
+                    ref={cover34El}
+                    className="section34 why-game"
+                    src={dame2kdunk}
+                    alt="nba 2k dunk"
+                  />
+                
               </div>
             </Col>
-            
           </Row>
         </div>
       </Container>
