@@ -47,6 +47,7 @@ const Home = () => {
         },
         "<"
       );
+
     gsap.from(weGameSelector(".we-game"), {
       autoAlpha: 0,
       stagger: 0.3,
@@ -70,14 +71,6 @@ const Home = () => {
 
   useLayoutEffect(() => {
     const tl2 = gsap.timeline();
-    ScrollTrigger.create({
-      animation: tl2,
-      trigger: section.current,
-      start: "top top",
-      end: "+=2000",
-      scrub: 1,
-      pin: true,
-    });
     tl2
       .to(
         xbControlEl.current,
@@ -99,8 +92,14 @@ const Home = () => {
         xPercent: "-300",
         duration: 10,
       });
-
-    
+      ScrollTrigger.create({
+        animation: tl2,
+        trigger: section.current,
+        start: "top top",
+        end: "+=2000",
+        scrub: 1,
+        pin: true,
+      });
   });
 
   return (
