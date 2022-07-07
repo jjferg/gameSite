@@ -91,6 +91,7 @@ const Home = () => {
       .from(cover34El.current, {
         xPercent: "-300",
         duration: 10,
+        scale: 2
       });
       ScrollTrigger.create({
         animation: tl2,

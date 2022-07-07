@@ -1,13 +1,20 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Nav, Navbar, Container } from "react-bootstrap";
 import { ReactComponent as Logo } from "../Hullagahn_logo5.svg";
 import "./nav.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const tl = gsap.timeline();
 
 const NavigationBar = () => {
+
   const appLogoRef = useRef();
+  const naviBar = useRef();
+
+
   useEffect(() => {
     gsap.to(appLogoRef.current, {
       ease: "none",
@@ -18,15 +25,35 @@ const NavigationBar = () => {
     });
   }, []);
 
+  useEffect(()=>{
+    const showAnim = gsap
+      .from(naviBar.current, {
+        yPercent: -100,
+        paused: true,
+        duration: 0.2,
+      })
+      .progress(1);
+
+    ScrollTrigger.create({
+      start: "top top",
+      end: 99999,
+      onUpdate: (self) => {
+        self.direction === -1 ? showAnim.play() : showAnim.reverse();
+      },
+    });
+
+  },[])
+
   return (
     <>
       <Navbar
+        ref={naviBar}
         collapseOnSelect
         className="d-flex navStyle flex-row-reverse"
         expand="lg"
         bg="dark"
         variant="dark"
-        style={{ color: "rgb(88, 198, 1)" }}
+        style={{ color: "rgb(88, 198, 1)", position: "sticky", top: 0, zIndex: 5 }}
       >
         <Container>
           <Navbar.Toggle
@@ -70,7 +97,6 @@ const NavigationBar = () => {
           }}
         />
       </Navbar>
-    
     </>
   );
 };
