@@ -3,7 +3,8 @@ body {
 }
 
 .container1 {
-  height: 400vh;
+  height: 550vh;
+  overflow: hidden;
 }
 
 .video-el {
@@ -106,7 +107,7 @@ div.welcome {
   text-align: center;
   color: white;
   font-weight: bold;
-  font-size: 3.3em;
+  font-size: 4.3em;
   z-index: -1;
 }
 .section33 {

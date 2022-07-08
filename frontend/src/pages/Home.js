@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Container, Row, Col,} from "react-bootstrap";
+import { Container, Row, Col, Card} from "react-bootstrap";
 import dame2kdunk from "../components/images/2kDameDunk.png";
 import forza from "../components/images/forza.png";
 import ja2kDunk from "../components/images/ja2kDunk.png";
@@ -82,7 +82,7 @@ const Home = () => {
         xbControlEl.current,
         {
           xPercent: "600",
-          duration: 20,
+          duration: 25,
         },
         ">"
       )
@@ -90,22 +90,22 @@ const Home = () => {
         cover33El.current,
         {
           xPercent: "300",
-          duration: 20,
+          duration: 25,
         },
         "<"
       )
       .from(dameDunkEl.current, {
-        xPercent: "-300",
+        xPercent: "300",
         duration: 15,
     
       })
       .from(forzaEl.current, {
-        yPercent: "-300",
+        xPercent: "300",
         duration: 15,
   
       })
       .from(redDeadSunEl.current, {
-        yPercent: "300",
+        xPercent: "-300",
         duration: 15,
        
       })
@@ -118,12 +118,12 @@ const Home = () => {
         animation: tl2,
         trigger: section.current,
         start: "top top",
-        end: "1000",
+        end: "2000",
         scrub: .004,
         scale: 2,
         pin: true,
-        snap: 1/25 ,
-        ease: "power1.inOut"
+        snap: 1/6,
+        ease: "none"
       });
   });
 
@@ -181,32 +181,30 @@ const Home = () => {
                   WHY GAME <span style={{ color: "red" }}>?</span>
                 </p>
 
-               
-                  <img
-                    ref={dameDunkEl}
-                    className="section34 why-game"
-                    src={dame2kdunk}
-                    alt="nba 2k dunk"
-                  />
-                  <img
-                    ref={forzaEl}
-                    className="section34 why-game"
-                    src={forza}
-                    alt="forza car"
-                  />
-                  <img
-                    ref={redDeadSunEl}
-                    className="section34 why-game"
-                    src={redDeadSun}
-                    alt="red dead sun"
-                  />
-                  <img
-                    ref={ja2kDunkEl}
-                    className="section34 why-game"
-                    src={ja2kDunk}
-                    alt="ja dunk"
-                  />
-                
+                <img
+                  ref={dameDunkEl}
+                  className="section34 why-game"
+                  src={dame2kdunk}
+                  alt="nba 2k dunk"
+                />
+                <img
+                  ref={forzaEl}
+                  className="section34 why-game"
+                  src={forza}
+                  alt="forza car"
+                />
+                <img
+                  ref={redDeadSunEl}
+                  className="section34 why-game"
+                  src={redDeadSun}
+                  alt="red dead sun"
+                />
+                <img
+                  ref={ja2kDunkEl}
+                  className="section34 why-game"
+                  src={ja2kDunk}
+                  alt="ja dunk"
+                />
               </div>
             </Col>
           </Row>
