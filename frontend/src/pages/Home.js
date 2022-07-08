@@ -4,6 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container, Row, Col,} from "react-bootstrap";
 import dame2kdunk from "../components/images/2kDameDunk.png";
+import forza from "../components/images/forza.png";
+import ja2kDunk from "../components/images/ja2kDunk.png";
+import redDeadSun from "../components/images/redDeadSun.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
 import xbControl from "../components/images/xboxcontrol.png";
 import "./home.css";
@@ -17,9 +20,12 @@ const Home = () => {
   const weGame = useRef();
   const circle = useRef();
   const pinnedRow = useRef();
-  const cover33El = useRef();
-  const cover34El = useRef();
   const section = useRef();
+  const cover33El = useRef();
+  const dameDunkEl = useRef();
+  const ja2kDunkEl = useRef();
+  const forzaEl = useRef();
+  const redDeadSunEl = useRef();
   const xbControlEl = useRef();
 
   const weGameSelector = gsap.utils.selector(circle);
@@ -76,7 +82,7 @@ const Home = () => {
         xbControlEl.current,
         {
           xPercent: "600",
-          duration: 10,
+          duration: 20,
         },
         ">"
       )
@@ -84,22 +90,40 @@ const Home = () => {
         cover33El.current,
         {
           xPercent: "300",
-          duration: 10,
+          duration: 20,
         },
         "<"
       )
-      .from(cover34El.current, {
+      .from(dameDunkEl.current, {
         xPercent: "-300",
-        duration: 10,
-        scale: 2
+        duration: 15,
+    
+      })
+      .from(forzaEl.current, {
+        yPercent: "-300",
+        duration: 15,
+  
+      })
+      .from(redDeadSunEl.current, {
+        yPercent: "300",
+        duration: 15,
+       
+      })
+      .from(ja2kDunkEl.current, {
+        xPercent: "300",
+        duration: 15,
+       
       });
       ScrollTrigger.create({
         animation: tl2,
         trigger: section.current,
         start: "top top",
-        end: "+=2000",
-        scrub: .3,
+        end: "1000",
+        scrub: .004,
+        scale: 2,
         pin: true,
+        snap: 1/25 ,
+        ease: "power1.inOut"
       });
   });
 
@@ -159,10 +183,28 @@ const Home = () => {
 
                
                   <img
-                    ref={cover34El}
+                    ref={dameDunkEl}
                     className="section34 why-game"
                     src={dame2kdunk}
                     alt="nba 2k dunk"
+                  />
+                  <img
+                    ref={forzaEl}
+                    className="section34 why-game"
+                    src={forza}
+                    alt="forza car"
+                  />
+                  <img
+                    ref={redDeadSunEl}
+                    className="section34 why-game"
+                    src={redDeadSun}
+                    alt="red dead sun"
+                  />
+                  <img
+                    ref={ja2kDunkEl}
+                    className="section34 why-game"
+                    src={ja2kDunk}
+                    alt="ja dunk"
                   />
                 
               </div>
