@@ -121,11 +121,15 @@ div.welcome {
   z-index: 0;
 }
 
-
-@media only screen and (min-width: 768px) {
-  .circle {
+.glory {
+    font-size: 80px;
   }
 
+
+@media only screen and (min-width: 768px) {
+  .glory {
+    font-size: 300px;
+  }
   .welcome-text {
     font-size: 3em;
     width: 100vw;

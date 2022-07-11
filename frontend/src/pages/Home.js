@@ -198,7 +198,7 @@ const Home = () => {
                   src={dame2kdunk}
                   alt="nba 2k dunk"
                 />
-                <span ref={glory} style={{ fontSize: "300px", color:"green"}}>GLORY</span>
+                <span ref={glory} className="glory">GLORY</span>
                 <img
                   ref={forzaEl}
                   className="section34 why-game"
