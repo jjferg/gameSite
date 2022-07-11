@@ -31,8 +31,6 @@ const Home = () => {
   const weGameSelector = gsap.utils.selector(circle);
 
   useEffect(() => {
-    console.log(window.location)
-    const load = false
     //gsap animations
     const tl = gsap.timeline();
     tl.from(gameVidEl.current, {
@@ -54,7 +52,7 @@ const Home = () => {
         "<"
       );
 
-    gsap.from(weGameSelector(".we-game"), {
+    const hey = gsap.from(weGameSelector(".we-game"), {
       autoAlpha: 0,
       stagger: 0.3,
       yPercent: "30",

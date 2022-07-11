@@ -15,7 +15,8 @@ const IntroPage = () => {
   };
 
   useLayoutEffect(() => {
-    const tl = gsap.timeline();
+   
+    const tl = gsap.timeline({delay: .2});
     tl.fromTo(leftH.current, { y: "-100%" }, { y: 0, duration: 2 })
       .fromTo(rightH.current, { y: "-100%" }, { y: 0, duration: 2 }, "<")
       .to(leftH.current, { x: "-100%", duration: 2, delay: 2 })
@@ -24,6 +25,7 @@ const IntroPage = () => {
         { x: "100%", duration: 2, onComplete: introPage },
         "<"
       );
+         console.log(tl.endTime())
   });
 
   return (

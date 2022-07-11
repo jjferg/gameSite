@@ -10,10 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 const tl = gsap.timeline();
 
 const NavigationBar = () => {
-
   const appLogoRef = useRef();
   const naviBar = useRef();
-
 
   useEffect(() => {
     gsap.to(appLogoRef.current, {
@@ -25,30 +23,30 @@ const NavigationBar = () => {
     });
   }, []);
 
-  const navPath = window.location.pathname === "/"
-  useEffect(()=>{
-    if(navPath !== "/") {
-    const showAnim = gsap
-      .from(naviBar.current, {
-        yPercent: -100,
-        paused: true,
-        duration: 0.2,
-      })
-      .progress(1);
+  //conditional for loading position of the navbar
+  const navPath = window.location.pathname === "/";
+  const navPosition = navPath ? "static" : "sticky";
+  const navIndex = navPath ? 0 : 5;
 
-    ScrollTrigger.create({
-      start: "top top",
-      end: 99999,
-      onUpdate: (self) => {
-        self.direction === -1 ? showAnim.play() : showAnim.reverse();
-      },
-    })
-  }
+  useEffect(() => {
+    if (navPath !== "/") {
+      const showAnim = gsap
+        .from(naviBar.current, {
+          yPercent: -100,
+          paused: true,
+          duration: 0.2,
+        })
+        .progress(1);
 
-  },[navPath])
-
-  const navPosition = navPath ? "static" : "sticky"
-  const navIndex = navPath ?  0 : 5
+      ScrollTrigger.create({
+        start: "top top",
+        end: 99999,
+        onUpdate: (self) => {
+          self.direction === -1 ? showAnim.play() : showAnim.reverse();
+        },
+      });
+    }
+  }, [navPath]);
 
   return (
     <>
@@ -59,7 +57,12 @@ const NavigationBar = () => {
         expand="lg"
         bg="dark"
         variant="dark"
-        style={{ color: "rgb(88, 198, 1)", position: navPosition, top: 0, zIndex: navIndex }}
+        style={{
+          color: "rgb(88, 198, 1)",
+          position: navPosition,
+          top: 0,
+          zIndex: navIndex,
+        }}
       >
         <Container>
           <Navbar.Toggle
