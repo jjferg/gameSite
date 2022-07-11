@@ -2,7 +2,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import { useRef, useEffect, useState} from "react"
 import "./nav.css";
 import gsap from "gsap"
-import { set } from "mongoose";
+
 
 const Footer = () => {
 
