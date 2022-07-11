@@ -27,7 +27,7 @@ const Home = () => {
   const forzaEl = useRef();
   const redDeadSunEl = useRef();
   const xbControlEl = useRef();
-  const glory = useRef()
+  const glory = useRef();
 
   const weGameSelector = gsap.utils.selector(circle);
 
@@ -96,31 +96,34 @@ const Home = () => {
       .from(dameDunkEl.current, {
         xPercent: "300",
         duration: 15,
-    
-      }).from(glory.current,{
-        yPercent: -10,
-        autoAlpha: 0,
-        duration: 15
-      },"<")
-      .to(glory.current,{
-        yPercent: -10,
-        autoAlpha: 0,
-        duration: 15
-      },">")
-        .from(forzaEl.current, {
+      })
+      .from(
+        glory.current,
+        {
+          autoAlpha: 0,
+          duration: 35,
+        },
+        "<+=1.5"
+      )
+      .from(forzaEl.current, {
         xPercent: "300",
         duration: 15,
-  
       })
+      .from(
+        glory.current,
+        {
+          autoAlpha: 0,
+          duration: 25,
+        },
+        "<+=2.5"
+      )
       .from(redDeadSunEl.current, {
         xPercent: "-300",
         duration: 15,
-       
       })
       .from(ja2kDunkEl.current, {
         xPercent: "300",
         duration: 15,
-       
       });
       ScrollTrigger.create({
         animation: tl2,
@@ -131,7 +134,7 @@ const Home = () => {
         scale: 2,
         pin: true,
         snap: 1/6,
-        ease: "none"
+        ease: "power2.out"
       });
   });
 
@@ -190,30 +193,18 @@ const Home = () => {
                 </p>
 
                 <img
-                  style={{ zIndex: 5 }}
                   ref={dameDunkEl}
                   className="section34 why-game"
                   src={dame2kdunk}
                   alt="nba 2k dunk"
                 />
+                <span ref={glory} style={{ fontSize: "300px", color:"green"}}>GLORY</span>
                 <img
                   ref={forzaEl}
                   className="section34 why-game"
                   src={forza}
                   alt="forza car"
                 />
-                <p
-                  ref={glory}
-                  style={{
-                    fontSize: "300px",
-                    position: "absolute",
-                    bottom: "50%",
-                    zIndex: 5,
-                    visibility: "hidden",
-                  }}
-                >
-                  GLORY!!
-                </p>
                 <img
                   ref={redDeadSunEl}
                   className="section34 why-game"
