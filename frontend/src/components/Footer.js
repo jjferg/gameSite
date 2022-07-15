@@ -17,6 +17,9 @@ useEffect(() => {
     autoAlpha: 0,
     delay: 10
     });
+    return () => {
+      gsap.kill(tl)
+    }
   })
 
   return (

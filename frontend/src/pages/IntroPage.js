@@ -25,7 +25,7 @@ const IntroPage = () => {
         { x: "100%", duration: 2, onComplete: introPage },
         "<"
       );
-         console.log(tl.endTime())
+       
   });
 
   return (
