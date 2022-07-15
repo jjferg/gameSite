@@ -19,10 +19,7 @@ useEffect(() => {
     });
     tl.invalidate()
     tl.restart()
-    return () => {
-    
-    }
-  },[footerPosition])
+  })
 
   return (
     <>

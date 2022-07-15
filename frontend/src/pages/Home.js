@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Container, Row, Col, Card} from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import dame2kdunk from "../components/images/2kDameDunk.png";
 import forza from "../components/images/forza.png";
 import ja2kDunk from "../components/images/ja2kDunk.png";
@@ -72,70 +72,138 @@ const Home = () => {
         scrub: true,
       },
     });
-  }, [ weGameSelector]);
+  }, [weGameSelector]);
 
   useLayoutEffect(() => {
-    const tl2 = gsap.timeline();
-    tl2
-      .to(
-        xbControlEl.current,
-        {
-          xPercent: "600",
-          duration: 25,
-        },
-        ">"
-      )
-      .to(
-        cover33El.current,
-        {
-          xPercent: "300",
-          duration: 25,
-        },
-        "<"
-      )
-      .from(dameDunkEl.current, {
-        xPercent: "300",
-        duration: 15,
-      })
-      .from(
-        glory.current,
-        {
-          autoAlpha: 0,
-          duration: 35,
-        },
-        "<+=1.5"
-      )
-      .from(forzaEl.current, {
-        xPercent: "300",
-        duration: 15,
-      })
-      .from(
-        glory.current,
-        {
-          autoAlpha: 0,
-          duration: 25,
-        },
-        "<+=2.5"
-      )
-      .from(redDeadSunEl.current, {
-        xPercent: "-300",
-        duration: 15,
-      })
-      .from(ja2kDunkEl.current, {
-        xPercent: "300",
-        duration: 15,
-      });
-      ScrollTrigger.create({
-        animation: tl2,
-        trigger: section.current,
-        start: "top top",
-        end: "2000",
-        scrub: .004,
-        scale: 2,
-        pin: true,
-        snap: 1/6,
-        ease: "power2.out"
-      });
+    ScrollTrigger.matchMedia({
+      "(min-width: 800px)": function () {
+        const tl2 = gsap.timeline();
+        tl2
+          .to(
+            xbControlEl.current,
+            {
+              xPercent: "600",
+              duration: 25,
+            },
+            ">"
+          )
+          .to(
+            cover33El.current,
+            {
+              xPercent: "300",
+              duration: 25,
+            },
+            "<"
+          )
+          .from(dameDunkEl.current, {
+            xPercent: "300",
+            duration: 15,
+          })
+          .from(
+            glory.current,
+            {
+              autoAlpha: 0,
+              duration: 35,
+            },
+            "<+=1.5"
+          )
+          .from(forzaEl.current, {
+            xPercent: "300",
+            duration: 15,
+          })
+          .from(
+            glory.current,
+            {
+              autoAlpha: 0,
+              duration: 25,
+            },
+            "<+=2.5"
+          )
+          .from(redDeadSunEl.current, {
+            xPercent: "-300",
+            duration: 15,
+          })
+          .from(ja2kDunkEl.current, {
+            xPercent: "300",
+            duration: 15,
+          });
+        ScrollTrigger.create({
+          animation: tl2,
+          trigger: section.current,
+          start: "top top",
+          end: "2000",
+          scrub: 0.004,
+          scale: 2,
+          pin: true,
+          snap: 1 / 6,
+          ease: "power2.out",
+        });
+      },
+       "(max-width 400px)": function() {
+      const tl2 = gsap.timeline();
+        tl2
+          .to(
+            xbControlEl.current,
+            {
+              xPercent: "600",
+              duration: 25,
+            },
+            ">"
+          )
+          .to(
+            cover33El.current,
+            {
+              xPercent: "300",
+              duration: 25,
+            },
+            "<"
+          )
+          .from(dameDunkEl.current, {
+            xPercent: "300",
+            duration: 15,
+          })
+          .from(
+            glory.current,
+            {
+              autoAlpha: 0,
+              duration: 35,
+            },
+            "<+=1.5"
+          )
+          .from(forzaEl.current, {
+            xPercent: "300",
+            duration: 15,
+          })
+          .from(
+            glory.current,
+            {
+              autoAlpha: 0,
+              duration: 25,
+            },
+            "<+=2.5"
+          )
+          .from(redDeadSunEl.current, {
+            xPercent: "-300",
+            duration: 15,
+          })
+          .from(ja2kDunkEl.current, {
+            xPercent: "300",
+            duration: 15,
+          });
+        ScrollTrigger.create({
+          animation: tl2,
+          trigger: section.current,
+          start: "top top",
+          end: "2000",
+          scrub: 0.004,
+          scale: 2,
+          pin: true,
+          snap: 1 / 8,
+          ease: "power2.out",
+        });
+      },
+    })
+    
   });
 
   return (
@@ -198,7 +266,9 @@ const Home = () => {
                   src={dame2kdunk}
                   alt="nba 2k dunk"
                 />
-                <span ref={glory} className="glory">GLORY</span>
+                <span ref={glory} className="glory">
+                  GLORY
+                </span>
                 <img
                   ref={forzaEl}
                   className="section34 why-game"
