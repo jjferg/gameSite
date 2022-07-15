@@ -133,7 +133,7 @@ const Home = () => {
         scrub: .004,
         scale: 2,
         pin: true,
-        snap: 1/6,
+        snap: 1/8,
         ease: "power2.out"
       });
   });
