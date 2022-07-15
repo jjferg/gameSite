@@ -122,6 +122,8 @@ div.welcome {
 }
 
 .glory {
+    position: absolute;
+    top: 0;
     font-size: 80px;
     color: green
   }

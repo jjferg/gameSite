@@ -28,6 +28,9 @@ const Home = () => {
   const redDeadSunEl = useRef();
   const xbControlEl = useRef();
   const glory = useRef();
+  const style = useRef();
+  const adventure = useRef();
+  const ja = useRef();
 
   const weGameSelector = gsap.utils.selector(circle);
 
@@ -110,21 +113,37 @@ const Home = () => {
         duration: 15,
       })
       .from(
-        glory.current,
+        style.current,
         {
           autoAlpha: 0,
-          duration: 25,
+          duration: 35,
         },
-        "<+=2.5"
+        "<+=1.5"
       )
       .from(redDeadSunEl.current, {
         xPercent: "-300",
         duration: 15,
       })
+      .from(
+        adventure.current,
+        {
+          autoAlpha: 0,
+          duration: 35,
+        },
+        "<+=1.5"
+      )
       .from(ja2kDunkEl.current, {
         xPercent: "300",
         duration: 15,
-      });
+      })
+      .from(
+        ja.current,
+        {
+          autoAlpha: 0,
+          duration: 35,
+        },
+        "<+=1.5"
+      );
       ScrollTrigger.create({
         animation: tl2,
         trigger: section.current,
@@ -191,32 +210,50 @@ const Home = () => {
                 <p className="why-game">
                   WHY GAME <span style={{ color: "red" }}>?</span>
                 </p>
-
-                <img
-                  ref={dameDunkEl}
-                  className="section34 why-game"
-                  src={dame2kdunk}
-                  alt="nba 2k dunk"
-                />
-                <span ref={glory} className="glory">GLORY</span>
-                <img
-                  ref={forzaEl}
-                  className="section34 why-game"
-                  src={forza}
-                  alt="forza car"
-                />
-                <img
-                  ref={redDeadSunEl}
-                  className="section34 why-game"
-                  src={redDeadSun}
-                  alt="red dead sun"
-                />
-                <img
-                  ref={ja2kDunkEl}
-                  className="section34 why-game"
-                  src={ja2kDunk}
-                  alt="ja dunk"
-                />
+                <div>
+                  <img
+                    ref={dameDunkEl}
+                    className="section34 why-game"
+                    src={dame2kdunk}
+                    alt="nba 2k dunk"
+                  />
+                  <span ref={glory} className="glory">
+                    GLORY
+                  </span>
+                </div>
+                <div>
+                  <img
+                    ref={forzaEl}
+                    className="section34 why-game"
+                    src={forza}
+                    alt="forza car"
+                  />
+                  <span ref={style} className="glory">
+                    STYLE
+                  </span>
+                </div>
+                <div>
+                  <img
+                    ref={redDeadSunEl}
+                    className="section34 why-game"
+                    src={redDeadSun}
+                    alt="red dead sun"
+                  />
+                  <span ref={adventure} className="glory">
+                    ADVENTURE
+                  </span>
+                </div>
+                <div>
+                  <img
+                    ref={ja2kDunkEl}
+                    className="section34 why-game"
+                    src={ja2kDunk}
+                    alt="ja dunk"
+                  />
+                   <span ref={ja} className="glory">
+                    JA
+                  </span>
+                </div>
               </div>
             </Col>
           </Row>

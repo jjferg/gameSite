@@ -17,8 +17,6 @@ useEffect(() => {
     autoAlpha: 0,
     delay: 10
     });
-    tl.invalidate()
-    tl.restart()
   })
 
   return (
