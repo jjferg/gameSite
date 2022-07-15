@@ -13,7 +13,7 @@ const footerPosition = window.location.pathname === "/home" ? "visible" : "hidde
 
 useEffect(() => {
   const tl = gsap.timeline()
-    tl.from(footerEl.current, {
+    tl.invalidate().from(footerEl.current, {
     autoAlpha: 0,
     delay: 10
     });
