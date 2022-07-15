@@ -20,7 +20,7 @@ useEffect(() => {
     return () => {
       gsap.kill(tl)
     }
-  })
+  },[footerPosition])
 
   return (
     <>
