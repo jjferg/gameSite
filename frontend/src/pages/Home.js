@@ -312,7 +312,7 @@ const Home = () => {
                     src={redDeadSun}
                     alt="red dead sun"
                   />
-                  <span ref={adventure} className="glory">
+                  <span ref={adventure} className="glory adventure">
                     ADVENTURE
                   </span>
                 </div>

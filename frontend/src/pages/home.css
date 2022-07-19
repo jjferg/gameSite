@@ -145,8 +145,14 @@ div.welcome {
     object-fit: cover;
     position: absolute;
     top: 0;
+    right: 0;
     font-size: 80px;
-    color: green
+    color: green;
+    
+  }
+
+  .adventure {
+    font-size: 60px;
   }
 
 
