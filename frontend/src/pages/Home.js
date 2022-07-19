@@ -138,10 +138,11 @@ const Home = () => {
       .from(
         glory.current,
         {
+          yPercent: "230",
           autoAlpha: 0,
           duration: 35,
         },
-        "<+=1.5"
+        "<+=1"
       )
       .from(forzaEl.current, {
         xPercent: "300",
