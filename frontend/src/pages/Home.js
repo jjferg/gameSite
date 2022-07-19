@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Container, Row, Col, Card} from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import dame2kdunk from "../components/images/2kDameDunk.png";
 import forza from "../components/images/forza.png";
 import ja2kDunk from "../components/images/ja2kDunk.png";
@@ -18,6 +18,9 @@ const Home = () => {
   const gameVidEl = useRef();
   const gameVideo = useRef();
   const weGame = useRef();
+  const leftBar = useRef();
+  const rightBar = useRef();
+  const falling = useRef();
   const circle = useRef();
   const pinnedRow = useRef();
   const section = useRef();
@@ -37,6 +40,20 @@ const Home = () => {
   useEffect(() => {
     //gsap animations
     const tl = gsap.timeline();
+    const tl2 = gsap.timeline();
+     gsap.set(falling.current, { transformOrigin: "100% 100%" });
+     gsap
+       .timeline({
+         scrollTrigger: {
+           trigger: gameVidEl.current,
+           start: "top top",
+         },
+       })
+       .from(falling.current, {
+         yPercent: "-20",
+         rotation: () => 180,
+         duration: 1.5,
+       });
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
       duration: 1,
@@ -55,27 +72,45 @@ const Home = () => {
         },
         "<"
       );
+       
+      tl2
+        .from(weGameSelector(".left-bar"), {
+          yPercent: "-30",
+          autoAlpha: 0,
+          stagger: 0.4,
+        })
+        .from(
+          weGameSelector(".we-game"),
+          {
+            yPercent: "30",
+            autoAlpha: 0,
+            stagger: 0.4,
+          },
+          "<"
+        )
+        .from(weGameSelector(".right-bar"), {
+          yPercent: "30",
+          autoAlpha: 0,
+          stagger: 0.4,
+        },"<");
 
-    gsap.from(weGameSelector(".we-game"), {
-      autoAlpha: 0,
-      stagger: 0.3,
-      yPercent: "30",
-      scrollTrigger: {
-        trigger: weGame.current,
-        start: "top center+=300",
-        preventOverlaps: true,
-      },
+    ScrollTrigger.create({
+      animation: tl2,
+      trigger: weGame.current,
+      scrub: true,
+      start: "top center+=300",
+      end: "bottom top",
     });
 
-    gsap.from(xbControlEl.current, {
-      autoAlpha: 0,
-      scrollTrigger: {
-        trigger: xbControlEl.current,
-        start: "center center",
-        scrub: true,
-      },
-    });
-  }, [ weGameSelector]);
+      gsap.from(xbControlEl.current, {
+        autoAlpha: 0,
+        scrollTrigger: {
+          trigger: xbControlEl.current,
+          start: "center center",
+          scrub: true,
+        },
+      });
+  });
 
   useLayoutEffect(() => {
     const tl2 = gsap.timeline();
@@ -144,17 +179,17 @@ const Home = () => {
         },
         "<+=1.5"
       );
-      ScrollTrigger.create({
-        animation: tl2,
-        trigger: section.current,
-        start: "top top",
-        end: "2000",
-        scrub: .004,
-        scale: 2,
-        pin: true,
-        snap: 1/8,
-        ease: "power2.out"
-      });
+    ScrollTrigger.create({
+      animation: tl2,
+      trigger: section.current,
+      start: "top top",
+      end: "2000",
+      scrub: 0.004,
+      scale: 2,
+      pin: true,
+      snap: 1 / 8,
+      ease: "power2.out",
+    });
   });
 
   return (
@@ -177,22 +212,75 @@ const Home = () => {
               type="video/mp4"
             />
             <h1 className="welcome-text" ref={welcomeTextEl}>
-              <div className="welcome">A HULLAGHAN'S WELCOME!</div>
+              <div className="welcome">A HULLAGHAN'<span ref={falling}className="falling" style={{color: 'green'}}>s</span> WELCOME!</div>
             </h1>
           </div>
         </Row>
         <Row ref={pinnedRow} className="section-two align-items-center">
           <Col sm={12}>
             <div ref={circle} className="circle ">
-              <span ref={weGame} className="we-game we-game-text">
-                GAME
-              </span>
-              <span ref={weGame} className="we-game we-game-text">
-                OR
-              </span>
-              <span ref={weGame} className="we-game we-game-text">
-                DIE
-              </span>
+              <div style={{ position: "relative" }}>
+                <div
+                  ref={leftBar}
+                  className="left-bar"
+                  style={{
+                    backgroundColor: "green",
+                    position: "absolute",
+                    height: "80%",
+                  }}
+                >
+                  {" "}
+                  
+                </div>
+                <span ref={weGame} className="we-game we-game-text">
+                  GAME
+                </span>
+                <div
+                  className="right-bar"
+                >
+                  
+                </div>
+              </div>
+              <div style={{ position: "relative" }}>
+                {" "}
+                <div
+                  ref={leftBar}
+                  className="left-bar"
+                  style={{
+                    backgroundColor: "green",
+                    position: "absolute",
+                    height: "80%",
+                  }}
+                >
+                  {" "}
+                  
+                </div>
+                <span ref={weGame} className="we-game we-game-text">
+                  OR
+                </span>
+                <div
+                  className="right-bar"
+                >
+                  
+                </div>
+              </div>
+              <div style={{ position: "relative" }}>
+                <div
+                  ref={leftBar}
+                  className="left-bar"
+                >
+                  {" "}
+                  
+                </div>
+                <span ref={weGame} className="we-game we-game-text">
+                  DIE
+                </span>
+                <div
+                  className="right-bar"
+                >
+                  
+                </div>
+              </div>
             </div>
           </Col>
         </Row>
@@ -250,7 +338,7 @@ const Home = () => {
                     src={ja2kDunk}
                     alt="ja dunk"
                   />
-                   <span ref={ja} className="glory">
+                  <span ref={ja} className="glory">
                     JA
                   </span>
                 </div>

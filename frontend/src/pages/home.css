@@ -48,6 +48,7 @@ div.welcome {
 }
 
 .circle {
+  margin-top: 5%;
   margin: 0;
   justify-content: center;
   text-align: center;
@@ -64,6 +65,24 @@ div.welcome {
   visibility: hidden;
   z-index: 0;
 }
+
+.left-bar {
+   background-Color: green;
+   position: absolute;
+   height: 80%;
+   width: 5%;
+   visibility: hidden;
+}
+
+.right-bar {
+   background-Color: green;
+   position: absolute;
+   height: 80%;
+   width: 5%;
+   right: 0%;
+   top: 0%;
+   visibility: hidden;
+}
 .xbox-controller {
   height: 4%;
   width: 54%;
@@ -75,6 +94,7 @@ div.welcome {
 }
 
 .section {
+  margin-top: 5%;
   height: 50%;
   overflow: hidden;
 }
