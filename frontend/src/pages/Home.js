@@ -42,18 +42,7 @@ const Home = () => {
     const tl = gsap.timeline();
     const tl2 = gsap.timeline();
      gsap.set(falling.current, { transformOrigin: "100% 100%" });
-     gsap
-       .timeline({
-         scrollTrigger: {
-           trigger: gameVidEl.current,
-           start: "top top",
-         },
-       })
-       .from(falling.current, {
-         yPercent: "-20",
-         rotation: () => 180,
-         duration: 1.5,
-       });
+     
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
       duration: 1,
@@ -71,7 +60,12 @@ const Home = () => {
           delay: 0.5,
         },
         "<"
-      );
+      )
+      .from(falling.current, {
+        yPercent: "20",
+        rotation: () => -180,
+        duration: 1.5,
+      },"<");
        
       tl2
         .from(weGameSelector(".left-bar"), {
@@ -212,7 +206,10 @@ const Home = () => {
               type="video/mp4"
             />
             <h1 className="welcome-text" ref={welcomeTextEl}>
-              <div className="welcome">A HULLAGHAN'<span ref={falling}className="falling" style={{color: 'green'}}>s</span> WELCOME!</div>
+              <div ref={falling} className="welcome">
+                <div  style={{ display: "inline" }}>A HULLAGHAN'S</div>
+                <div style={{ display: "inline" }}> WELCOME!</div>
+              </div>
             </h1>
           </div>
         </Row>
@@ -230,16 +227,11 @@ const Home = () => {
                   }}
                 >
                   {" "}
-                  
                 </div>
                 <span ref={weGame} className="we-game we-game-text">
                   GAME
                 </span>
-                <div
-                  className="right-bar"
-                >
-                  
-                </div>
+                <div className="right-bar"></div>
               </div>
               <div style={{ position: "relative" }}>
                 {" "}
@@ -253,33 +245,20 @@ const Home = () => {
                   }}
                 >
                   {" "}
-                  
                 </div>
                 <span ref={weGame} className="we-game we-game-text">
                   OR
                 </span>
-                <div
-                  className="right-bar"
-                >
-                  
-                </div>
+                <div className="right-bar"></div>
               </div>
               <div style={{ position: "relative" }}>
-                <div
-                  ref={leftBar}
-                  className="left-bar"
-                >
+                <div ref={leftBar} className="left-bar">
                   {" "}
-                  
                 </div>
                 <span ref={weGame} className="we-game we-game-text">
                   DIE
                 </span>
-                <div
-                  className="right-bar"
-                >
-                  
-                </div>
+                <div className="right-bar"></div>
               </div>
             </div>
           </Col>
