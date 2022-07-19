@@ -69,8 +69,8 @@ const Home = () => {
       .to(falling.current, { 
         delay: 5,
         yPercent: "1500",
-        rotationX: 2000,
-        duration: 5,
+        rotationX: 2100,
+        duration: 4,
       })
        
       tl2
