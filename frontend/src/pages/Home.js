@@ -65,7 +65,13 @@ const Home = () => {
         yPercent: "20",
         rotation: () => -180,
         duration: 1.5,
-      },"<");
+      },"<")
+      .to(falling.current, { 
+        delay: 5,
+        yPercent: "1000",
+        rotationX: 2000,
+        duration: 5,
+      })
        
       tl2
         .from(weGameSelector(".left-bar"), {
