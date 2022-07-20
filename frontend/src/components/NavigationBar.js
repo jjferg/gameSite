@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Nav, Navbar, Container } from "react-bootstrap";
@@ -7,11 +8,10 @@ import "./nav.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const tl = gsap.timeline();
-
 const NavigationBar = () => {
   const appLogoRef = useRef();
   const naviBar = useRef();
+  const navigate = useNavigate()
 
   useEffect(() => {
     gsap.to(appLogoRef.current, {
@@ -74,25 +74,48 @@ const NavigationBar = () => {
             id="basic-navbar-nav"
             style={{ color: "rgb(88, 198, 1)" }}
           >
-            <Nav className="me-auto" style={{ color: "rgb(88, 198, 1)" }}>
-              <Nav.Link href="#features" style={{ color: "rgb(88, 198, 1)" }}>
-                Gaming
-              </Nav.Link>
-              <Nav.Link href="#pricing" style={{ color: "rgb(88, 198, 1)" }}>
-                Sports
-              </Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link href="#deets" style={{ color: "rgb(88, 198, 1)" }}>
-                In Game Clips
-              </Nav.Link>
-              <Nav.Link
-                eventKey={2}
-                href="#memes"
-                style={{ color: "rgb(88, 198, 1)" }}
+            <Nav style={{ color: "rgb(88, 198, 1)" }}>
+              <Link
+                className="navLinks"
+                to="/home"
+                style={{ color: "rgb(88, 198, 1)", textDecoration: "none" }}
               >
-                Mostly Podcast
-              </Nav.Link>
+                HOME
+              </Link>
+
+              <Link
+                className="navLinks"
+                to="/gaming"
+                style={{
+                  color: "rgb(88, 198, 1)",
+                  textDecoration: "none",
+                }}
+              >
+                {" "}
+                GAMING
+              </Link>
+            
+              <Link
+                className="navLinks"
+                to="/sports"
+                style={{
+                  color: "rgb(88, 198, 1)",
+                  textDecoration: "none",
+                }}
+              >
+                SPORTS
+              </Link>
+              <Link
+                className="navLinks"
+                eventKey={2}
+                to="/clips"
+                style={{
+                  color: "rgb(88, 198, 1)",
+                  textDecoration: "none",
+                }}
+              >
+                CLIPS
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

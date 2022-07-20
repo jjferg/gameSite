@@ -41,8 +41,8 @@ const Home = () => {
     //gsap animations
     const tl = gsap.timeline();
     const tl2 = gsap.timeline();
-     gsap.set(falling.current, { transformOrigin: "100% 100%" });
-     
+    gsap.set(falling.current, { transformOrigin: "100% 100%" });
+
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
       duration: 1,
@@ -61,38 +61,46 @@ const Home = () => {
         },
         "<"
       )
-      .from(falling.current, {
-        yPercent: "20",
-        rotation: () => -180,
-        duration: 1.5,
-      },"<")
-      .to(falling.current, { 
+      .from(
+        falling.current,
+        {
+          yPercent: "20",
+          rotation: () => -180,
+          duration: 1.5,
+        },
+        "<"
+      )
+      .to(falling.current, {
         delay: 5,
         yPercent: "1600",
         rotationX: 2100,
         duration: 4,
+      });
+
+    tl2
+      .from(weGameSelector(".left-bar"), {
+        yPercent: "-50",
+        autoAlpha: 0,
+        stagger: 0.4,
       })
-       
-      tl2
-        .from(weGameSelector(".left-bar"), {
-          yPercent: "-30",
-          autoAlpha: 0,
-          stagger: 0.4,
-        })
-        .from(
-          weGameSelector(".we-game"),
-          {
-            yPercent: "30",
-            autoAlpha: 0,
-            stagger: 0.4,
-          },
-          "<"
-        )
-        .from(weGameSelector(".right-bar"), {
+      .from(
+        weGameSelector(".we-game"),
+        {
           yPercent: "30",
           autoAlpha: 0,
           stagger: 0.4,
-        },"<");
+        },
+        "<"
+      )
+      .from(
+        weGameSelector(".right-bar"),
+        {
+          yPercent: "50",
+          autoAlpha: 0,
+          stagger: 0.4,
+        },
+        "<"
+      );
 
     ScrollTrigger.create({
       animation: tl2,
@@ -102,14 +110,14 @@ const Home = () => {
       end: "bottom top",
     });
 
-      gsap.from(xbControlEl.current, {
-        autoAlpha: 0,
-        scrollTrigger: {
-          trigger: xbControlEl.current,
-          start: "center center",
-          scrub: true,
-        },
-      });
+    gsap.from(xbControlEl.current, {
+      autoAlpha: 0,
+      scrollTrigger: {
+        trigger: xbControlEl.current,
+        start: "center center",
+        scrub: true,
+      },
+    });
   });
 
   useLayoutEffect(() => {
@@ -181,12 +189,12 @@ const Home = () => {
         "<+=1.5"
       );
     ScrollTrigger.create({
+      anticipatePin: 1,
       animation: tl2,
       trigger: section.current,
       start: "top top",
       end: "2000",
       scrub: 0.004,
-      scale: 2,
       pin: true,
       snap: 1 / 8,
       ease: "power2.out",
@@ -214,7 +222,7 @@ const Home = () => {
             />
             <h1 className="welcome-text" ref={welcomeTextEl}>
               <div ref={falling} className="welcome">
-                <div  style={{ display: "inline" }}>A HULLAGHAN'S</div>
+                <div style={{ display: "inline" }}>A HULLAGHAN'S</div>
                 <div style={{ display: "inline" }}> WELCOME!</div>
               </div>
             </h1>
@@ -270,8 +278,8 @@ const Home = () => {
             </div>
           </Col>
         </Row>
-        <div ref={section} className="section">
-          <Row>
+        <Row>
+          <div ref={section} className="section">
             <Col>
               <div ref={cover33El} className="section33"></div>
               <img
@@ -330,9 +338,33 @@ const Home = () => {
                 </div>
               </div>
             </Col>
-          </Row>
-        </div>
+          </div>
+        </Row>
       </Container>
+      <Row>
+        <div className="fundamentals-div">
+          <p
+            className="fundamentals"
+            style={{ fontSize: "100px", color: "blue" }}
+          >
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+            Fundamentals
+          </p>
+        </div>
+      </Row>
     </>
   );
 };

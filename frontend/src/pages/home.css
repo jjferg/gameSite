@@ -3,7 +3,7 @@ body {
 }
 
 .container1 {
-  height: 550vh;
+  height: 600vh;
   overflow: hidden;
 }
 
@@ -67,21 +67,21 @@ div.welcome {
 }
 
 .left-bar {
-   background-Color: green;
-   position: absolute;
-   height: 80%;
-   width: 5%;
-   visibility: hidden;
+  background-color: green;
+  position: absolute;
+  height: 80%;
+  width: 5%;
+  visibility: hidden;
 }
 
 .right-bar {
-   background-Color: green;
-   position: absolute;
-   height: 80%;
-   width: 5%;
-   right: 0%;
-   top: 0%;
-   visibility: hidden;
+  background-color: green;
+  position: absolute;
+  height: 80%;
+  width: 5%;
+  right: 0%;
+  top: 0%;
+  visibility: hidden;
 }
 .xbox-controller {
   height: 4%;
@@ -94,7 +94,7 @@ div.welcome {
 }
 
 .section {
-  margin-top: 5%;
+  margin-bottom: 5%;
   height: 50%;
   overflow: hidden;
 }
@@ -105,7 +105,7 @@ div.welcome {
   background-color: rgb(33, 37, 41);
   height: 80vh;
   width: 100%;
-  box-shadow: 0px 5px 10px 0px rgb(89, 198, 0);
+  box-shadow: 5px 5px 10px 5px rgb(89, 198, 0);
   margin-top: 17%;
   z-index: -1;
 }
@@ -128,13 +128,14 @@ div.welcome {
   top: 1%;
   left: -3%;
   z-index: 1;
+  overflow: hidden;
 }
 .section34 {
   justify-content: center;
   height: 105%;
   width: 107%;
   object-fit: cover;
- 
+  overflow: hidden;
   position: absolute;
   top: -1%;
   left: -3%;
@@ -142,19 +143,25 @@ div.welcome {
 }
 
 .glory {
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 80px;
-    color: green;
-    
-  }
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 80px;
+  color: green;
+}
 
-  .adventure {
-    font-size: 60px;
-  }
+.adventure {
+  font-size: 60px;
+}
 
+.fundamentals-div {
+  margin-top: 10%;
+}
+
+.fundamentals {
+  overflow: hidden;
+}
 
 @media only screen and (min-width: 768px) {
   .glory {
@@ -175,10 +182,10 @@ div.welcome {
   }
 
   .xbox-controller {
-  height: 7%;
-  width: 50%;
-  top: -2%;
-}
+    height: 7%;
+    width: 50%;
+    top: -2%;
+  }
   .section3 {
     margin-top: 10%;
   }

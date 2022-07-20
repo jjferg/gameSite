@@ -5,3 +5,7 @@
 .footer {
   box-shadow: 10px 10px 10px 20px rgba(94, 87, 154, 0.8);
 }
+
+.navLinks {
+  margin-left: 20%;
+}
