@@ -19,7 +19,6 @@ const Home = () => {
   const gameVideo = useRef();
   const weGame = useRef();
   const leftBar = useRef();
-  const rightBar = useRef();
   const falling = useRef();
   const circle = useRef();
   const pinnedRow = useRef();
@@ -34,10 +33,12 @@ const Home = () => {
   const style = useRef();
   const adventure = useRef();
   const ja = useRef();
+  const fundamental = useRef()
 
   const weGameSelector = gsap.utils.selector(circle);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    ScrollTrigger.refresh()
     //gsap animations
     const tl = gsap.timeline();
     const tl2 = gsap.timeline();
@@ -117,12 +118,12 @@ const Home = () => {
         start: "center center",
         scrub: true,
       },
-    });
+    })
   });
 
   useLayoutEffect(() => {
-    const tl2 = gsap.timeline();
-    tl2
+    const tl3 = gsap.timeline();
+    tl3
       .to(
         xbControlEl.current,
         {
@@ -187,10 +188,10 @@ const Home = () => {
           duration: 35,
         },
         "<+=1.5"
-      );
+      )
     ScrollTrigger.create({
       anticipatePin: 1,
-      animation: tl2,
+      animation: tl3,
       trigger: section.current,
       start: "top top",
       end: "2000",
@@ -199,7 +200,19 @@ const Home = () => {
       snap: 1 / 8,
       ease: "power2.out",
     });
+
+    gsap.from(fundamental.current, {
+      autoAlpha: 0,
+      duration: 5,
+      scrollTrigger: {
+        trigger: fundamental.current,
+        start: "top bottom",
+        
+      }
+    })
   });
+
+  
 
   return (
     <>
@@ -344,24 +357,11 @@ const Home = () => {
       <Row>
         <div className="fundamentals-div">
           <p
+          ref={fundamental}
             className="fundamentals"
-            style={{ fontSize: "100px", color: "blue" }}
+            style={{ fontSize: "2.3em", color: "blue" }}
           >
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
-            Fundamentals
+            FUN DA MENTAL
           </p>
         </div>
       </Row>

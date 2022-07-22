@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Nav, Navbar, Container } from "react-bootstrap";
@@ -11,7 +11,6 @@ gsap.registerPlugin(ScrollTrigger);
 const NavigationBar = () => {
   const appLogoRef = useRef();
   const naviBar = useRef();
-  const navigate = useNavigate()
 
   useEffect(() => {
     gsap.to(appLogoRef.current, {
