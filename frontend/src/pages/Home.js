@@ -204,6 +204,7 @@ const Home = () => {
     gsap.from(fundamental.current, {
       autoAlpha: 0,
       duration: 5,
+      xPercent: 80,
       scrollTrigger: {
         trigger: fundamental.current,
         start: "top bottom",
