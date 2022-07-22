@@ -1,14 +1,14 @@
 body {
- 
+  width: 400px;
   box-sizing: border-box;
   background-color: black;
-  height: 600vh;
+  height: 500vh;
   max-width: 97vw;
   overflow-x: hidden;
 }
 
 .container1 {
-  height: 480vh;
+  height: 458vh;
   overflow: hidden;
 }
 
