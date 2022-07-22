@@ -1,7 +1,7 @@
 body {
   box-sizing: border-box;
   background-color: black;
-  height: 500vh;
+  height: 480vh;
 }
 
 .container1 {
@@ -81,10 +81,10 @@ div.welcome {
   visibility: hidden;
 }
 .xbox-controller {
-  height: 4%;
+  height: 21%;
   width: 54%;
   position: absolute;
-  top: 6%;
+  top: 0%;
   left: -25%;
   z-index: 1;
   visibility: hidden;
