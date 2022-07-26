@@ -1,7 +1,8 @@
 body {
+  width: 400px;
   box-sizing: border-box;
   background-color: black;
-  height: 500vh;
+  height: 480vh;
   max-width: 97vw;
   overflow-x: hidden;
 }
@@ -153,7 +154,6 @@ div.welcome {
 }
 
 .fundamentals-div {
-   overflow: hidden;
 }
 
 .fundamentals {

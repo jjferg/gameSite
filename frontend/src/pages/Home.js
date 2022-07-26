@@ -36,8 +36,15 @@ const Home = () => {
   const fundamental = useRef()
 
   const weGameSelector = gsap.utils.selector(circle);
+const didAnimate = useRef(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    if (didAnimate.current) {
+      return;
+    }
+    // otherwise, record that we're running it now and continue...
+    didAnimate.current = true;
+   
     ScrollTrigger.refresh()
     //gsap animations
     const tl = gsap.timeline();
@@ -119,9 +126,9 @@ const Home = () => {
         scrub: true,
       },
     })
-  });
 
-  useLayoutEffect(() => {
+
+  
     const tl3 = gsap.timeline();
     tl3
       .to(
@@ -199,6 +206,7 @@ const Home = () => {
       pin: true,
       snap: 1 / 8,
       ease: "power2.out",
+      toggleActions: "restart none none reverse",
     });
 
     gsap.from(fundamental.current, {
@@ -208,9 +216,9 @@ const Home = () => {
       scrollTrigger: {
         trigger: fundamental.current,
         start: "top bottom",
-        
-      }
-    })
+        toggleActions: "restart none none reverse",
+      },
+    });
   });
 
   
