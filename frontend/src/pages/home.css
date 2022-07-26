@@ -153,6 +153,7 @@ div.welcome {
 }
 
 .fundamentals-div {
+  overflow: hidden;
 }
 
 .fundamentals {
