@@ -69,7 +69,21 @@ const didAnimate = useRef(false);
         },
         "<"
       )
-     
+      .from(
+        falling.current,
+        {
+          yPercent: "20",
+          rotation: () => -180,
+          duration: 1.5,
+        },
+        "<"
+      )
+      .to(falling.current, {
+        delay: 5,
+        yPercent: "1600",
+        rotationX: 2100,
+        duration: 4,
+      });
 
     tl2
       .from(weGameSelector(".left-bar"), {
