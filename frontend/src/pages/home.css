@@ -34,11 +34,13 @@ body {
 }
 
 .welcome-text {
+  object-fit: cover;
   z-index: 1;
   text-align: center;
 }
 
 div.welcome {
+  object-fit: cover;
   width: 100vw;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
