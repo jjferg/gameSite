@@ -33,10 +33,10 @@ const Home = () => {
   const style = useRef();
   const adventure = useRef();
   const ja = useRef();
-  const fundamental = useRef()
+  const fundamental = useRef();
 
   const weGameSelector = gsap.utils.selector(circle);
-const didAnimate = useRef(false);
+  const didAnimate = useRef(false);
 
   useEffect(() => {
     if (didAnimate.current) {
@@ -44,16 +44,18 @@ const didAnimate = useRef(false);
     }
     // otherwise, record that we're running it now and continue...
     didAnimate.current = true;
-   
-    ScrollTrigger.refresh()
+
+    ScrollTrigger.refresh();
     //gsap animations
     const tl = gsap.timeline();
     const tl2 = gsap.timeline();
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
 
     tl.from(gameVidEl.current, {
+      scaleY: 1,
+      rotationX: 90,
       autoAlpha: 0,
-      duration: 1,
+      duration: 2,
       delay: 0.8,
     })
       .from(gameVideo.current, {
@@ -69,21 +71,24 @@ const didAnimate = useRef(false);
         },
         "<"
       )
-      .from(
-        falling.current,
-        {
-          yPercent: "20",
-          rotation: () => -180,
-          duration: 1.5,
+      .from(falling.current, {
+        yPercent: "20",
+        rotation: () => -180,
+        duration: 1.5,
+      })
+      .to(gameVidEl.current, {
+        delay: 4,
+        keyframes: {
+          x: [-20, 14, -17, 4, 23, 0],
+          y: [24, -12, 17, -7, 30, 0],
         },
-        "<"
-      )
+        duration: 0.5,
+      })
       .to(falling.current, {
-        delay: 5,
         yPercent: "1600",
         rotationX: 2100,
         duration: 4,
-      });
+      })
 
     tl2
       .from(weGameSelector(".left-bar"), {
@@ -125,8 +130,10 @@ const didAnimate = useRef(false);
         start: "center center",
         scrub: true,
       },
-    })
-  
+    });
+  });
+
+  useLayoutEffect(() => {
     const tl3 = gsap.timeline();
     tl3
       .to(
@@ -193,7 +200,7 @@ const didAnimate = useRef(false);
           duration: 35,
         },
         "<+=1.5"
-      )
+      );
     ScrollTrigger.create({
       anticipatePin: 1,
       animation: tl3,
@@ -218,8 +225,6 @@ const didAnimate = useRef(false);
       },
     });
   });
-
-  
 
   return (
     <>
@@ -364,7 +369,7 @@ const didAnimate = useRef(false);
       <Row>
         <div className="fundamentals-div">
           <p
-          ref={fundamental}
+            ref={fundamental}
             className="fundamentals"
             style={{ fontSize: "2.3em", color: "blue" }}
           >
