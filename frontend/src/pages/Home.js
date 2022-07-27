@@ -126,9 +126,7 @@ const didAnimate = useRef(false);
         scrub: true,
       },
     })
-  });
-
-  useLayoutEffect(() => {
+  
     const tl3 = gsap.timeline();
     tl3
       .to(
