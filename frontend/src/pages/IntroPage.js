@@ -29,7 +29,7 @@ const IntroPage = () => {
   });
 
   return (
-    <div className="containers" style={{height: "100vh"}} >
+    <div className="containers" style={{height: "100vh", overflow: "hidden"}} >
       <img
         ref={leftH}
         src={leftHulla}
