@@ -10,10 +10,14 @@ import redDeadSun from "../components/images/redDeadSun.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
 import xbControl from "../components/images/xboxcontrol.png";
 import "./home.css";
+import { set } from "mongoose";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const [vidTime, setVidTime] = useState(0)
+  const [vidTime, setVidTime] = useState(27);
+
+  
+
   //elements ref for animation
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
@@ -39,26 +43,29 @@ const Home = () => {
   const weGameSelector = gsap.utils.selector(circle);
   const didAnimate = useRef(false);
 
+  
   useLayoutEffect(() => {
 
+    const vidCounter = vidTime - 9.5
+    //check for did animate to prevent double render in production
     if (didAnimate.current) {
       return;
     }
     // otherwise, record that we're running it now and continue...
     didAnimate.current = true;
-    
+
     ScrollTrigger.refresh();
     //gsap animations
     const tl = gsap.timeline({ toggleActions: "restart none none reverse" });
     const tl2 = gsap.timeline();
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
-    
+    //Start of first set of animations the video and game or die
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
       delay: 0.8,
-      onStart: gameVideo.current.play()
     })
       .from(gameVideo.current, {
+        onStart: gameVideo.current.play(),
         autoAlpha: 0,
         duration: 1.5,
       })
@@ -76,14 +83,18 @@ const Home = () => {
         rotation: () => -180,
         duration: 1.5,
       })
-      .to(gameVidEl.current, {
-        delay: 15.1,
-        keyframes: {
-          x: [-20, 14, -17, 4, 23, 0],
-          y: [24, -12, 17, -7, 30, 0],
+      .to(
+        gameVidEl.current,
+        {
+          delay: 14,
+          keyframes: {
+            x: [-20, 14, -17, 4, 23, 0],
+            y: [24, -12, 17, -7, 30, 0],
+          },
+          duration: 0.5,
         },
-        duration: 0.5,
-      },'<')
+        "<"
+      )
       .to(falling.current, {
         yPercent: "1600",
         rotationX: 2100,
@@ -255,17 +266,23 @@ const Home = () => {
       },
     });
   });
+
+  useLayoutEffect(() => {
+    if (gameVideo.current.play())
+      if (vidTime > 0) setTimeout(() => setVidTime(vidTime - 1), 1000);
+    console.log(vidTime);
+  });
+
   const handleLoadedMetadata = () => {
     const video = gameVideo.current;
     if (!video) return;
-    console.log(`The video is ${video.duration} seconds long.`);
-  
-    if(video.currentTime === video.duration - 10) {
-      return "hello"
+    console.log(`The video is ${video.currentTime} seconds long.`);
+
+    if (video.currentTime === video.duration - 10) {
+      return "hello";
     }
   };
 
- 
   return (
     <>
       <Container style={{ color: "green" }} className="container1">
