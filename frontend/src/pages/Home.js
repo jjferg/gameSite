@@ -47,14 +47,13 @@ const Home = () => {
 
     ScrollTrigger.refresh();
     //gsap animations
-    const tl = gsap.timeline({toggleActions: "restart none none reverse"});
+    const tl = gsap.timeline({ toggleActions: "restart none none reverse" });
     const tl2 = gsap.timeline();
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
 
     tl.from(gameVidEl.current, {
-   
       autoAlpha: 0,
-   
+
       delay: 0.8,
     })
       .from(gameVideo.current, {
@@ -121,21 +120,19 @@ const Home = () => {
         position: "absolute",
         zIndex: 10,
       })
-      .to(
-        weGameSelector(".right-bar"),
-        {
-          yPercent: "1500",
-          xPercent: "-800",
-          stagger: 0.6,
-          rotation: 360
-        })
+      .to(weGameSelector(".right-bar"), {
+        yPercent: "1500",
+        xPercent: "-800",
+        stagger: 0.6,
+        rotation: 360,
+      })
       .to(
         weGameSelector(".left-bar"),
         {
           yPercent: "1500",
           xPercent: "800",
           stagger: 0.6,
-          rotation: 360
+          rotation: 360,
         },
         "<"
       )
