@@ -77,7 +77,7 @@ const Home = () => {
         duration: 1.5,
       })
       .to(gameVidEl.current, {
-        delay: 14,
+        delay: 16.8,
         keyframes: {
           x: [-20, 14, -17, 4, 23, 0],
           y: [24, -12, 17, -7, 30, 0],
@@ -279,7 +279,7 @@ const Home = () => {
               className="video1"
               autoPlay={false}
               loop={true}
-              controls={true}
+              controls={false}
               playsInline
               muted
               ref={gameVideo}
