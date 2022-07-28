@@ -123,7 +123,7 @@ const Home = () => {
         zIndex: 10,
       })
       .to(weGameSelector(".right-bar"), {
-        yPercent: "1500",
+        yPercent: "2000",
         xPercent: "-800",
         stagger: 0.6,
         rotation: 360,
@@ -131,7 +131,7 @@ const Home = () => {
       .to(
         weGameSelector(".left-bar"),
         {
-          yPercent: "1500",
+          yPercent: "2000",
           xPercent: "800",
           stagger: 0.6,
           rotation: 360,
