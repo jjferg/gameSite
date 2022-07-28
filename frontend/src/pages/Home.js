@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useLayoutEffect } from "react";
+import React, { useEffect, useRef, useLayoutEffect, useState } from "react";
 import gsap from "gsap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,6 +13,7 @@ import "./home.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
+  const [vidTime, setVidTime] = useState(0)
   //elements ref for animation
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
@@ -38,19 +39,20 @@ const Home = () => {
   const weGameSelector = gsap.utils.selector(circle);
   const didAnimate = useRef(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+
     if (didAnimate.current) {
       return;
     }
     // otherwise, record that we're running it now and continue...
     didAnimate.current = true;
-
+    
     ScrollTrigger.refresh();
     //gsap animations
     const tl = gsap.timeline({ toggleActions: "restart none none reverse" });
     const tl2 = gsap.timeline();
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
-
+    
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
       delay: 0.8,
@@ -75,13 +77,13 @@ const Home = () => {
         duration: 1.5,
       })
       .to(gameVidEl.current, {
-        delay: 14.5,
+        delay: 14,
         keyframes: {
           x: [-20, 14, -17, 4, 23, 0],
           y: [24, -12, 17, -7, 30, 0],
         },
         duration: 0.5,
-      })
+      },'<')
       .to(falling.current, {
         yPercent: "1600",
         rotationX: 2100,
@@ -253,7 +255,17 @@ const Home = () => {
       },
     });
   });
+  const handleLoadedMetadata = () => {
+    const video = gameVideo.current;
+    if (!video) return;
+    console.log(`The video is ${video.duration} seconds long.`);
+  
+    if(video.currentTime === video.duration - 10) {
+      return "hello"
+    }
+  };
 
+ 
   return (
     <>
       <Container style={{ color: "green" }} className="container1">
@@ -263,10 +275,11 @@ const Home = () => {
             className="mt-4 video-el bg-dark text-white rounded"
           >
             <video
+              onLoadedMetadata={handleLoadedMetadata}
               className="video1"
-              autoPlay={true}
+              autoPlay={false}
               loop={true}
-              controls={false}
+              controls={true}
               playsInline
               muted
               ref={gameVideo}
