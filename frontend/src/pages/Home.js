@@ -53,8 +53,8 @@ const Home = () => {
 
     tl.from(gameVidEl.current, {
       autoAlpha: 0,
-
       delay: 0.8,
+      onStart: gameVideo.current.play()
     })
       .from(gameVideo.current, {
         autoAlpha: 0,
