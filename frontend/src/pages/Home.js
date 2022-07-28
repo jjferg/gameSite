@@ -47,15 +47,14 @@ const Home = () => {
 
     ScrollTrigger.refresh();
     //gsap animations
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({toggleActions: "restart none none reverse"});
     const tl2 = gsap.timeline();
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
 
     tl.from(gameVidEl.current, {
-      scaleY: 1,
-      rotationX: 90,
+   
       autoAlpha: 0,
-      duration: 2,
+   
       delay: 0.8,
     })
       .from(gameVideo.current, {
@@ -77,7 +76,7 @@ const Home = () => {
         duration: 1.5,
       })
       .to(gameVidEl.current, {
-        delay: 4,
+        delay: 12.5,
         keyframes: {
           x: [-20, 14, -17, 4, 23, 0],
           y: [24, -12, 17, -7, 30, 0],
@@ -88,7 +87,7 @@ const Home = () => {
         yPercent: "1600",
         rotationX: 2100,
         duration: 4,
-      })
+      });
 
     tl2
       .from(weGameSelector(".left-bar"), {
@@ -113,7 +112,41 @@ const Home = () => {
           stagger: 0.4,
         },
         "<"
-      );
+      )
+      .set(weGameSelector(".right-bar"), {
+        position: "absolute",
+        zIndex: 10,
+      })
+      .set(weGameSelector(".left-bar"), {
+        position: "absolute",
+        zIndex: 10,
+      })
+      .to(
+        weGameSelector(".right-bar"),
+        {
+          yPercent: "1500",
+          xPercent: "-800",
+          stagger: 0.6,
+          rotation: 360
+        })
+      .to(
+        weGameSelector(".left-bar"),
+        {
+          yPercent: "1500",
+          xPercent: "800",
+          stagger: 0.6,
+          rotation: 360
+        },
+        "<"
+      )
+      .set(weGameSelector(".right-bar"), {
+        position: "static",
+        zIndex: 10,
+      })
+      .set(weGameSelector(".left-bar"), {
+        position: "static",
+        zIndex: 10,
+      });
 
     ScrollTrigger.create({
       animation: tl2,
@@ -131,9 +164,7 @@ const Home = () => {
         scrub: true,
       },
     });
-  });
 
-  useLayoutEffect(() => {
     const tl3 = gsap.timeline();
     tl3
       .to(
