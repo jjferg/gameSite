@@ -77,7 +77,7 @@ const Home = () => {
         duration: 1.5,
       })
       .to(gameVidEl.current, {
-        delay: 15,
+        delay: 15.5,
         keyframes: {
           x: [-20, 14, -17, 4, 23, 0],
           y: [24, -12, 17, -7, 30, 0],
