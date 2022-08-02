@@ -37,6 +37,12 @@ const NavigationBar = () => {
         })
         .progress(1);
 
+        gsap.fromTo(naviBar.current,{ 
+          opacity: 0
+        }, { 
+          autoAlpha:1,
+          delay: 2
+        })
       ScrollTrigger.create({
         start: "top top",
         end: 99999,
