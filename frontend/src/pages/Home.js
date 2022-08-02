@@ -70,6 +70,8 @@ const Home = () => {
     const tl2 = gsap.timeline({ fastScrollEnd: true });
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
 
+   
+
     gsap.from(gameVidEl.current, {
       autoAlpha: 0,
       delay: 0.8,
@@ -79,6 +81,7 @@ const Home = () => {
       gameVideo.current,
       {
         duration: 1.5,
+        autoAlpha: 0,
       }
     )
       .from(
@@ -86,9 +89,8 @@ const Home = () => {
         {
           autoAlpha: 0,
           duration: 1.5,
-          delay: 0.5,
         },
-        "<"
+        "<0.5"
       )
       .from(falling.current, {
         yPercent: "20",
@@ -98,14 +100,13 @@ const Home = () => {
       .to(
         gameVidEl.current,
         {
-          delay: 19.1,
           keyframes: {
             x: [-20, 14, -17, 4, 23, 0],
             y: [24, -12, 17, -7, 30, 0],
           },
           duration: 0.5,
         },
-        ""
+        "18.3"
       )
       .to(falling.current, {
         yPercent: "1600",
