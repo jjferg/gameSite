@@ -10,13 +10,9 @@ import redDeadSun from "../components/images/redDeadSun.png";
 import gameVid from "../components/images/PNG/eldenRingVideo.mp4";
 import xbControl from "../components/images/xboxcontrol.png";
 import "./home.css";
-import { set } from "mongoose";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-  const [vidTime, setVidTime] = useState(27);
-
-  
 
   //elements ref for animation
   const welcomeTextEl = useRef();
@@ -43,11 +39,10 @@ const Home = () => {
   const weGameSelector = gsap.utils.selector(circle);
   const didAnimate = useRef(false);
 
-  
-  useLayoutEffect(() => {
+  useEffect(() => {
+   const visible = document.visibilityState
+   console.log(setTimeout( console.log(visible), 5000))
 
-    const vidCounter = vidTime - 9.5
-    //check for did animate to prevent double render in production
     if (didAnimate.current) {
       return;
     }
@@ -56,19 +51,28 @@ const Home = () => {
 
     ScrollTrigger.refresh();
     //gsap animations
-    const tl = gsap.timeline({ toggleActions: "restart none none reverse" });
-    const tl2 = gsap.timeline();
+    const tl = gsap.timeline({
+      toggleActions: "restart none none reverse",
+      fastScrollEnd:true,
+    });
+    const tl2 = gsap.timeline({ fastScrollEnd: true });
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
-    //Start of first set of animations the video and game or die
-    tl.from(gameVidEl.current, {
+
+    gsap.from(gameVidEl.current, {
       autoAlpha: 0,
       delay: 0.8,
+      onComplete: () => { gameVideo.current.play() },
     })
-      .from(gameVideo.current, {
-        onStart: gameVideo.current.play(),
-        autoAlpha: 0,
+    tl.to(
+      gameVideo.current,
+      {
+        autoAlpha: 1,
         duration: 1.5,
-      })
+        currentTime: 27.8
+      },{ 
+
+      }
+    )
       .from(
         welcomeTextEl.current,
         {
@@ -86,14 +90,14 @@ const Home = () => {
       .to(
         gameVidEl.current,
         {
-          delay: 15.5,
+          delay: 18.7,
           keyframes: {
             x: [-20, 14, -17, 4, 23, 0],
             y: [24, -12, 17, -7, 30, 0],
           },
           duration: 0.5,
         },
-        "<"
+        ""
       )
       .to(falling.current, {
         yPercent: "1600",
@@ -133,17 +137,21 @@ const Home = () => {
         position: "absolute",
         zIndex: 10,
       })
-      .to(weGameSelector(".right-bar"), {
-        yPercent: "2000",
-        xPercent: "-800",
-        stagger: 0.6,
-        rotation: 360,
-      })
+      .to(
+        weGameSelector(".right-bar"),
+        {
+          yPercent: "2000",
+          xPercent: "-2000",
+          stagger: 0.6,
+          rotation: 360,
+        },
+        "-=.5"
+      )
       .to(
         weGameSelector(".left-bar"),
         {
           yPercent: "2000",
-          xPercent: "800",
+          xPercent: "2000",
           stagger: 0.6,
           rotation: 360,
         },
@@ -266,22 +274,7 @@ const Home = () => {
       },
     });
   });
-
-  useLayoutEffect(() => {
-    if (gameVideo.current.play())
-      if (vidTime > 0) setTimeout(() => setVidTime(vidTime - 1), 1000);
-    console.log(vidTime);
-  });
-
-  const handleLoadedMetadata = () => {
-    const video = gameVideo.current;
-    if (!video) return;
-    console.log(`The video is ${video.currentTime} seconds long.`);
-
-    if (video.currentTime === video.duration - 10) {
-      return "hello";
-    }
-  };
+  
 
   return (
     <>
@@ -292,7 +285,7 @@ const Home = () => {
             className="mt-4 video-el bg-dark text-white rounded"
           >
             <video
-              onLoadedMetadata={handleLoadedMetadata}
+          
               className="video1"
               autoPlay={false}
               loop={true}

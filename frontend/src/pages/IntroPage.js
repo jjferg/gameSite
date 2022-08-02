@@ -10,12 +10,15 @@ const IntroPage = () => {
   const leftH = useRef();
   const rightH = useRef();
 
-  const introPage = () => {
-    navigate("/home");
-  };
+ 
 
   useLayoutEffect(() => {
+     const introPage = () => {
+       navigate("/home");
+     };
+    const visible = document.visibilityState;
     const tl = gsap.timeline({delay: .5, restart: true});
+    if(visible) {tl.play()}else{tl.pause()}
     tl.fromTo(leftH.current, { y: "-100%" }, { y: 0, duration: 2 })
       .fromTo(rightH.current, { y: "-100%" }, { y: 0, duration: 2 }, "<")
       .to(leftH.current, { x: "-100%", duration: 2, delay: 2 })
@@ -23,7 +26,9 @@ const IntroPage = () => {
         rightH.current,
         { x: "100%", duration: 2, onComplete: introPage },
         "<"
-      );
+      )
+     
+      
        
   });
 
