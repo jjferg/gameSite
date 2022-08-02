@@ -14,6 +14,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
 
+   const [loadind, setLoading] = useState(false);
+
   //elements ref for animation
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
@@ -39,6 +41,19 @@ const Home = () => {
   const weGameSelector = gsap.utils.selector(circle);
   const didAnimate = useRef(false);
 
+  useLayoutEffect(() => {
+    const pageLoaded = () => {
+      setLoading(true);
+    };
+    if (document.readyState === "complete") {
+      pageLoaded();
+    } else {
+      window.addEventListener("load", pageLoaded);
+
+      return () => window.removeEventListener("load", pageLoaded);
+    }
+  }, []);
+
   useEffect(() => {
    const visible = document.visibilityState
    console.log(setTimeout( console.log(visible), 5000))
@@ -58,17 +73,15 @@ const Home = () => {
     const tl2 = gsap.timeline({ fastScrollEnd: true });
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
 
-    tl.from(gameVidEl.current, {
+    gsap.from(gameVidEl.current, {
       autoAlpha: 0,
       delay: 0.8,
       onComplete: () => { gameVideo.current.play() },
     })
-    .to(
+    tl.from(
       gameVideo.current,
       {
-        autoAlpha: 1,
         duration: 1.5,
-     
       }
     )
       .from(
