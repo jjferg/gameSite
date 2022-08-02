@@ -58,19 +58,17 @@ const Home = () => {
     const tl2 = gsap.timeline({ fastScrollEnd: true });
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
 
-    gsap.from(gameVidEl.current, {
+    tl.from(gameVidEl.current, {
       autoAlpha: 0,
       delay: 0.8,
       onComplete: () => { gameVideo.current.play() },
     })
-    tl.to(
+    .to(
       gameVideo.current,
       {
         autoAlpha: 1,
         duration: 1.5,
-        currentTime: 27.8
-      },{ 
-
+     
       }
     )
       .from(
