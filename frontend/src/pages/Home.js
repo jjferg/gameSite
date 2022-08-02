@@ -106,7 +106,7 @@ const Home = () => {
           },
           duration: 0.5,
         },
-        "18.3"
+        "19"
       )
       .to(falling.current, {
         yPercent: "1600",
