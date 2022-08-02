@@ -54,10 +54,7 @@ const Home = () => {
     }
   }, []);
 
-  useEffect(() => {
-   const visible = document.visibilityState
-   console.log(setTimeout( console.log(visible), 5000))
-
+  useLayoutEffect(() => {
     if (didAnimate.current) {
       return;
     }
