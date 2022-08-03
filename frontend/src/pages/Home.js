@@ -248,7 +248,7 @@ const Home = () => {
       scrub: 0.004,
       pin: true,
       snap: 1 / 8,
-      ease: "power2.out",
+      ease: "none",
       toggleActions: "restart none none reverse",
     });
 

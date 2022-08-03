@@ -184,17 +184,16 @@ div.welcome {
 
 .divToPin {
   max-height: 100vh;
-  margin-bottom: 10%;
+  margin-bottom: 15%;
 }
 
 .fundamentals-div {
-  margin-top: 5%;
+  margin-top: 10%;
   overflow: hidden;
 }
 
 .fundamentals {
   height: 25vh;
-  margin-top: 5%;
   font-size: 2.3em;
   color: blue;
   object-fit: cover;
