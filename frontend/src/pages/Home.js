@@ -23,6 +23,7 @@ const Home = () => {
   const circle = useRef();
   const pinnedRow = useRef();
   const section = useRef();
+  const divToPin = useRef();
   const cover33El = useRef();
   const dameDunkEl = useRef();
   const ja2kDunkEl = useRef();
@@ -244,9 +245,10 @@ const Home = () => {
     ScrollTrigger.create({
       anticipatePin: 1,
       animation: tl3,
-      trigger: section.current,
+      trigger: divToPin.current,
       start: "top top",
       end: "2000",
+      pinSpacer: false,
       scrub: 0.004,
       pin: true,
       snap: 1 / 8,
@@ -254,16 +256,23 @@ const Home = () => {
       toggleActions: "restart none none reverse",
     });
 
-    tl4.set(fundamental.current, {rotationX: 80}).fromTo(fundamental.current, {
-      xPercent: 80,
-    },{
-      duration: 1.5,
-      xPercent: 0,
-      rotationX: 80
-    }).to(fundamental.current, {
-      duration: 1.5,
-      rotationX: 0
-    })
+    tl4
+      .set(fundamental.current, { rotationX: 80 })
+      .fromTo(
+        fundamental.current,
+        {
+          xPercent: 80,
+        },
+        {
+          duration: 1.5,
+          xPercent: 0,
+          rotationX: 80,
+        }
+      )
+      .to(fundamental.current, {
+        duration: 1.5,
+        rotationX: 0,
+      });
 
     ScrollTrigger.create({
       animation: tl4,
@@ -312,7 +321,6 @@ const Home = () => {
                   ref={leftBar}
                   className="left-bar"
                   style={{
-                
                     position: "absolute",
                     height: "80%",
                   }}
@@ -354,65 +362,67 @@ const Home = () => {
           </Col>
         </Row>
         <Row>
-          <div ref={section} className="section">
-            <Col>
-              <div ref={cover33El} className="section33"></div>
-              <img
-                ref={xbControlEl}
-                className="xbox-controller"
-                src={xbControl}
-                alt="xbox controller"
-              />
-              <div className="section3">
-                <p className="why-game">
-                  WHY GAME <span style={{ color: "red" }}>?</span>
-                </p>
-                <div>
-                  <img
-                    ref={dameDunkEl}
-                    className="section34 why-game"
-                    src={dame2kdunk}
-                    alt="nba 2k dunk"
-                  />
-                  <span ref={glory} className="glory">
-                    GLORY
-                  </span>
+          <div ref={divToPin} className="divToPin">
+            <div ref={section} className="section">
+              <Col>
+                <div ref={cover33El} className="section33"></div>
+                <img
+                  ref={xbControlEl}
+                  className="xbox-controller"
+                  src={xbControl}
+                  alt="xbox controller"
+                />
+                <div className="section3">
+                  <p className="why-game">
+                    WHY GAME <span style={{ color: "red" }}>?</span>
+                  </p>
+                  <div>
+                    <img
+                      ref={dameDunkEl}
+                      className="section34 why-game"
+                      src={dame2kdunk}
+                      alt="nba 2k dunk"
+                    />
+                    <span ref={glory} className="glory">
+                      GLORY
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      ref={forzaEl}
+                      className="section34 why-game"
+                      src={forza}
+                      alt="forza car"
+                    />
+                    <span ref={style} className="glory">
+                      STYLE
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      ref={redDeadSunEl}
+                      className="section34 why-game"
+                      src={redDeadSun}
+                      alt="red dead sun"
+                    />
+                    <span ref={adventure} className="glory adventure">
+                      ADVENTURE
+                    </span>
+                  </div>
+                  <div>
+                    <img
+                      ref={ja2kDunkEl}
+                      className="section34 why-game"
+                      src={ja2kDunk}
+                      alt="ja dunk"
+                    />
+                    <span ref={ja} className="glory">
+                      JA
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <img
-                    ref={forzaEl}
-                    className="section34 why-game"
-                    src={forza}
-                    alt="forza car"
-                  />
-                  <span ref={style} className="glory">
-                    STYLE
-                  </span>
-                </div>
-                <div>
-                  <img
-                    ref={redDeadSunEl}
-                    className="section34 why-game"
-                    src={redDeadSun}
-                    alt="red dead sun"
-                  />
-                  <span ref={adventure} className="glory adventure">
-                    ADVENTURE
-                  </span>
-                </div>
-                <div>
-                  <img
-                    ref={ja2kDunkEl}
-                    className="section34 why-game"
-                    src={ja2kDunk}
-                    alt="ja dunk"
-                  />
-                  <span ref={ja} className="glory">
-                    JA
-                  </span>
-                </div>
-              </div>
-            </Col>
+              </Col>
+            </div>
           </div>
         </Row>
       </Container>

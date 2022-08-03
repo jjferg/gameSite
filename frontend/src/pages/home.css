@@ -45,6 +45,8 @@ div.welcome {
   color: white;
 }
 
+
+
 .circle {
   margin-top: 18%;
   justify-content: center;
@@ -82,6 +84,11 @@ div.welcome {
   visibility: hidden;
   box-shadow: 5px 5px 10px 5px rgba(89, 66, 233, 0.8)
 }
+
+.divToPin {
+  max-height: 100vh;
+}
+
 .xbox-controller {
   height: 21%;
   width: 54%;
@@ -93,8 +100,7 @@ div.welcome {
 }
 
 .section {
-  margin-bottom: 5%;
-  height: 50%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -154,12 +160,18 @@ div.welcome {
   font-size: 60px;
 }
 
+.divToPin {
+  max-height: 100vh;
+}
+
 .fundamentals-div {
   margin-top: 5%;
   overflow: hidden;
 }
 
-.fundamentals {margin-top: 5%;
+.fundamentals {
+  height: 25vh;
+  margin-top: 5%;
   font-size: 2.3em;
   color: blue;
   object-fit: cover;
