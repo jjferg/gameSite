@@ -1,10 +1,10 @@
 .navStyle {
-  box-shadow: 0px 10px 10px 0px rgba(94, 87, 154, 0.8);
+  box-shadow: 0px 10px 10px 0px rgba(89, 66, 233, 0.8);
   width: 100vw
 }
 
 .footer {
-  box-shadow: 10px 10px 10px 20px rgba(94, 87, 154, 0.8);
+  box-shadow: 10px 10px 10px 20px rgba(89, 66, 233, 0.8);
   width: 100%;
 }
 

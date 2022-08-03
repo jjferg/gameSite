@@ -13,7 +13,6 @@ import "./home.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
-
   //elements ref for animation
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
@@ -176,8 +175,8 @@ const Home = () => {
       },
     });
 
-   
-    tl3.to(
+    tl3
+      .to(
         xbControlEl.current,
         {
           xPercent: "600",
@@ -255,35 +254,35 @@ const Home = () => {
       toggleActions: "restart none none reverse",
     });
 
-    tl4.fromTo(
-      fundamental.current,
-      {
-        xPercent: 80,
-      
-        rotationX: 80
-      },
-      {
-        xPercent: 0,
-     
-        duration: 2,
-        scrollTrigger: {
-          trigger: fundamental.current,
-          start: "top bottom",
+    tl4
+      .set(fundamental.current, { rotationX: 80 })
+      .fromTo(
+        fundamental.current,
+        {
+          xPercent: 80,
         },
-      }
-    ).to(
-      fundamental.current,
-      {
-        autoAlpha: 1,
-        rotationX: 190
-      }
-    );
-      return () => {
-        tl.kill();
-        tl2.kill();
-        tl3.kill();
-      }
-  },[]);
+        {
+          duration: 1.5,
+          xPercent: 0,
+          rotationX: 80,
+        }
+      )
+      .to(fundamental.current, {
+        duration: 1.5,
+        rotationX: 0,
+      });
+
+    ScrollTrigger.create({
+      animation: tl4,
+      trigger: fundamental.current,
+      start: "top bottom",
+    });
+    return () => {
+      tl.kill();
+      tl2.kill();
+      tl3.kill();
+    };
+  }, []);
 
   return (
     <>
@@ -320,7 +319,6 @@ const Home = () => {
                   ref={leftBar}
                   className="left-bar"
                   style={{
-                    backgroundColor: "green",
                     position: "absolute",
                     height: "80%",
                   }}
@@ -338,7 +336,6 @@ const Home = () => {
                   ref={leftBar}
                   className="left-bar"
                   style={{
-                    backgroundColor: "green",
                     position: "absolute",
                     height: "80%",
                   }}

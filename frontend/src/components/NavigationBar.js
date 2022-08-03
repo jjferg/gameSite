@@ -63,7 +63,7 @@ const NavigationBar = () => {
         bg="dark"
         variant="dark"
         style={{
-          color: "rgb(88, 198, 1)",
+          color: "rgb(62, 244, 34)",
           position: navPosition,
           top: 0,
           zIndex: navIndex,
@@ -72,18 +72,18 @@ const NavigationBar = () => {
         <Container>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
-            style={{ color: "rgb(88, 198, 1)" }}
+            style={{ color: "rgb(62, 244, 34)" }}
           />
 
           <Navbar.Collapse
             id="basic-navbar-nav"
-            style={{ color: "rgb(88, 198, 1)" }}
+            style={{ color: "rgb(62, 244, 34)" }}
           >
-            <Nav style={{ color: "rgb(88, 198, 1)" }}>
+            <Nav style={{ color: "rgb(62, 244, 34)" }}>
               <Link
                 className="navLinks"
                 to="/home"
-                style={{ color: "rgb(88, 198, 1)", textDecoration: "none" }}
+                style={{ color: "rgb(62, 244, 34)", textDecoration: "none" }}
               >
                 HOME
               </Link>
@@ -92,19 +92,19 @@ const NavigationBar = () => {
                 className="navLinks"
                 to="/gaming"
                 style={{
-                  color: "rgb(88, 198, 1)",
+                  color: "rgb(62, 244, 34)",
                   textDecoration: "none",
                 }}
               >
                 {" "}
                 GAMING
               </Link>
-            
+
               <Link
                 className="navLinks"
                 to="/sports"
                 style={{
-                  color: "rgb(88, 198, 1)",
+                  color: "rgb(62, 244, 34)",
                   textDecoration: "none",
                 }}
               >
@@ -115,7 +115,7 @@ const NavigationBar = () => {
                 eventKey={2}
                 to="/clips"
                 style={{
-                  color: "rgb(88, 198, 1)",
+                  color: "rgb(62, 244, 34)",
                   textDecoration: "none",
                 }}
               >
