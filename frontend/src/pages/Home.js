@@ -286,7 +286,7 @@ const Home = () => {
 
   return (
     <>
-      <Container style={{ color: "green" }} className="container1">
+      <Container style={{ color: "green" }} className="container1 scrollbar">
         <Row className="align-items-center">
           <div
             ref={gameVidEl}

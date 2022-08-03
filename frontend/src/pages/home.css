@@ -2,6 +2,7 @@ body {
   box-sizing: border-box;
   background-color: black;
   max-width: 97vw;
+  scrollbar-color:rgb(62, 244, 34) rgba(89, 66, 233, 0.8)  ;
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +21,7 @@ body {
 .container1 {
   height: 458vh;
   overflow: hidden;
+  scrollbar-color:rgb(62, 244, 34) rgba(89, 66, 233, 0.8)  ;
 }
 
 .video-el {
