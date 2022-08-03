@@ -14,8 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
 
-   const [loadind, setLoading] = useState(false);
-
   //elements ref for animation
   const welcomeTextEl = useRef();
   const gameVidEl = useRef();
@@ -41,20 +39,8 @@ const Home = () => {
   const weGameSelector = gsap.utils.selector(circle);
   const didAnimate = useRef(false);
 
-  useLayoutEffect(() => {
-    const pageLoaded = () => {
-      setLoading(true);
-    };
-    if (document.readyState === "complete") {
-      pageLoaded();
-    } else {
-      window.addEventListener("load", pageLoaded);
-
-      return () => window.removeEventListener("load", pageLoaded);
-    }
-  }, []);
-
-  useLayoutEffect(() => {
+  useEffect(() => {
+    console.log("render");
     if (didAnimate.current) {
       return;
     }
@@ -65,25 +51,23 @@ const Home = () => {
     //gsap animations
     const tl = gsap.timeline({
       toggleActions: "restart none none reverse",
-      fastScrollEnd:true,
+      fastScrollEnd: true,
     });
     const tl2 = gsap.timeline({ fastScrollEnd: true });
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
-
-   
-
+    const tl3 = gsap.timeline();
+    const tl4 = gsap.timeline();
     gsap.from(gameVidEl.current, {
       autoAlpha: 0,
       delay: 0.8,
-      onComplete: () => { gameVideo.current.play() },
+      onComplete: () => {
+        gameVideo.current.play();
+      },
+    });
+    tl.from(gameVideo.current, {
+      duration: 1.5,
+      autoAlpha: 0,
     })
-    tl.from(
-      gameVideo.current,
-      {
-        duration: 1.5,
-        autoAlpha: 0,
-      }
-    )
       .from(
         welcomeTextEl.current,
         {
@@ -192,9 +176,8 @@ const Home = () => {
       },
     });
 
-    const tl3 = gsap.timeline();
-    tl3
-      .to(
+   
+    tl3.to(
         xbControlEl.current,
         {
           xPercent: "600",
@@ -272,18 +255,35 @@ const Home = () => {
       toggleActions: "restart none none reverse",
     });
 
-    gsap.from(fundamental.current, {
-      autoAlpha: 0,
-      duration: 5,
-      xPercent: 80,
-      scrollTrigger: {
-        trigger: fundamental.current,
-        start: "top bottom",
-        toggleActions: "restart none none reverse",
+    tl4.fromTo(
+      fundamental.current,
+      {
+        xPercent: 80,
+      
+        rotationX: 80
       },
-    });
-  });
-  
+      {
+        xPercent: 0,
+     
+        duration: 2,
+        scrollTrigger: {
+          trigger: fundamental.current,
+          start: "top bottom",
+        },
+      }
+    ).to(
+      fundamental.current,
+      {
+        autoAlpha: 1,
+        rotationX: 190
+      }
+    );
+      return () => {
+        tl.kill();
+        tl2.kill();
+        tl3.kill();
+      }
+  },[]);
 
   return (
     <>
@@ -294,7 +294,6 @@ const Home = () => {
             className="mt-4 video-el bg-dark text-white rounded"
           >
             <video
-          
               className="video1"
               autoPlay={false}
               loop={true}
