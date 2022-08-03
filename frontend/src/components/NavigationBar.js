@@ -37,12 +37,16 @@ const NavigationBar = () => {
         })
         .progress(1);
 
-        gsap.fromTo(naviBar.current,{ 
-          opacity: 0
-        }, { 
-          autoAlpha:1,
-          delay: 2
-        })
+      gsap.fromTo(
+        naviBar.current,
+        {
+          opacity: 0,
+        },
+        {
+          autoAlpha: 1,
+          delay: 2,
+        }
+      );
       ScrollTrigger.create({
         start: "top top",
         end: 99999,
@@ -52,6 +56,7 @@ const NavigationBar = () => {
       });
     }
   }, [navPath]);
+
 
   return (
     <>
@@ -80,47 +85,48 @@ const NavigationBar = () => {
             style={{ color: "rgb(62, 244, 34)" }}
           >
             <Nav style={{ color: "rgb(62, 244, 34)" }}>
-              <Link
-                className="navLinks"
-                to="/home"
-                style={{ color: "rgb(62, 244, 34)", textDecoration: "none" }}
-              >
-                HOME
-              </Link>
+              <Nav.Link>
+                <Link
+                  className="navLinks"
+                  to="/home"
+                  style={{ color: "rgb(62, 244, 34)", textDecoration: "none" }}
+                >
+                  HOME
+                </Link>
+                <Link
+                  className="navLinks"
+                  to="/gaming"
+                  style={{
+                    color: "rgb(62, 244, 34)",
+                    textDecoration: "none",
+                  }}
+                >
+                  {" "}
+                  GAMING
+                </Link>
 
-              <Link
-                className="navLinks"
-                to="/gaming"
-                style={{
-                  color: "rgb(62, 244, 34)",
-                  textDecoration: "none",
-                }}
-              >
-                {" "}
-                GAMING
-              </Link>
-
-              <Link
-                className="navLinks"
-                to="/sports"
-                style={{
-                  color: "rgb(62, 244, 34)",
-                  textDecoration: "none",
-                }}
-              >
-                SPORTS
-              </Link>
-              <Link
-                className="navLinks"
-                eventKey={2}
-                to="/clips"
-                style={{
-                  color: "rgb(62, 244, 34)",
-                  textDecoration: "none",
-                }}
-              >
-                CLIPS
-              </Link>
+                <Link
+                  className="navLinks"
+                  to="/sports"
+                  style={{
+                    color: "rgb(62, 244, 34)",
+                    textDecoration: "none",
+                  }}
+                >
+                  SPORTS
+                </Link>
+                <Link
+                  className="navLinks"
+                  eventKey={2}
+                  to="/clips"
+                  style={{
+                    color: "rgb(62, 244, 34)",
+                    textDecoration: "none",
+                  }}
+                >
+                  CLIPS
+                </Link>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

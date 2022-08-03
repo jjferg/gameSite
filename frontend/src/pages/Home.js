@@ -63,7 +63,6 @@ const Home = () => {
       
     });
     tl.from(gameVideo.current, {
-      duration: 1.5,
       onComplete: () => {
         gameVideo.current.play();
       },
