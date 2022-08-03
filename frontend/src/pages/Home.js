@@ -63,9 +63,6 @@ const Home = () => {
       
     });
     tl.from(gameVideo.current, {
-      onComplete: () => {
-        gameVideo.current.play();
-      },
     })
       .from(
         welcomeTextEl.current,
@@ -295,7 +292,7 @@ const Home = () => {
           >
             <video
               className="video1"
-              autoPlay={false}
+              autoPlay={true}
               loop={true}
               controls={false}
               playsInline
