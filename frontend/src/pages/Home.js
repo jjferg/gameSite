@@ -64,7 +64,6 @@ const Home = () => {
     });
     tl.from(gameVideo.current, {
       duration: 1.5,
-      autoAlpha: 0,
       onComplete: () => {
         gameVideo.current.play();
       },
@@ -126,7 +125,7 @@ const Home = () => {
       .set(weGameSelector(".right-bar"), {
         position: "absolute",
         zIndex: 10,
-      })
+      },"<")
       .set(weGameSelector(".left-bar"), {
         position: "absolute",
         zIndex: 10,
