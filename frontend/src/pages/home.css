@@ -4,23 +4,9 @@ body {
   max-width: 97vw;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(89, 66, 233, 0.8); 
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(62, 244, 34) 
-}
-
-
 .container1 {
   height: 458vh;
   overflow: hidden;
-  scrollbar-color:rgb(62, 244, 34) rgba(89, 66, 233, 0.8)  ;
 }
 
 .video-el {
@@ -60,7 +46,7 @@ div.welcome {
 }
 
 .circle {
-  margin-top: 18%;
+  margin-top: 7%;
   justify-content: center;
   text-align: center;
 }
