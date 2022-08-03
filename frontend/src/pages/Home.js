@@ -57,16 +57,17 @@ const Home = () => {
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
     const tl3 = gsap.timeline();
     const tl4 = gsap.timeline();
-    gsap.from(gameVidEl.current, {
-      autoAlpha: 0,
+    gsap.to(gameVidEl.current, {
+      autoAlpha: 1,
       delay: 0.8,
-      onComplete: () => {
-        gameVideo.current.play();
-      },
+      
     });
     tl.from(gameVideo.current, {
       duration: 1.5,
       autoAlpha: 0,
+      onComplete: () => {
+        gameVideo.current.play();
+      },
     })
       .from(
         welcomeTextEl.current,
