@@ -254,23 +254,16 @@ const Home = () => {
       toggleActions: "restart none none reverse",
     });
 
-    tl4
-      .set(fundamental.current, { rotationX: 80 })
-      .fromTo(
-        fundamental.current,
-        {
-          xPercent: 80,
-        },
-        {
-          duration: 1.5,
-          xPercent: 0,
-          rotationX: 80,
-        }
-      )
-      .to(fundamental.current, {
-        duration: 1.5,
-        rotationX: 0,
-      });
+    tl4.set(fundamental.current, {rotationX: 80}).fromTo(fundamental.current, {
+      xPercent: 80,
+    },{
+      duration: 1.5,
+      xPercent: 0,
+      rotationX: 80
+    }).to(fundamental.current, {
+      duration: 1.5,
+      rotationX: 0
+    })
 
     ScrollTrigger.create({
       animation: tl4,
@@ -286,7 +279,7 @@ const Home = () => {
 
   return (
     <>
-      <Container style={{ color: "green" }} className="container1 scrollbar">
+      <Container style={{ color: "green" }} className="container1">
         <Row className="align-items-center">
           <div
             ref={gameVidEl}
@@ -319,6 +312,7 @@ const Home = () => {
                   ref={leftBar}
                   className="left-bar"
                   style={{
+                
                     position: "absolute",
                     height: "80%",
                   }}
