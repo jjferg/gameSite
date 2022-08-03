@@ -158,7 +158,7 @@ div.welcome {
   overflow: hidden;
 }
 
-.fundamentals {
+.fundamentals {margin-top: 5%;
   font-size: 2.3em;
   color: blue;
   object-fit: cover;
