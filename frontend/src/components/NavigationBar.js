@@ -38,7 +38,7 @@ const NavigationBar = () => {
         .progress(1);
 
         gsap.fromTo(naviBar.current,{ 
-          opacity: 0
+          visibility: "hidden"
         }, { 
           autoAlpha:1,
           delay: 2

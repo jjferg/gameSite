@@ -36,13 +36,8 @@ const IntroPage = () => {
     } else {
       tl.pause();
     }
-    tl.set(whole,{visibility: "hidden"})
-      .fromTo(
-        leftH.current,
-        { y: "-100%" },
-        { y: 0, duration: 2, autoAlpha: 1 }
-      )
-      .fromTo(rightH.current, { y: "-100%" }, { y: 0, duration: 2 }, "<")
+    tl.set(whole, { visibility: "hidden" })
+      .fromTo(whole, { y: "-120%" }, { y: 0, duration: 2, autoAlpha: 1 })
       .to(leftH.current, { x: "-100%", duration: 2, delay: 2 })
       .to(
         rightH.current,
