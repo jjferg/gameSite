@@ -36,13 +36,11 @@ const NavigationBar = () => {
           duration: 0.2,
         })
         .progress(1);
-
-        gsap.fromTo(naviBar.current,{ 
-          visibility: "hidden"
-        }, { 
-          autoAlpha:1,
-          delay: 2
-        })
+      gsap.set(naviBar, { visibility: "hidden" });
+      gsap.to(naviBar.current, {
+        autoAlpha: 1,
+        delay: 2,
+      });
       ScrollTrigger.create({
         start: "top top",
         end: 99999,
@@ -80,7 +78,6 @@ const NavigationBar = () => {
             style={{ color: "rgb(62, 244, 34)" }}
           >
             <Nav style={{ color: "rgb(62, 244, 34)" }}>
-              
               <Link
                 className="navLinks"
                 to="/home"

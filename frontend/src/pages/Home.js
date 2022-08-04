@@ -54,16 +54,16 @@ const Home = () => {
       fastScrollEnd: true,
     });
     const tl2 = gsap.timeline({ fastScrollEnd: true });
-    gsap.set(falling.current, { transformOrigin: "100% 100%" });
     const tl3 = gsap.timeline();
     const tl4 = gsap.timeline();
+    
+    gsap.set(falling.current, { transformOrigin: "100% 100%" });
+
     gsap.to(gameVidEl.current, {
       autoAlpha: 1,
       delay: 0.8,
-      
     });
-    tl.from(gameVideo.current, {
-    })
+    tl.from(gameVideo.current, {})
       .from(
         welcomeTextEl.current,
         {
@@ -118,10 +118,14 @@ const Home = () => {
         },
         "<"
       )
-      .set(weGameSelector(".right-bar"), {
-        position: "absolute",
-        zIndex: 10,
-      },"<")
+      .set(
+        weGameSelector(".right-bar"),
+        {
+          position: "absolute",
+          zIndex: 10,
+        },
+        "<"
+      )
       .set(weGameSelector(".left-bar"), {
         position: "absolute",
         zIndex: 10,
@@ -239,7 +243,6 @@ const Home = () => {
         "<+=1.5"
       );
     ScrollTrigger.create({
-      anticipatePin: 1,
       animation: tl3,
       trigger: divToPin.current,
       start: "top top",
@@ -423,6 +426,7 @@ const Home = () => {
         </Row>
       </Container>
       <Row>
+        <div></div>
         <div className="fundamentals-div">
           <p
             ref={fundamental}
