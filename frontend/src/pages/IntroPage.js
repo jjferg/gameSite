@@ -1,53 +1,55 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import React, {  useState, useRef, useEffect, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 import leftHulla from "../components/images/PNG/leftHulla.png";
 import rightHulla from "../components/images/PNG/rightHulla.png";
 
 const IntroPage = () => {
+
   const [loadind, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const leftH = useRef();
   const rightH = useRef();
 
-  useEffect(() => {
-    const pageLoaded = () => {
-      setLoading(true);
-    };
-    if (document.readyState === "complete") {
-      pageLoaded();
-    } else {
-      window.addEventListener("load", pageLoaded);
+  useLayoutEffect(() => {
+     const pageLoaded = () => {
+       setLoading(true);
+     };
+     if (document.readyState === "complete") {
+       pageLoaded();
+     } else {
+       window.addEventListener("load", pageLoaded);
 
-      return () => window.removeEventListener("load", pageLoaded);
+       return () => window.removeEventListener("load", pageLoaded);
+     }
+  })
+
+ const didAnimate = useRef(false);
+  useEffect(() => {
+    if (didAnimate.current) {
+      return;
     }
-  }, []);
 
-  useEffect(() => {
-    const introPage = () => {
-      navigate("/home");
-    };
-    const whole = [leftH.current, rightH.current];
+    didAnimate.current = true;
+     const introPage = () => {
+       navigate("/home");
+     };
     const visible = document.visibilityState;
-    const tl = gsap.timeline({ delay: 0.5, restart: true });
-    if (visible) {
-      tl.play();
-    } else {
-      tl.pause();
-    }
-    tl.set(whole, { visibility: "hidden" })
-      .from(whole, { yPercent: 120, duration: 2, autoAlpha: 0 })
+    const tl = gsap.timeline({delay: .5, restart: true});
+    if(visible) {tl.play()}else{tl.pause()}
+    tl.fromTo(leftH.current, { y: "-120%" }, { y: 0, duration: 2 })
+      .fromTo(rightH.current, { y: "-120%" }, { y: 0, duration: 2 }, "<")
       .to(leftH.current, { x: "-100%", duration: 2, delay: 2 })
       .to(
         rightH.current,
         { x: "100%", duration: 2, onComplete: introPage },
         "<"
-      );
-  }, [navigate]);
+      )
+  });
 
   return (
-    <div className="containers" style={{ height: "100vh", overflow: "hidden" }}>
+    <div className="containers" style={{height: "100vh", overflow: "hidden"}} >
       <img
         ref={leftH}
         src={leftHulla}

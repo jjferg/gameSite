@@ -26,8 +26,13 @@ const NavigationBar = () => {
   const navPath = window.location.pathname === "/";
   const navPosition = navPath ? "static" : "sticky";
   const navIndex = navPath ? 0 : 5;
-
+  const didAnimate = useRef(false);
   useEffect(() => {
+    if (didAnimate.current) {
+      return;
+    }
+
+    didAnimate.current = true;
     if (navPath !== "/") {
       const showAnim = gsap
         .from(naviBar.current, {
@@ -36,10 +41,13 @@ const NavigationBar = () => {
           duration: 0.2,
         })
         .progress(1);
-      gsap.set(naviBar, { visibility: "hidden" });
-      gsap.from(naviBar.current, {
-        autoAlpha: 0,
-        delay: 2,
+
+      gsap.set(naviBar.current, {
+        visibility: "hidden",
+      })
+        gsap.to(naviBar.current, {
+        autoAlpha:1,
+        delay: 2.5
       });
       ScrollTrigger.create({
         start: "top top",
@@ -61,7 +69,7 @@ const NavigationBar = () => {
         bg="dark"
         variant="dark"
         style={{
-          color: "rgb(62, 244, 34)",
+          color: "rgb(88, 198, 1)",
           position: navPosition,
           top: 0,
           zIndex: navIndex,
@@ -70,18 +78,18 @@ const NavigationBar = () => {
         <Container>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
-            style={{ color: "rgb(62, 244, 34)" }}
+            style={{ color: "rgb(88, 198, 1)" }}
           />
 
           <Navbar.Collapse
             id="basic-navbar-nav"
-            style={{ color: "rgb(62, 244, 34)" }}
+            style={{ color: "rgb(88, 198, 1)" }}
           >
-            <Nav style={{ color: "rgb(62, 244, 34)" }}>
+            <Nav style={{ color: "rgb(88, 198, 1)" }}>
               <Link
                 className="navLinks"
                 to="/home"
-                style={{ color: "rgb(62, 244, 34)", textDecoration: "none" }}
+                style={{ color: "rgb(88, 198, 1)", textDecoration: "none" }}
               >
                 HOME
               </Link>
@@ -90,7 +98,7 @@ const NavigationBar = () => {
                 className="navLinks"
                 to="/gaming"
                 style={{
-                  color: "rgb(62, 244, 34)",
+                  color: "rgb(88, 198, 1)",
                   textDecoration: "none",
                 }}
               >
@@ -102,7 +110,7 @@ const NavigationBar = () => {
                 className="navLinks"
                 to="/sports"
                 style={{
-                  color: "rgb(62, 244, 34)",
+                  color: "rgb(88, 198, 1)",
                   textDecoration: "none",
                 }}
               >
@@ -113,7 +121,7 @@ const NavigationBar = () => {
                 eventKey={2}
                 to="/clips"
                 style={{
-                  color: "rgb(62, 244, 34)",
+                  color: "rgb(88, 198, 1)",
                   textDecoration: "none",
                 }}
               >
