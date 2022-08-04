@@ -37,8 +37,8 @@ const NavigationBar = () => {
         })
         .progress(1);
       gsap.set(naviBar, { visibility: "hidden" });
-      gsap.to(naviBar.current, {
-        autoAlpha: 1,
+      gsap.from(naviBar.current, {
+        autoAlpha: 0,
         delay: 2,
       });
       ScrollTrigger.create({

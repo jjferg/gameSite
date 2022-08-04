@@ -37,7 +37,7 @@ const IntroPage = () => {
       tl.pause();
     }
     tl.set(whole, { visibility: "hidden" })
-      .fromTo(whole, { y: "-120%" }, { y: 0, duration: 2, autoAlpha: 1 })
+      .from(whole, { yPercent: 120, duration: 2, autoAlpha: 0 })
       .to(leftH.current, { x: "-100%", duration: 2, delay: 2 })
       .to(
         rightH.current,
