@@ -56,7 +56,7 @@ const Home = () => {
     const tl2 = gsap.timeline({ fastScrollEnd: true });
     const tl3 = gsap.timeline();
     const tl4 = gsap.timeline();
-    
+
     gsap.set(falling.current, { transformOrigin: "100% 100%" });
 
     gsap.to(gameVidEl.current, {
@@ -181,7 +181,7 @@ const Home = () => {
         xbControlEl.current,
         {
           xPercent: "600",
-          duration: 25,
+          duration: 45,
         },
         ">"
       )
@@ -189,10 +189,14 @@ const Home = () => {
         cover33El.current,
         {
           xPercent: "300",
-          duration: 25,
+          duration: 45,
         },
         "<"
       )
+      .to(divToPin.current, {
+        scale: 1.2,
+        duration: 2,
+      })
       .from(dameDunkEl.current, {
         xPercent: "300",
         duration: 15,
@@ -241,7 +245,11 @@ const Home = () => {
           duration: 35,
         },
         "<+=1.5"
-      );
+      )
+      .to(divToPin.current, {
+        scale: 1,
+        duration: 3,
+      },">");
     ScrollTrigger.create({
       animation: tl3,
       trigger: divToPin.current,
