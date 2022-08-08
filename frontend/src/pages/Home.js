@@ -249,7 +249,7 @@ const Home = () => {
       end: "2500",
       pinSpacer: false,
       normalizeScroll: true,
-      scrub: 0.004,
+      scrub: true,
       pin: true,
       snap: 1 / 8,
       ease: "none",
