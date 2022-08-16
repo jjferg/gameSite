@@ -176,8 +176,6 @@ const Home = () => {
       },
     });
 
-    gsap.set(divToPin.current, {scale: .8})
-
     tl3
       .to(
         xbControlEl.current,
