@@ -181,7 +181,7 @@ const Home = () => {
         xbControlEl.current,
         {
           xPercent: "600",
-          duration: 45,
+          duration: 65,
         },
         ">"
       )
@@ -189,7 +189,7 @@ const Home = () => {
         cover33El.current,
         {
           xPercent: "300",
-          duration: 45,
+          duration: 65,
         },
         "<"
       )
@@ -199,50 +199,50 @@ const Home = () => {
       })
       .from(dameDunkEl.current, {
         xPercent: "300",
-        duration: 45,
+        duration: 65,
       })
       .from(
         glory.current,
         {
           yPercent: "230",
           autoAlpha: 0,
-          duration: 35,
+          duration: 65,
         },
         "<+=1"
       )
       .from(forzaEl.current, {
         xPercent: "300",
-        duration: 35,
+        duration: 65,
       })
       .from(
         style.current,
         {
           autoAlpha: 0,
-          duration: 35,
+          duration: 65,
         },
         "<+=1.5"
       )
       .from(redDeadSunEl.current, {
         xPercent: "-300",
-        duration: 35,
+        duration: 65,
       })
       .from(
         adventure.current,
         {
           autoAlpha: 0,
-          duration: 35,
+          duration: 65,
         },
         "<+=1.5"
       )
       .from(ja2kDunkEl.current, {
         xPercent: "300",
-        duration: 35,
+        duration: 65,
       })
       .from(
         ja.current,
         {
           autoAlpha: 0,
-          duration: 35,
+          duration: 65,
         },
         "<+=1.5"
       )
