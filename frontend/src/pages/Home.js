@@ -176,6 +176,8 @@ const Home = () => {
       },
     });
 
+    gsap.set(divToPin.current, {scale: .8})
+
     tl3
       .to(
         xbControlEl.current,
@@ -195,11 +197,11 @@ const Home = () => {
       )
       .to(divToPin.current, {
         scale: 1.2,
-        duration: 2,
+        duration: 30,
       })
       .from(dameDunkEl.current, {
         xPercent: "300",
-        duration: 15,
+        duration: 45,
       })
       .from(
         glory.current,
@@ -212,7 +214,7 @@ const Home = () => {
       )
       .from(forzaEl.current, {
         xPercent: "300",
-        duration: 15,
+        duration: 35,
       })
       .from(
         style.current,
@@ -224,7 +226,7 @@ const Home = () => {
       )
       .from(redDeadSunEl.current, {
         xPercent: "-300",
-        duration: 15,
+        duration: 35,
       })
       .from(
         adventure.current,
@@ -236,7 +238,7 @@ const Home = () => {
       )
       .from(ja2kDunkEl.current, {
         xPercent: "300",
-        duration: 15,
+        duration: 35,
       })
       .from(
         ja.current,
@@ -247,19 +249,20 @@ const Home = () => {
         "<+=1.5"
       )
       .to(divToPin.current, {
-        scale: 1,
-        duration: 3,
+        delay: 4,
+        scale: .8,
+        duration: 30,
       },">");
     ScrollTrigger.create({
       animation: tl3,
       trigger: divToPin.current,
       start: "top top",
-      end: "1700",
+      end: "1400",
       pinSpacer: false,
       normalizeScroll: true,
       scrub: true,
       pin: true,
-      snap: 1 / 8,
+      snap: 1 / 6.8,
       ease: "none",
       toggleActions: "restart none none reverse",
     });

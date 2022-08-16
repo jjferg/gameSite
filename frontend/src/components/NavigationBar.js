@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useLayoutEffect, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +9,12 @@ import "./nav.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const NavigationBar = () => {
+
+  //conditional for loading position of the navbar
+  const navPath = window.location.pathname === "/";
+  const navPosition = navPath ? "static" : "sticky";
+  const navIndex = navPath ? 0 : 5;
+  const didAnimate = useRef(false);
   const appLogoRef = useRef();
   const naviBar = useRef();
 
@@ -22,42 +28,24 @@ const NavigationBar = () => {
     });
   }, []);
 
-  //conditional for loading position of the navbar
-  const navPath = window.location.pathname === "/";
-  const navPosition = navPath ? "static" : "sticky";
-  const navIndex = navPath ? 0 : 5;
-  const didAnimate = useRef(false);
-  useEffect(() => {
-    if (didAnimate.current) {
-      return;
-    }
-
-    didAnimate.current = true;
-    if (navPath !== "/") {
-      const showAnim = gsap
-        .from(naviBar.current, {
-          yPercent: -100,
-          paused: true,
-          duration: 0.2,
-        })
-        .progress(1);
-
-      gsap.set(naviBar.current, {
-        visibility: "hidden",
+  useLayoutEffect(() => {
+    
+     ScrollTrigger.refresh();
+    const showAnim = gsap
+      .from(naviBar.current, {
+        yPercent: -100,
+        duration: 0.2,
       })
-        gsap.to(naviBar.current, {
-        autoAlpha:1,
-        delay: 2.5
-      });
-      ScrollTrigger.create({
-        start: "top top",
-        end: 99999,
-        onUpdate: (self) => {
-          self.direction === -1 ? showAnim.play() : showAnim.reverse();
-        },
-      });
-    }
-  }, [navPath]);
+      .progress(1);
+    ScrollTrigger.create({
+      start: "top top",
+      end: 99999,
+      onUpdate: (self) => {
+        self.direction === -1 ? showAnim.play() : showAnim.reverse();
+      },
+    });
+   
+  },[]);
 
   return (
     <>
