@@ -255,7 +255,7 @@ const Home = () => {
       animation: tl3,
       trigger: divToPin.current,
       start: "top top",
-      end: "1400",
+      end:  "4000",
       pinSpacer: false,
       normalizeScroll: true,
       scrub: true,
