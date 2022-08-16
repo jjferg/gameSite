@@ -30,7 +30,7 @@ const NavigationBar = () => {
 
   useLayoutEffect(() => {
     gsap.set(naviBar.current,{visibility: "hidden"});
-    gsap.from(naviBar.current,{autoAlpha: 1, delay: 3})
+    gsap.to(naviBar.current,{autoAlpha: 1, delay: 3})
 
      ScrollTrigger.refresh();
     const showAnim = gsap
