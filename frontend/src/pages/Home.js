@@ -260,7 +260,7 @@ const Home = () => {
       normalizeScroll: true,
       scrub: true,
       pin: true,
-      snap: 1 / 6.6,
+      snap: 1 / 7.2,
       ease: "none",
       toggleActions: "restart none none reverse",
     });
