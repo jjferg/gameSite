@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
   //elements ref for animation
   const welcomeTextEl = useRef();
+  const containerWidth = useRef();
   const gameVidEl = useRef();
   const gameVideo = useRef();
   const weGame = useRef();
@@ -23,6 +24,7 @@ const Home = () => {
   const circle = useRef();
   const pinnedRow = useRef();
   const section = useRef();
+  const section3Ref = useRef();
   const divToPin = useRef();
   const cover33El = useRef();
   const dameDunkEl = useRef();
@@ -37,10 +39,12 @@ const Home = () => {
   const fundamental = useRef();
 
   const weGameSelector = gsap.utils.selector(circle);
+  const horizontalSlide = gsap.utils.selector(divToPin)
   const didAnimate = useRef(false);
 
   useEffect(() => {
-    console.log("render");
+    console.log(horizontalSlide(".why-game").length);
+    console.log(gsap.getProperty(section3Ref.current, "height", "vh"))
     if (didAnimate.current) {
       return;
     }
@@ -256,11 +260,11 @@ const Home = () => {
       trigger: divToPin.current,
       start: "top top",
       end:  "4000",
-      pinSpacer: false,
+      pinSpacer: true,
       normalizeScroll: true,
       scrub: true,
       pin: true,
-      snap: 1 / 7.05,
+      snap: [.2,.4,.58,.74,.92, 1],
       ease: "none",
       toggleActions: "restart none none reverse",
     });
@@ -297,7 +301,7 @@ const Home = () => {
 
   return (
     <>
-      <Container style={{ color: "green" }} className="container1">
+      <Container ref={containerWidth} style={{ color: "green" }} className="container1">
         <Row className="align-items-center">
           <div
             ref={gameVidEl}
@@ -381,7 +385,7 @@ const Home = () => {
                   src={xbControl}
                   alt="xbox controller"
                 />
-                <div className="section3">
+                <div className="section3" ref={section3Ref}>
                   <p className="why-game">
                     WHY GAME <span style={{ color: "red" }}>?</span>
                   </p>
