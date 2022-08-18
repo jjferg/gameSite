@@ -277,4 +277,8 @@ div.welcome {
     width: 50%;
     top: -2%;
   }
+
+  .section3 {
+    margin-top: 10%;
+  }
 }
