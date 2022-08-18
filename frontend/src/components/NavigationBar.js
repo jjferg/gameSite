@@ -29,12 +29,6 @@ const NavigationBar = () => {
   }, []);
 
   useLayoutEffect(() => {
-     if (didAnimate.current) {
-       return;
-     }
-     // otherwise, record that we're running it now and continue...
-     didAnimate.current = true;
-
     gsap.set(naviBar.current,{visibility: "hidden"});
     gsap.to(naviBar.current,{autoAlpha: 1, delay: 3})
   },[]);
@@ -50,7 +44,7 @@ const NavigationBar = () => {
         variant="dark"
         style={{
           color: "rgb(88, 198, 1)",
-          position: "static",
+          position: navPosition,
           top: 0,
           zIndex: navIndex,
         }}
