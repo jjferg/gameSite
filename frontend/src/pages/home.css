@@ -27,7 +27,7 @@ body {
 }
 
 .container1 {
-  height: 750vh;
+  height: 700vh;
   overflow: hidden;
 }
 
@@ -254,6 +254,10 @@ div.welcome {
 }
 
 @media only screen and (min-width: 768px) {
+
+  .container1 {
+    height: 750vh
+  }
  
   .glory {
     font-size: 300px;
