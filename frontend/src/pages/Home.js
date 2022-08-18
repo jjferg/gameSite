@@ -259,7 +259,7 @@ const Home = () => {
       animation: tl3,
       trigger: divToPin.current,
       start: "top top",
-      end:  "3800",
+      end:  "3500",
       pinSpacer: false,
       normalizeScroll: true,
       scrub: true,
