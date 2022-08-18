@@ -256,7 +256,7 @@ div.welcome {
 @media only screen and (min-width: 1113px) {
 
   .container1 {
-    height: 750vh
+    height: 850vh
   }
  
   .glory {
@@ -289,6 +289,6 @@ div.welcome {
 
 @media only screen and (min-width: 500px ) {
   .container1 {
-    height: 750vh
+    height: 550vh
   }
  }
