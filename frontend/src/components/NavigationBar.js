@@ -44,7 +44,6 @@ const NavigationBar = () => {
         variant="dark"
         style={{
           color: "rgb(88, 198, 1)",
-          position: navPosition,
           top: 0,
           zIndex: navIndex,
         }}
