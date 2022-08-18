@@ -31,22 +31,6 @@ const NavigationBar = () => {
   useLayoutEffect(() => {
     gsap.set(naviBar.current,{visibility: "hidden"});
     gsap.to(naviBar.current,{autoAlpha: 1, delay: 3})
-
-     ScrollTrigger.refresh();
-    const showAnim = gsap
-      .from(naviBar.current, {
-        yPercent: -100,
-        duration: 0.2,
-      })
-      .progress(1);
-    ScrollTrigger.create({
-      start: "top top",
-      end: 99999,
-      onUpdate: (self) => {
-        self.direction === -1 ? showAnim.play() : showAnim.reverse();
-      },
-    });
-   
   },[]);
 
   return (
