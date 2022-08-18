@@ -260,7 +260,7 @@ const Home = () => {
       trigger: divToPin.current,
       start: "top top",
       end:  "3800",
-      pinSpacer: true,
+      pinSpacer: false,
       normalizeScroll: true,
       scrub: true,
       pin: true,
