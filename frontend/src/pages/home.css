@@ -253,7 +253,7 @@ div.welcome {
   text-align: center;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1113px) {
 
   .container1 {
     height: 750vh
@@ -287,4 +287,8 @@ div.welcome {
   }
 }
 
-@media only screen and (min-width: px) {}
+@media only screen and (min-width: 500px ) {
+  .container1 {
+    height: 750vh
+  }
+ }
