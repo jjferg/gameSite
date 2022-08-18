@@ -286,3 +286,5 @@ div.welcome {
     margin-top: 5%;
   }
 }
+
+@media only screen and (min-width: px) {}
