@@ -21,7 +21,7 @@ useEffect(() => {
 
   return (
     <>
-      <Navbar style={{visibility: footerPosition}}ref={footerEl} bg="dark" variant="dark" className=" justify-content-center">
+      <Navbar style={{visibility: footerPosition}}ref={footerEl} bg="dark" variant="dark" className=" justify-content-center footer">
           <p style={{ color: "rgb(88, 198, 1)",  }}> &copy; Hullaghan 2022 </p>
       </Navbar>
     </>
