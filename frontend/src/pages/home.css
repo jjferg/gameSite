@@ -197,6 +197,7 @@ div.welcome {
   font-weight: bold;
   font-size: 4.3em;
   z-index: -1;
+  text-shadow: 2px 2px rgb(62, 244, 34)
 }
 .section33 {
   justify-content: center;
@@ -260,7 +261,7 @@ div.welcome {
   }
  
   .glory {
-    font-size: 300px;
+    font-size: 80px;
   }
   .welcome-text {
     font-size: 3em;
@@ -290,5 +291,8 @@ div.welcome {
 @media only screen and (min-width: 500px ) {
   .container1 {
     height: 580vh
+  }
+  .section3 {
+    margin-top: 5%;
   }
  }
