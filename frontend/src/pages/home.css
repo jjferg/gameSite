@@ -292,7 +292,10 @@ div.welcome {
   .container1 {
     height: 580vh
   }
+  .section {
+    overflow: visible;
+  }
   .section3 {
-    margin-top: 5%;
+    margin-top: 13%;
   }
  }
