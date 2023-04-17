@@ -12,9 +12,7 @@ const NavigationBar = () => {
 
   //conditional for loading position of the navbar
   const navPath = window.location.pathname === "/";
-  const navPosition = navPath ? "static" : "sticky";
   const navIndex = navPath ? 0 : 5;
-  const didAnimate = useRef(false);
   const appLogoRef = useRef();
   const naviBar = useRef();
 
@@ -91,7 +89,6 @@ const NavigationBar = () => {
               </Link>
               <Link
                 className="navLinks"
-                eventKey={2}
                 to="/clips"
                 style={{
                   color: "rgb(88, 198, 1)",

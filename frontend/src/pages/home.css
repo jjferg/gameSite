@@ -1,4 +1,5 @@
 html {
+  height: 100%;
   overflow-x: hidden;
   scrollbar-width: auto;
   scrollbar-color: rgba(89, 66, 233, 0.8) rgb(62, 244, 34);
@@ -24,6 +25,7 @@ body {
   box-sizing: border-box;
   background-color: black;
   max-width: 97vw;
+  height: 100%;
 }
 
 .container1 {
@@ -32,7 +34,8 @@ body {
 }
 
 .video-el {
-  visibility: hidden;
+  z-index: 1;
+  visibility: visible;
   display: flex;
   justify-content: center;
   margin-left: 4%;
@@ -40,25 +43,7 @@ body {
   width: 95%;
   position: relative;
   overflow: hidden;
-  box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.8);
-  animation: pulsate 15s infinite;
-}
-@keyframes pulsate {
-  20% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.4);
-  }
-  50% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.6);
-  }
-  100% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.9);
-  }
-  50% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.6);
-  }
-  20% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.4);
-  }
+  box-shadow: 0px 0px 30px 0px rgba(89, 66, 233, 0.8);
 }
 
 .video1 {
@@ -78,6 +63,7 @@ body {
 }
 
 div.welcome {
+  z-index: 1;
   object-fit: cover;
   width: 99vw;
   background-color: rgba(255, 255, 255, 0.1);
@@ -93,85 +79,39 @@ div.welcome {
 
 .we-game {
   margin-top: 5%;
-  font-size: 2.7em;
+  font-size: 5.9em;
 }
 
 .we-game-text {
   color: red;
   display: block;
   visibility: hidden;
-  z-index: 0;
+  z-index: 1;
   text-shadow: 2px 2px rgba(89, 66, 233, 0.8);
 }
 
 .left-bar {
   background-color: rgb(62, 244, 34);
-  position: absolute;
+  z-index: 1;
   height: 80%;
   width: 5%;
   visibility: hidden;
   box-shadow: 5px 5px 10px 5px rgba(89, 66, 233, 0.8);
-  animation: pulsate 10s infinite;
-}
-@keyframes pulsate {
-  20% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.9);
-  }
-  50% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.7);
-  }
-  100% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.9);
-  }
-  50% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.6);
-  }
-  20% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.9);
-  }
 }
 
 .right-bar {
   background-color: rgb(62, 244, 34);
-  position: absolute;
+  z-index: 1;
   height: 80%;
   width: 5%;
   right: 0%;
   top: 0%;
   visibility: hidden;
   box-shadow: 5px 5px 10px 5px rgba(89, 66, 233, 0.8);
-  animation: pulsate 10s infinite;
-}
-@keyframes pulsate {
-  20% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.9);
-  }
-  50% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.6);
-  }
-  100% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.9);
-  }
-  50% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.6);
-  }
-  20% {
-    box-shadow: 15px 15px 10px rgba(89, 66, 233, 0.9);
-  }
 }
 
 .divToPin {
   max-height: 100vh;
-}
-
-.xbox-controller {
-  height: 21%;
-  width: 54%;
-  position: absolute;
-  top: 0%;
-  left: -25%;
-  z-index: 1;
-  visibility: hidden;
 }
 
 .section {
@@ -197,7 +137,7 @@ div.welcome {
   font-weight: bold;
   font-size: 4.3em;
   z-index: -1;
-  text-shadow: 2px 2px rgb(62, 244, 34)
+  text-shadow: 2px 2px rgb(62, 244, 34);
 }
 .section33 {
   justify-content: center;
@@ -255,11 +195,10 @@ div.welcome {
 }
 
 @media only screen and (min-width: 1113px) {
-
   .container1 {
-    height: 850vh
+    height: 850vh;
   }
- 
+
   .glory {
     font-size: 80px;
   }
@@ -279,7 +218,7 @@ div.welcome {
 
   .xbox-controller {
     height: 7%;
-    width: 50%;
+
     top: -2%;
   }
 
@@ -288,9 +227,9 @@ div.welcome {
   }
 }
 
-@media only screen and (min-width: 500px ) {
+@media only screen and (min-width: 500px) {
   .container1 {
-    height: 580vh
+    height: 580vh;
   }
   .section {
     overflow: visible;
@@ -298,4 +237,4 @@ div.welcome {
   .section3 {
     margin-top: 13%;
   }
- }
+}
